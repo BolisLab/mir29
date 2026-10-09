@@ -1,0 +1,76 @@
+---
+title: "From a panel to its analysis"
+subtitle: "Three levels of reproducibility, with explicit starting points."
+---
+
+## 01 · Read the evidence
+
+The five chapters present saved analytical results alongside their methods and
+source code. Reading does not require R, Python or access to the original server.
+The current website is a **documentation build**, not a fresh statistical run.
+
+## 02 · Recreate a panel from checkpoints
+
+The executable R Markdown documents and chapter scripts live in `analyses/`.
+They expect processed inputs at chapter-relative paths. These binary inputs are
+not yet included in this GitHub draft; consult the [data catalogue](datasets.qmd)
+before running an analysis. A missing file must be restored from its verified
+source, not substituted with rounded values read from a figure.
+
+| Chapter | Renderer, run from the corresponding chapter directory |
+|:--|:--|
+| Figure 1 + S1 | `Rscript render_figure1_and_s1.R` |
+| Figure 2 + S2 | `Rscript render_figure2_and_s2.R` |
+| Figure 3 + S3 | `Rscript render_figure3_and_s3.R` |
+| Figure 4 + S4 | `Rscript render_figure4_and_s4.R` |
+| Figure 5 + S5 | `Rscript render_figure5_and_s5.R` |
+
+Restore the inputs, match the recorded software versions, then execute in the
+chapter directory. The renderer may write regenerated figures and tables there.
+Do not install a new package version merely to make an old analysis run without
+checking whether it changes the result.
+
+## 03 · Repeat upstream processing
+
+Raw-read alignment, normalisation, genome-wide model fitting and predictor
+training are separate from checkpoint-to-panel reconstruction. Their source
+code and provenance are being consolidated. The documentation does **not**
+claim that a single command currently reproduces the entire paper from raw data.
+
+For small RNA, distinguish nf-core/smrnaseq reprocessing from analyses that used
+published processed matrices. For methylation, distinguish IDAT preprocessing
+and genome-wide discovery from the compact panel-level inputs. Controlled-access
+metadata must be obtained through the appropriate access process.
+
+## Statistical comparisons are part of the result
+
+- Keep pooled and matched controls attached to the panels that display them.
+- Preserve the recorded multiple-testing family; do not reinterpret a global
+  q value as a per-timepoint test.
+- For the **123-CpG reference**, the Figure 4o centre tests the average matched
+  displacement over T1–T6, whereas the right panel tests the T5–T6 endpoint.
+  Neither label is a test of an increasing temporal slope.
+- hTERT final-cycle and whole-series tests are separate endpoints.
+- CpGs and repeated timepoints do not increase the number of independent runs.
+
+## Build the documentation locally
+
+From the repository root:
+
+```sh
+python3 scripts/build_docs.py
+python3 scripts/check_repository.py
+quarto render docs
+quarto preview docs --host 127.0.0.1
+```
+
+These commands build and serve local documentation only. They do not deploy
+GitHub Pages, run analyses or download data. Python 3 uses only its standard
+library for the documentation preparation script.
+
+## Release status
+
+Before public release, we will reconcile the remaining reconstruction labels,
+restore and archive the input checkpoints, record software environments and
+test chapter execution. See the
+[release checklist](https://github.com/BolisLab/mir29/blob/main/RELEASE_CHECKLIST.md).

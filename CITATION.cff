@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "Please cite the associated study when reusing these analyses. Publication and archived software identifiers will be added when available."
+type: software
+title: "miR-29 trades youthful plasticity for epigenetic fidelity — analysis companion"
+version: "0.1.0-draft"
+repository-code: "https://github.com/BolisLab/mir29"
+authors:
+  - family-names: Craparotta
+    given-names: Ilaria
+  - family-names: Barbera
+    given-names: Maria Chiara
+  - family-names: Cassanmagnago
+    given-names: Giada Andrea
+  - family-names: Salvatore
+    given-names: Anna Chiara
+  - family-names: Sallemi
+    given-names: Alisia
+  - family-names: Guarrera
+    given-names: Luca
+  - family-names: Vallerga
+    given-names: Arianna
+  - family-names: Bolis
+    given-names: Marco
+    email: marco.bolis@marionegri.it
+keywords:
+  - miR-29
+  - ageing
+  - rejuvenation
+  - DNA methylation
+  - epigenetic plasticity

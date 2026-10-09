@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='238.10pt' height='138.89pt' viewBox='0 0 238.10 138.89'>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk='>
+    <rect x='0.00' y='0.00' width='238.10' height='138.89' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMS4wMHwyMzcuMTF8MC4wMHwyOC4zNA=='>
+    <rect x='1.00' y='0.00' width='236.11' height='28.34' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMS4wMHwyMzcuMTF8MC4wMHwyOC4zNA==)'>
+<text x='1.52' y='5.23' style='font-size: 5.40px; font-weight: bold;fill: #333333; font-family: "Helvetica";' textLength='51.58px' lengthAdjust='spacingAndGlyphs'>Leave one clade out</text>
+<line x1='26.94' y1='8.12' x2='60.67' y2='8.12' style='stroke-width: 0.75; stroke: #4E86BD; stroke-linecap: butt;' />
+<line x1='71.88' y1='8.12' x2='105.61' y2='8.12' style='stroke-width: 0.75; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='116.97' y1='8.12' x2='150.70' y2='8.12' style='stroke-width: 0.75; stroke: #D55B88; stroke-linecap: butt;' />
+<line x1='160.27' y1='8.12' x2='194.00' y2='8.12' style='stroke-width: 0.75; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='202.98' y1='8.12' x2='236.71' y2='8.12' style='stroke-width: 0.75; stroke: #42A8A0; stroke-linecap: butt;' />
+<text x='43.80' y='14.43' text-anchor='middle' style='font-size: 5.00px;fill: #4E86BD; font-family: "Helvetica";' textLength='19.73px' lengthAdjust='spacingAndGlyphs'>Primates</text>
+<text x='88.74' y='14.43' text-anchor='middle' style='font-size: 5.00px;fill: #8463AD; font-family: "Helvetica";' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>Chiroptera</text>
+<text x='133.83' y='14.43' text-anchor='middle' style='font-size: 5.00px;fill: #D55B88; font-family: "Helvetica";' textLength='21.69px' lengthAdjust='spacingAndGlyphs'>Carnivora</text>
+<text x='177.14' y='14.43' text-anchor='middle' style='font-size: 5.00px;fill: #E69B52; font-family: "Helvetica";' textLength='26.12px' lengthAdjust='spacingAndGlyphs'>Artiodactyla</text>
+<text x='219.85' y='14.43' text-anchor='middle' style='font-size: 5.00px;fill: #42A8A0; font-family: "Helvetica";' textLength='18.62px' lengthAdjust='spacingAndGlyphs'>Cetacea</text>
+<text x='43.80' y='20.87' text-anchor='middle' style='font-size: 5.00px;fill: #222222; font-family: "Helvetica";' textLength='22.94px' lengthAdjust='spacingAndGlyphs'>ρ = -0.617</text>
+<text x='88.74' y='20.87' text-anchor='middle' style='font-size: 5.00px;fill: #222222; font-family: "Helvetica";' textLength='22.94px' lengthAdjust='spacingAndGlyphs'>ρ = -0.665</text>
+<text x='133.83' y='20.87' text-anchor='middle' style='font-size: 5.00px;fill: #222222; font-family: "Helvetica";' textLength='22.94px' lengthAdjust='spacingAndGlyphs'>ρ = -0.635</text>
+<text x='177.14' y='20.87' text-anchor='middle' style='font-size: 5.00px;fill: #222222; font-family: "Helvetica";' textLength='22.94px' lengthAdjust='spacingAndGlyphs'>ρ = -0.601</text>
+<text x='219.85' y='20.87' text-anchor='middle' style='font-size: 5.00px;fill: #222222; font-family: "Helvetica";' textLength='22.94px' lengthAdjust='spacingAndGlyphs'>ρ = -0.565</text>
+<text x='43.80' y='26.96' text-anchor='middle' style='font-size: 4.70px;fill: #555555; font-family: "Helvetica";' textLength='13.03px' lengthAdjust='spacingAndGlyphs'>rank 1</text>
+<text x='88.74' y='26.96' text-anchor='middle' style='font-size: 4.70px;fill: #555555; font-family: "Helvetica";' textLength='13.03px' lengthAdjust='spacingAndGlyphs'>rank 1</text>
+<text x='133.83' y='26.96' text-anchor='middle' style='font-size: 4.70px;fill: #555555; font-family: "Helvetica";' textLength='13.03px' lengthAdjust='spacingAndGlyphs'>rank 1</text>
+<text x='177.14' y='26.96' text-anchor='middle' style='font-size: 4.70px;fill: #555555; font-family: "Helvetica";' textLength='13.03px' lengthAdjust='spacingAndGlyphs'>rank 2</text>
+<text x='219.85' y='26.96' text-anchor='middle' style='font-size: 4.70px;fill: #555555; font-family: "Helvetica";' textLength='13.03px' lengthAdjust='spacingAndGlyphs'>rank 2</text>
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMC4wMHwyMzguMTB8MjguMzR8MTM4Ljg5'>
+    <rect x='0.00' y='28.34' width='238.10' height='110.54' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MjguMzR8MTM4Ljg5)'>
+<rect x='0.00' y='28.34' width='238.10' height='110.54' style='stroke-width: 0.48; stroke: #FFFFFF; fill: #FFFFFF;' />
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMzMuNDd8NzEuOTN8MzguMDJ8MTAzLjkz'>
+    <rect x='33.47' y='38.02' width='38.46' height='65.91' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMzMuNDd8NzEuOTN8MzguMDJ8MTAzLjkz)'>
+<rect x='33.47' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.48; stroke: none; fill: #FFFFFF;' />
+<line x1='33.47' y1='71.11' x2='71.93' y2='71.11' style='stroke-width: 0.43; stroke: #737373; stroke-dasharray: 4.00,4.00; stroke-linecap: butt;' />
+<line x1='37.91' y1='71.11' x2='37.91' y2='94.51' style='stroke-width: 0.64; stroke: #4E86BD; stroke-linecap: butt;' />
+<line x1='45.30' y1='71.11' x2='45.30' y2='50.49' style='stroke-width: 0.64; stroke: #4E86BD; stroke-linecap: butt;' />
+<line x1='52.70' y1='71.11' x2='52.70' y2='57.94' style='stroke-width: 0.64; stroke: #4E86BD; stroke-linecap: butt;' />
+<line x1='60.10' y1='71.11' x2='60.10' y2='75.34' style='stroke-width: 0.64; stroke: #4E86BD; stroke-linecap: butt;' />
+<line x1='67.49' y1='71.11' x2='67.49' y2='76.04' style='stroke-width: 0.64; stroke: #4E86BD; stroke-linecap: butt;' />
+<circle cx='37.91' cy='94.51' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #4E86BD;' />
+<circle cx='45.30' cy='50.49' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #4E86BD;' />
+<circle cx='52.70' cy='57.94' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #4E86BD;' />
+<circle cx='60.10' cy='75.34' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #4E86BD;' />
+<circle cx='67.49' cy='76.04' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #4E86BD;' />
+<rect x='33.47' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.43;' />
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpNzQuNzZ8MTEzLjIyfDM4LjAyfDEwMy45Mw=='>
+    <rect x='74.76' y='38.02' width='38.46' height='65.91' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNzQuNzZ8MTEzLjIyfDM4LjAyfDEwMy45Mw==)'>
+<rect x='74.76' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.48; stroke: none; fill: #FFFFFF;' />
+<line x1='74.76' y1='71.11' x2='113.22' y2='71.11' style='stroke-width: 0.43; stroke: #737373; stroke-dasharray: 4.00,4.00; stroke-linecap: butt;' />
+<line x1='77.03' y1='71.11' x2='77.03' y2='68.82' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='80.80' y1='71.11' x2='80.80' y2='64.75' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='84.57' y1='71.11' x2='84.57' y2='76.99' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='88.34' y1='71.11' x2='88.34' y2='78.53' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='92.11' y1='71.11' x2='92.11' y2='55.31' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='95.88' y1='71.11' x2='95.88' y2='70.45' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='99.65' y1='71.11' x2='99.65' y2='72.47' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='103.42' y1='71.11' x2='103.42' y2='71.36' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='107.19' y1='71.11' x2='107.19' y2='70.11' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<line x1='110.96' y1='71.11' x2='110.96' y2='71.84' style='stroke-width: 0.64; stroke: #8463AD; stroke-linecap: butt;' />
+<circle cx='77.03' cy='68.82' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='80.80' cy='64.75' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='84.57' cy='76.99' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='88.34' cy='78.53' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='92.11' cy='55.31' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='95.88' cy='70.45' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='99.65' cy='72.47' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='103.42' cy='71.36' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='107.19' cy='70.11' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<circle cx='110.96' cy='71.84' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #8463AD;' />
+<rect x='74.76' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.43;' />
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMTE2LjA2fDE1NC41MnwzOC4wMnwxMDMuOTM='>
+    <rect x='116.06' y='38.02' width='38.46' height='65.91' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTE2LjA2fDE1NC41MnwzOC4wMnwxMDMuOTM=)'>
+<rect x='116.06' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.48; stroke: none; fill: #FFFFFF;' />
+<line x1='116.06' y1='71.11' x2='154.52' y2='71.11' style='stroke-width: 0.43; stroke: #737373; stroke-dasharray: 4.00,4.00; stroke-linecap: butt;' />
+<line x1='119.78' y1='71.11' x2='119.78' y2='83.22' style='stroke-width: 0.64; stroke: #D55B88; stroke-linecap: butt;' />
+<line x1='125.98' y1='71.11' x2='125.98' y2='78.80' style='stroke-width: 0.64; stroke: #D55B88; stroke-linecap: butt;' />
+<line x1='132.19' y1='71.11' x2='132.19' y2='68.90' style='stroke-width: 0.64; stroke: #D55B88; stroke-linecap: butt;' />
+<line x1='138.39' y1='71.11' x2='138.39' y2='81.87' style='stroke-width: 0.64; stroke: #D55B88; stroke-linecap: butt;' />
+<line x1='144.59' y1='71.11' x2='144.59' y2='48.47' style='stroke-width: 0.64; stroke: #D55B88; stroke-linecap: butt;' />
+<line x1='150.80' y1='71.11' x2='150.80' y2='64.49' style='stroke-width: 0.64; stroke: #D55B88; stroke-linecap: butt;' />
+<circle cx='119.78' cy='83.22' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #D55B88;' />
+<circle cx='125.98' cy='78.80' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #D55B88;' />
+<circle cx='132.19' cy='68.90' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #D55B88;' />
+<circle cx='138.39' cy='81.87' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #D55B88;' />
+<circle cx='144.59' cy='48.47' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #D55B88;' />
+<circle cx='150.80' cy='64.49' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #D55B88;' />
+<rect x='116.06' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.43;' />
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMTU3LjM1fDE5NS44MXwzOC4wMnwxMDMuOTM='>
+    <rect x='157.35' y='38.02' width='38.46' height='65.91' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTU3LjM1fDE5NS44MXwzOC4wMnwxMDMuOTM=)'>
+<rect x='157.35' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.48; stroke: none; fill: #FFFFFF;' />
+<line x1='157.35' y1='71.11' x2='195.81' y2='71.11' style='stroke-width: 0.43; stroke: #737373; stroke-dasharray: 4.00,4.00; stroke-linecap: butt;' />
+<line x1='159.86' y1='71.11' x2='159.86' y2='77.24' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='164.04' y1='71.11' x2='164.04' y2='71.89' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='168.22' y1='71.11' x2='168.22' y2='63.46' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='172.40' y1='71.11' x2='172.40' y2='71.06' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='176.58' y1='71.11' x2='176.58' y2='75.70' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='180.76' y1='71.11' x2='180.76' y2='74.04' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='184.94' y1='71.11' x2='184.94' y2='60.03' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='189.12' y1='71.11' x2='189.12' y2='60.15' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<line x1='193.30' y1='71.11' x2='193.30' y2='85.78' style='stroke-width: 0.64; stroke: #E69B52; stroke-linecap: butt;' />
+<circle cx='159.86' cy='77.24' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<circle cx='164.04' cy='71.89' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<circle cx='168.22' cy='63.46' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<circle cx='172.40' cy='71.06' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<circle cx='176.58' cy='75.70' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<circle cx='180.76' cy='74.04' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<circle cx='184.94' cy='60.03' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<circle cx='189.12' cy='60.15' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<circle cx='193.30' cy='85.78' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #E69B52;' />
+<rect x='157.35' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.43;' />
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMTk4LjY1fDIzNy4xMXwzOC4wMnwxMDMuOTM='>
+    <rect x='198.65' y='38.02' width='38.46' height='65.91' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTk4LjY1fDIzNy4xMXwzOC4wMnwxMDMuOTM=)'>
+<rect x='198.65' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.48; stroke: none; fill: #FFFFFF;' />
+<line x1='198.65' y1='71.11' x2='237.11' y2='71.11' style='stroke-width: 0.43; stroke: #737373; stroke-dasharray: 4.00,4.00; stroke-linecap: butt;' />
+<line x1='202.37' y1='71.11' x2='202.37' y2='65.94' style='stroke-width: 0.64; stroke: #42A8A0; stroke-linecap: butt;' />
+<line x1='208.57' y1='71.11' x2='208.57' y2='83.46' style='stroke-width: 0.64; stroke: #42A8A0; stroke-linecap: butt;' />
+<line x1='214.78' y1='71.11' x2='214.78' y2='45.34' style='stroke-width: 0.64; stroke: #42A8A0; stroke-linecap: butt;' />
+<line x1='220.98' y1='71.11' x2='220.98' y2='74.79' style='stroke-width: 0.64; stroke: #42A8A0; stroke-linecap: butt;' />
+<line x1='227.18' y1='71.11' x2='227.18' y2='70.35' style='stroke-width: 0.64; stroke: #42A8A0; stroke-linecap: butt;' />
+<line x1='233.39' y1='71.11' x2='233.39' y2='71.86' style='stroke-width: 0.64; stroke: #42A8A0; stroke-linecap: butt;' />
+<circle cx='202.37' cy='65.94' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #42A8A0;' />
+<circle cx='208.57' cy='83.46' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #42A8A0;' />
+<circle cx='214.78' cy='45.34' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #42A8A0;' />
+<circle cx='220.98' cy='74.79' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #42A8A0;' />
+<circle cx='227.18' cy='70.35' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #42A8A0;' />
+<circle cx='233.39' cy='71.86' r='1.32' style='stroke-width: 0.28; stroke: #333333; fill: #42A8A0;' />
+<rect x='198.65' y='38.02' width='38.46' height='65.91' style='stroke-width: 0.43;' />
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMzMuNDd8NzEuOTN8MjkuMzR8MzguMDI='>
+    <rect x='33.47' y='29.34' width='38.46' height='8.68' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMzMuNDd8NzEuOTN8MjkuMzR8MzguMDI=)'>
+<text x='52.70' y='35.40' text-anchor='middle' style='font-size: 4.80px;fill: #1A1A1A; font-family: "Helvetica";' textLength='18.94px' lengthAdjust='spacingAndGlyphs'>Primates</text>
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpNzQuNzZ8MTEzLjIyfDI5LjM0fDM4LjAy'>
+    <rect x='74.76' y='29.34' width='38.46' height='8.68' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNzQuNzZ8MTEzLjIyfDI5LjM0fDM4LjAy)'>
+<text x='93.99' y='35.40' text-anchor='middle' style='font-size: 4.80px;fill: #1A1A1A; font-family: "Helvetica";' textLength='22.41px' lengthAdjust='spacingAndGlyphs'>Chiroptera</text>
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMTE2LjA2fDE1NC41MnwyOS4zNHwzOC4wMg=='>
+    <rect x='116.06' y='29.34' width='38.46' height='8.68' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTE2LjA2fDE1NC41MnwyOS4zNHwzOC4wMg==)'>
+<text x='135.29' y='35.40' text-anchor='middle' style='font-size: 4.80px;fill: #1A1A1A; font-family: "Helvetica";' textLength='20.81px' lengthAdjust='spacingAndGlyphs'>Carnivora</text>
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMTU3LjM1fDE5NS44MXwyOS4zNHwzOC4wMg=='>
+    <rect x='157.35' y='29.34' width='38.46' height='8.68' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTU3LjM1fDE5NS44MXwyOS4zNHwzOC4wMg==)'>
+<text x='176.58' y='35.40' text-anchor='middle' style='font-size: 4.80px;fill: #1A1A1A; font-family: "Helvetica";' textLength='25.08px' lengthAdjust='spacingAndGlyphs'>Artiodactyla</text>
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+</g>
+<defs>
+  <clipPath id='cpMTk4LjY1fDIzNy4xMXwyOS4zNHwzOC4wMg=='>
+    <rect x='198.65' y='29.34' width='38.46' height='8.68' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTk4LjY1fDIzNy4xMXwyOS4zNHwzOC4wMg==)'>
+<text x='217.88' y='35.40' text-anchor='middle' style='font-size: 4.80px;fill: #1A1A1A; font-family: "Helvetica";' textLength='17.89px' lengthAdjust='spacingAndGlyphs'>Cetacea</text>
+</g>
+<g clip-path='url(#cpMC4wMHwyMzguMTB8MC4wMHwxMzguODk=)'>
+<text transform='translate(40.61,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='18.66px' lengthAdjust='spacingAndGlyphs'>C. jacchus</text>
+<text transform='translate(48.00,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='20.20px' lengthAdjust='spacingAndGlyphs'>C. sabaeus</text>
+<text transform='translate(55.40,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='18.64px' lengthAdjust='spacingAndGlyphs'>M. mulatta</text>
+<text transform='translate(62.79,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='24.12px' lengthAdjust='spacingAndGlyphs'>P. hamadryas</text>
+<text transform='translate(70.19,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='18.88px' lengthAdjust='spacingAndGlyphs'>H. sapiens</text>
+<text transform='translate(79.73,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='26.20px' lengthAdjust='spacingAndGlyphs'>C. perspicillata</text>
+<text transform='translate(83.50,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='20.64px' lengthAdjust='spacingAndGlyphs'>D. rotundus</text>
+<text transform='translate(87.27,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='16.44px' lengthAdjust='spacingAndGlyphs'>E. fuscus</text>
+<text transform='translate(91.04,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='22.42px' lengthAdjust='spacingAndGlyphs'>M. molossus</text>
+<text transform='translate(94.81,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='18.14px' lengthAdjust='spacingAndGlyphs'>P. discolor</text>
+<text transform='translate(98.58,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='31.95px' lengthAdjust='spacingAndGlyphs'>R. ferrumequinum</text>
+<text transform='translate(102.35,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='23.98px' lengthAdjust='spacingAndGlyphs'>T. brasiliensis</text>
+<text transform='translate(106.12,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='21.31px' lengthAdjust='spacingAndGlyphs'>M. lucifugus</text>
+<text transform='translate(109.89,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='17.09px' lengthAdjust='spacingAndGlyphs'>M. myotis</text>
+<text transform='translate(113.66,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='15.55px' lengthAdjust='spacingAndGlyphs'>M. vivesi</text>
+<text transform='translate(122.48,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='17.77px' lengthAdjust='spacingAndGlyphs'>A. jubatus</text>
+<text transform='translate(128.68,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='13.77px' lengthAdjust='spacingAndGlyphs'>F. catus</text>
+<text transform='translate(134.89,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='23.98px' lengthAdjust='spacingAndGlyphs'>C. l. familiaris</text>
+<text transform='translate(141.09,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='25.97px' lengthAdjust='spacingAndGlyphs'>O. r. divergens</text>
+<text transform='translate(147.29,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='16.81px' lengthAdjust='spacingAndGlyphs'>P. vitulina</text>
+<text transform='translate(153.50,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='27.08px' lengthAdjust='spacingAndGlyphs'>Z. californianus</text>
+<text transform='translate(162.56,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='15.98px' lengthAdjust='spacingAndGlyphs'>B. taurus</text>
+<text transform='translate(166.74,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='15.77px' lengthAdjust='spacingAndGlyphs'>C. hircus</text>
+<text transform='translate(170.92,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='28.86px' lengthAdjust='spacingAndGlyphs'>C. t. albojubatus</text>
+<text transform='translate(175.10,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='25.97px' lengthAdjust='spacingAndGlyphs'>O. americanus</text>
+<text transform='translate(179.28,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='13.98px' lengthAdjust='spacingAndGlyphs'>O. aries</text>
+<text transform='translate(183.46,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='22.42px' lengthAdjust='spacingAndGlyphs'>C. capreolus</text>
+<text transform='translate(187.64,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='25.31px' lengthAdjust='spacingAndGlyphs'>C. canadensis</text>
+<text transform='translate(191.82,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='19.09px' lengthAdjust='spacingAndGlyphs'>C. elaphus</text>
+<text transform='translate(196.00,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='15.77px' lengthAdjust='spacingAndGlyphs'>S. scrofa</text>
+<text transform='translate(205.07,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='29.30px' lengthAdjust='spacingAndGlyphs'>M. novaeangliae</text>
+<text transform='translate(211.27,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='16.66px' lengthAdjust='spacingAndGlyphs'>D. leucas</text>
+<text transform='translate(217.48,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='24.64px' lengthAdjust='spacingAndGlyphs'>L. obliquidens</text>
+<text transform='translate(223.68,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='13.09px' lengthAdjust='spacingAndGlyphs'>O. orca</text>
+<text transform='translate(229.88,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='19.31px' lengthAdjust='spacingAndGlyphs'>T. aduncus</text>
+<text transform='translate(236.09,107.61) rotate(-70)' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='20.64px' lengthAdjust='spacingAndGlyphs'>T. truncatus</text>
+<text x='30.77' y='94.51' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='9.09px' lengthAdjust='spacingAndGlyphs'>-0.64</text>
+<text x='30.77' y='74.86' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='9.09px' lengthAdjust='spacingAndGlyphs'>-0.62</text>
+<text x='30.77' y='55.22' text-anchor='end' style='font-size: 4.00px; font-family: "Helvetica";' textLength='9.09px' lengthAdjust='spacingAndGlyphs'>-0.60</text>
+<polyline points='31.77,93.07 33.47,93.07 ' style='stroke-width: 0.32; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='31.77,73.43 33.47,73.43 ' style='stroke-width: 0.32; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='31.77,53.78 33.47,53.78 ' style='stroke-width: 0.32; stroke: #333333; stroke-linecap: butt;' />
+<text transform='translate(4.68,86.30) rotate(-90)' style='font-size: 5.00px; font-family: "Helvetica";' textLength='27.92px' lengthAdjust='spacingAndGlyphs'>Spearman's </text>
+<text transform='translate(4.68,58.38) rotate(-90)' style='font-size: 5.00px; font-family: "Symbol";' textLength='2.75px' lengthAdjust='spacingAndGlyphs'>ρ</text>
+<text transform='translate(17.26,96.83) rotate(-90)' style='font-size: 5.00px; font-family: "Helvetica";' textLength='51.72px' lengthAdjust='spacingAndGlyphs'>(leave one species out)</text>
+</g>
+</g>
+</svg>

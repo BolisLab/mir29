@@ -1,0 +1,654 @@
+---
+title: "MIR29 trades youthful plasticity for epigenetic fidelity"
+subtitle: "Figure 3 and Supplementary Figure S3 — methods, data and executable reconstruction"
+date: "16 September 2026"
+output:
+  html_document:
+    self_contained: true
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    code_folding: show
+    code_download: true
+    fig_caption: true
+    highlight: tango
+    css: styles.css
+    keep_md: true
+---
+
+> **Repository snapshot — input bundle pending.** This chapter preserves the existing analytical narrative, code and rendered outputs. References below to bundled input data describe the full analytical bundle, not this lightweight repository snapshot. Required inputs are not yet fully distributed here, so a fresh clone cannot regenerate the analysis. See [module instructions](README.md).
+>
+> **Figure 3 annotation status.** Existing reconstructed images can retain older q labels. [CURRENT_STATISTICAL_LABELS.tsv](CURRENT_STATISTICAL_LABELS.tsv) records the approved global pooled/matched annotations. The images have not been silently relabelled. The donor age in this repository's narrative is 60 years, matching the corrected manuscript artwork.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,
+  fig.align = "center", dev = "png", dpi = 160, fig.retina = 1, out.width = "100%")
+options(width = 100, scipen = 4, stringsAsFactors = FALSE)
+source("code/load_all.R", local = knitr::knit_global())
+code_excerpt <- function(file, from = NULL, until = NULL) {
+  lines <- readLines(file, warn = FALSE)
+  first <- if (is.null(from)) 1L else which(startsWith(lines, from))[1]
+  last <- if (is.null(until)) length(lines) else which(startsWith(lines, until))[1] - 1L
+  stopifnot(is.finite(first), is.finite(last), first <= last)
+  lines[first:last]
+}
+table_show <- function(x, digits = 4) {
+  for (name in names(x)) if (is.numeric(x[[name]])) {
+    tiny <- is.finite(x[[name]]) & x[[name]] != 0 & abs(x[[name]]) < 10^(-digits)
+    if (any(tiny)) x[[name]] <- format(x[[name]], digits = min(digits, 6), scientific = TRUE, trim = TRUE)
+  }
+  knitr::kable(x, digits = digits, row.names = FALSE)
+}
+```
+
+# Current statistical annotations — 9 October 2026
+
+This annotation update records the global q values used in the current artwork. Clock curves use global q values only; individual-timepoint asterisks are not displayed. Pooled main-panel and matched supplementary comparisons remain explicitly available. The analytical images and output tables below are historical reconstructions and may retain older labels; the mapping below and CURRENT_STATISTICAL_LABELS.tsv govern the updated statistical annotations. Figure 3i is an explicit exception to pooled display/inference correspondence: its legend reports the original transcriptome-wide DESeq2 matched-control q values.
+
+| Panel | Endpoint | Arm | Controls | Global/endpoint q |
+|---|---|---|---|---:|
+| S3b | RNAAgeCalc | INH | matched | 2.5878e-09 |
+| S3b | RNAAgeCalc | MIM | matched | 1.3728e-29 |
+| 3e | RNAAgeCalc | INH | pooled | 3.3032e-09 |
+| 3e | RNAAgeCalc | MIM | pooled | 6.4679e-42 |
+| S3b | tAge YuGene | INH | matched | 1.2469e-13 |
+| S3b | tAge YuGene | MIM | matched | 2.1243e-28 |
+| 3e | tAge YuGene | INH | pooled | 1.1817e-16 |
+| 3e | tAge YuGene | MIM | pooled | 3.3231e-42 |
+| S3b | PASTA | INH | matched | 4.3711e-13 |
+| S3b | PASTA | MIM | matched | 1.5288e-32 |
+| 3i legend | EDA2R | INH | matched (pooled display) | 0.044957 |
+| 3i legend | EDA2R | MIM | matched (pooled display) | 1.1143e-31 |
+| 3i legend | PTCHD4 | INH | matched (pooled display) | 0.01039 |
+| 3i legend | PTCHD4 | MIM | matched (pooled display) | 2.4881e-94 |
+| 3i legend | DUSP6 | INH | matched (pooled display) | 7.4114e-10 |
+| 3i legend | DUSP6 | MIM | matched (pooled display) | 0.59364 |
+| 3i legend | EREG | INH | matched (pooled display) | 1.9262e-22 |
+| 3i legend | EREG | MIM | matched (pooled display) | 0.26343 |
+| S3h | ELK1 | INH | matched | 6.1321e-07 |
+| S3h | ELK1 | MIM | matched | 0.71582 |
+| S3h | MYC | INH | matched | 4.1966e-05 |
+| S3h | MYC | MIM | matched | 0.00033076 |
+| S3h | ATF4 | INH | matched | 2.0505e-08 |
+| S3h | ATF4 | MIM | matched | 5.106e-18 |
+| S3h | p53 | INH | matched | 0.086837 |
+| S3h | p53 | MIM | matched | 4.9174e-12 |
+| S3h | MAPK | INH | matched | 5.0688e-10 |
+| S3h | MAPK | MIM | matched | 0.00018098 |
+| S3h | EGFR | INH | matched | 6.2897e-06 |
+| S3h | EGFR | MIM | matched | 0.56091 |
+
+# Scope and execution
+
+This document accompanies the final **Figure 3 and Figure S3**. It asks whether
+sustained miR-29 inhibition or mimic treatment shifts primary human gingival
+fibroblasts along age-associated transcriptional programs, and relates these
+responses to regulatory activity, miR-29 targets and epigenetic regulators.
+Figure S3 provides tissue-sensitivity, control-arm and cell-identity analyses.
+
+The approved layouts are preserved in `reference/`. Only the selected panels
+are included here. Every analytical plot below is generated from bundled data;
+historical SVGs are not substituted for newly calculated results.
+
+Open `Figure3_main_plus_supplementary.Rproj` in RStudio and knit this file, or run:
+
+```{r execution, eval=FALSE}
+source("render_figure3_and_s3.R")
+# Load, validate and export individual panels without rendering HTML:
+source("run_figure3_and_s3_in_RStudio.R")
+```
+
+Setup executes the clean modules in `code/` once. Each section displays code
+from those same files and its resulting figure. Optional Monte Carlo replay
+functions are not run on knitting. All execution paths are relative.
+
+## Reproduction boundary
+
+Bundled starting points include raw growth counts, bulk RNA-seq counts and
+metadata, pre/post-batch VST matrices, pre-sex-correction external-fibroblast
+VST matrices, gene sets, GSEA estimates, per-sample activity and clock
+checkpoints, Cytoscape coordinates and compact single-cell marker/embedding
+summaries. This is a panel reconstruction from these stated inputs, not a
+repeat of read alignment, single-cell integration or external clock training.
+
+Cell illustrations, manually placed arrows, network-region outlines and final
+page composition remain editorial artwork in the reference PDFs. Archived
+working scripts are segregated under `provenance/`; they are not executed or
+embedded. Statistical inference is distinguished from display transformations.
+
+## Final signature key
+
+B/C are the unchanged historical GTEx sets. D–G are the accepted partial-Pearson
+HF/HGF sets. No concordance, stable-tail or LOTO-consensus filter is added.
+
+```{r signature-key}
+table_show(data.frame(Signature = signature_key$letter, Definition = signature_key$label,
+  Genes = lengths(signature_sets[signature_key$id])))
+```
+
+# Figure 3 — main figure
+
+## a — Experimental design
+
+Primary gingival fibroblasts from one 60-year-old female donor underwent three
+treatment cycles, sampled at 72 and 96 hours per cycle. T1–T6 correspond to
+72, 96, 168, 192, 264 and 288 cumulative hours. RNA-seq includes five independent
+experimental runs in the inhibitor arm and three in the mimic arm, each with
+its own negative controls: 96 samples. These are repeated experiments within
+one donor, not eight donors. The timeline itself is editorial artwork.
+
+```{r samples}
+table_show(data.frame(Group = rownames(pca_checkpoint$sample_counts),
+                     as.data.frame.matrix(pca_checkpoint$sample_counts)))
+```
+
+## b — Cell-growth trajectories
+
+Growth is normalized within each replicate as
+`100 * (count - count_T0) / (max_count - count_T0)`.
+Points show mean ± SEM across three growth experiments per arm; one mimic
+measurement at 264 hours is missing. Solid curves are exponential-plateau
+fits to replicate measurements, not quadratic clock fits. Reconstructed means
+are checked against the archived results.
+
+```{r growth-data-code, code=code_excerpt("code/growth_data.R"), eval=FALSE}
+```
+
+```{r growth-code, code=code_excerpt("code/other_panels.R", "growth <-", "# Recount"), eval=FALSE}
+```
+
+```{r growth, fig.width=9, fig.height=3.7}
+grid.arrange(grobs = growth_panels, ncol = 2)
+```
+
+The archived growth tests are retained separately from the RNA-seq run design:
+
+```{r growth-tests}
+growth$stats_inh
+growth$stats_mim
+```
+
+## c — Differentially expressed genes
+
+DESeq2 contrasts compare each treatment with its own control at the same
+timepoint, using separate arm-specific models `~ 0 + SHORT_GROUP + BATCH`.
+Independent filtering retains the original `results(..., alpha = 0.001)`
+setting. Displayed genes have adjusted p < 0.05, with no fold-change threshold;
+the sign of log2 fold change determines up/down. Counts are recalculated from
+all twelve bundled gene-level contrast tables and checked against the original.
+
+The optional normalization and differential-expression functions below start
+from the bundled raw counts. Normal knitting uses the accepted matrices and
+contrast tables, avoiding repeated model fitting.
+
+```{r upstream-expression-code, code=code_excerpt("code/upstream_methods.R", NULL, "# Overall shift"), eval=FALSE}
+```
+
+```{r de-code, code=code_excerpt("code/other_panels.R", "# Recount", "# The frozen PCA"), eval=FALSE}
+```
+
+```{r de, fig.width=8, fig.height=3.5}
+print(de_plot)
+table_show(de_display)
+```
+
+## d — Principal-component analysis
+
+PCA uses the 20,000 most variable genes in the saved batch-corrected VST matrix,
+with gene centering and scaling. The code reruns PCA and verifies its singular
+values. Saved coordinates retain the original arbitrary axis signs. PC1/PC2
+explain 20.3%/7.8%. Raw counts used for DESeq2 are not batch-subtracted.
+
+```{r pca-code, code=code_excerpt("code/other_panels.R", "# The frozen PCA", "gene_input <-"), eval=FALSE}
+```
+
+```{r pca, fig.width=6, fig.height=4.5}
+print(pca_plot)
+```
+
+## e — RNAAgeCalc and tAge
+
+RNAAgeCalc retains its native age predictions. tAge uses the human-inclusive
+universal model with **YuGene** input. Its model-input reference is the per-gene
+median YuGene expression of negative controls across all timepoints, separately
+within each arm. This reference is distinct from the displayed T1 baseline.
+
+For the main display, batch correction occurs **after prediction**, preserving
+treatment-by-time cells, not by feeding VST values to the clocks. tAge output is
+multiplied by 122.5 to express model-scale years; the own-arm T1 control mean
+is then subtracted from every sample in that arm. Controls are pooled
+in the main plot and separated in the supplementary plot. “Delta age from baseline” is therefore a model-scale change
+relative to the corresponding T1 controls, not chronological time elapsed in
+culture. SEM is conditional on the estimated baseline and batch correction.
+
+Points/error bars/ribbons show mean ± SEM. Thin lines connect means; thick
+curves are quadratic descriptive fits. The main-style x positions
+`1, 2, 4, 5, 7, 8` visually group cycles: they are display positions, not a
+uniformly scaled elapsed-hour axis.
+
+```{r main-clock-code, code=code_excerpt("code/clock_panels.R", NULL, "# Supplementary curves"), eval=FALSE}
+```
+
+```{r main-clocks, fig.width=9, fig.height=4.5}
+grid.arrange(grobs = main_clock_panels, ncol = 2)
+```
+
+Inference uses individual native predictions, with pooled controls for Figure 3e and matched controls for Supplementary Figure 3b. Global q values retain the batch-aware overall-shift test and four-test BH family per clock and control definition (two shifts and two quadratic-time interactions). Current clock curves display global q values only, without timepoint significance asterisks. Frozen timepoint tests are retained below as historical supplementary analyses, not current plot annotations. Both comparator definitions and a portable replay are provided in statistics_20261009/.
+
+The reference test functions below reproduce the modeling structure. Historical timepoint comparisons retain the archived Kenward–Roger degrees-of-freedom convention. They are not substituted for the global-shift annotation or displayed as timepoint stars in the current figures.
+
+```{r clock-test-code, code=code_excerpt("code/upstream_methods.R", "# Overall shift"), eval=FALSE}
+```
+
+```{r clock-tests}
+table_show(main_clocks$qvalues, digits = 12)
+table_show(clock_tests$table[, c("clock", "arm", "TIMEF", "p_raw", "p_adjusted", "stars")], digits = 12)
+```
+
+## f — Aging-signature definitions and rankings
+
+**B/C, pan-tissue:** unchanged historical GTEx definitions. The alternative
+intercept-corrected GTEx results were sensitivity analyses, not replacements.
+
+**D/E, pan-HF:** within each of seven tissues, both expression and age are
+regressed on sex with an intercept, and Pearson correlation is calculated
+between their residuals. Input is VST **before** sex removal. Each tissue has
+equal weight in `tanh(mean(atanh(r)))`. Coefficients are clipped to
+±(1 − 10^-6) for transformation; at least five finite tissue coefficients are
+required. Strict upper/lower 1% cutoffs are computed in the estimable universe,
+with positive/negative sign requirements. LINC-PINT and MIR29B2CHG are excluded
+without refilling tails. Final sizes are 149/149 genes.
+
+**F/G, HGF:** the same partial Pearson calculation is applied to the five
+gingival samples. Strict 1% tails of the 12,467-gene universe produce 125/125
+genes; there is no between-tissue aggregation for this single tissue.
+
+The code below recalculates tissue coefficients, both HF tails, HGF coefficients
+and all omitted-tissue definitions from the bundled pre-sex-correction VST.
+It checks actual coefficients and gene membership against the final checkpoints.
+
+```{r signatures-code, code=code_excerpt("code/signature_analysis.R"), eval=FALSE}
+```
+
+```{r ranking-code, code=code_excerpt("code/signature_plots.R", NULL, "# Compress only"), eval=FALSE}
+```
+
+```{r pan-ranking, fig.width=8, fig.height=1.8}
+print(pan_plot)
+```
+
+```{r hf-hgf-rankings, fig.width=6.5, fig.height=5}
+grid.arrange(hf_plot, hgf_plot, ncol = 2)
+```
+
+The optional constant-x HGF geometry changes neither coefficients nor membership:
+
+```{r hgf-vertical, fig.width=2.5, fig.height=4.5, out.width="35%"}
+print(hgf_vertical_plot)
+```
+
+## g — Temporal GSEA under miR-29 inhibition
+
+The frozen signed Wald ranking represents the inhibitor-by-time term, not a
+single timepoint contrast. All 25,987 ranked entries, including 57 duplicated
+gene-symbol entries and historical first-match handling, are preserved for
+exact reproduction. Background pathways are unchanged.
+
+**Plotted NES comes from the accepted historical `fgseaSimple` recipe**:
+10,000 permutations, seed 10403. The four updated HF/HGF definitions replace
+their old points; B/C and the background retain their original NES.
+Multilevel NES must not be silently substituted into the plot.
+
+Multilevel p-values use `sampleSize = 501`, `nPermSimple = 10000`, `eps = 0`,
+seed 29030910 and four workers. Global BH is recomputed within each 4,721-set
+family; six-signature BH is a separately labeled adjustment. The automatic
+4,735-union BH is not used for comparisons. The code validates these corrections
+from raw saved p-values and provides optional exact-environment replay functions.
+
+```{r enrichment-method-code, code=code_excerpt("code/enrichment_methods.R"), eval=FALSE}
+```
+
+```{r optional-replay, eval=FALSE}
+# Optional; requires the recorded fgsea 1.24.0 environment.
+simple_replay <- replay_simple("full")
+multilevel_replay <- replay_multilevel()
+```
+
+```{r main-gsea-table}
+table_show(main_statistics[, c("letter", "label", "n_defined", "n_matched", "NES",
+  "pval", "q_global_BH", "p_multilevel", "q_multilevel_global_4721", "q_multilevel_six")], digits = 10)
+```
+
+```{r gsea-plot-code, code=code_excerpt("code/signature_plots.R", "# Compress only", "# Sampling coverage"), eval=FALSE}
+```
+
+```{r main-gsea, fig.width=4, fig.height=5.5, out.width="55%"}
+print(main_gsea_plot)
+```
+
+The central NES interval [−0.75, +0.75] is compressed tenfold, as in the layout;
+axis labels remain NES. Horizontal jitter has no biological meaning.
+Background coordinates and opacity are inherited from the original display;
+that opacity is not a newly calculated multilevel significance annotation.
+
+## h — TF and pathway activity with dendrograms
+
+Both heatmaps show **mean treatment activity minus mean own-arm control
+activity at the same timepoint**. They do not subtract a pooled reference
+across arms or timepoints. DoRothEA/VIPER TF scores are retained from the
+accepted per-sample checkpoint. PROGENy uses the Human model, top 500 genes
+per pathway, 10,000 permutations and z-score output. INH/MIM calls used seeds
+29030907/29030908 after the accepted within-arm VST batch adjustment.
+
+The code reconstructs matched-control matrices, recomputes Euclidean/complete
+row clustering and checks merges/heights against the final dendrograms.
+Columns stay in T1–T6 order within arm; there is no row z-scoring. ±2 is a color
+saturation range, not a truncation applied before clustering.
+
+```{r heatmap-code, code=code_excerpt("code/activity_panels.R", NULL, "activity <-"), eval=FALSE}
+```
+
+```{r tf-heatmap, fig.width=7, fig.height=2.6}
+print(tf_heatmap)
+```
+
+```{r pathway-heatmap, fig.width=7, fig.height=5.4}
+print(progeny_heatmap)
+```
+
+## i — Selected-gene expression trajectories
+
+EDA2R, PTCHD4, DUSP6 and EREG are shown on the accepted batch-corrected VST scale, with pooled controls. These are expression values, not treatment-minus-control contrasts. Points and ribbons show mean ± SEM; fits are quadratic. Legend q values are the original global DESeq2 contrasts against each treatment's matched controls, with categorical timepoint and experiment adjustment and transcriptome-wide BH correction after independent filtering. They are not pooled-control tests on the illustrated VST means. See statistics_20261009/Fig3i_global_DESeq2_matched.csv.
+
+```{r genes-code, code=code_excerpt("code/other_panels.R", "gene_input <-", "# Jaccard"), eval=FALSE}
+```
+
+```{r genes, fig.width=7.5, fig.height=6.5}
+print(gene_plot)
+```
+
+## j — Enrichment maps
+
+Twelve Cytoscape networks represent treatment-versus-own-control enrichment
+at T1–T6. Node coordinates, edges, mapped colors and dimensions are read from
+the accepted session-derived checkpoint. The statistical maps are not laid
+out again. Final numbered groups, outlines and enlarged T6 compositions are
+editorial additions preserved in the reference PDF.
+
+```{r network-code, code=code_excerpt("code/other_panels.R", "# Preserved Cytoscape", "# Expression fold"), eval=FALSE}
+```
+
+```{r networks, fig.width=12, fig.height=5}
+grid.arrange(grobs = network_panels, ncol = 6)
+```
+
+## k — Oral single-cell reference and bulk projection
+
+The published GSE164241 oral-mucosa reference contains 133,335 cells in the
+saved embedding. The fibroblast macrogroup combines homeostatic and
+inflammatory/remodeling subclusters. Projection includes all 96 experimental
+RNA-seq samples at T1–T6, not one selected timepoint. Coordinates are reused;
+this compact reconstruction does not rerun single-cell integration or UMAP.
+
+```{r reference-code, code=code_excerpt("code/singlecell_panels.R", NULL, "# Pooled macrocluster"), eval=FALSE}
+```
+
+```{r reference-projection, fig.width=10, fig.height=4.5}
+grid.arrange(umap_plot, projection_plot, ncol = 2)
+```
+
+## l — Functional taxonomy of miR-29 targets
+
+The frozen miRTarBase/TargetScan cross-table and curated taxonomy determine the
+alluvial groups and ordering. The diagram contains 149 classified targets:
+six DNA-methylation, thirteen chromatin-regulation and 130 other targets.
+Historical wSCORE is an input; its original database-level construction is
+not claimed to be regenerated here.
+
+```{r alluvial-code, code=code_excerpt("code/figure3_alluvial_panel.R"), eval=FALSE}
+```
+
+```{r alluvial, fig.width=7, fig.height=5.5}
+print(alluvial_plot)
+```
+
+## m — Epigenetic-regulator expression
+
+The heatmap shows saved treatment-versus-own-control log2 fold changes for
+DNMT3A, DNMT3B, TET1, TET2, TET3 and TDG. Gene/time order is fixed; ±1 is a
+color-display range, not a significance threshold.
+
+```{r regulator-code, code=code_excerpt("code/other_panels.R", "# Expression fold", "# Signed-Wald"), eval=FALSE}
+```
+
+```{r regulators, fig.width=7, fig.height=3.5}
+print(regulator_plot)
+```
+
+# Figure S3 — supplementary figure
+
+## a — Timepoint Jaccard similarity
+
+For each arm, Jaccard is `length(intersect(A, B)) / length(union(A, B))`, where
+A/B are genes with adjusted p < 0.05 against their own control, restricted
+within each arm to the common universe with finite adjusted p and fold change
+at **all six timepoints**. This fixed eligibility rule is reproduced below.
+Up and down
+are combined: the metric measures membership, not directional agreement.
+Empty-versus-empty is undefined. The gray identity diagonal is excluded from
+color-scale estimation. Arms share an off-diagonal magnitude scale with
+white-to-green (INH) and white-to-purple (MIM) palettes.
+
+```{r jaccard-code, code=code_excerpt("code/other_panels.R", "# Jaccard", "# Preserved Cytoscape"), eval=FALSE}
+```
+
+```{r jaccard, fig.width=8, fig.height=4.2}
+print(jaccard_plot)
+```
+
+## b — Transcriptomic clocks with separate controls
+
+Retained clocks are **tAge (YuGene), RNAAgeCalc and PASTA**; CT46 is not in the
+final page. All four conditions are separate, using unadjusted predictions.
+tAge model-year values are recentered to the own-arm T1 control mean. Control
+connecting/fitting lines are dashed, but points/error bars are solid. Shading
+is mean ± SEM, not a confidence band around the regression.
+
+Frozen fitted y values are remapped onto the main's display spacing, not
+refitted because x-axis geometry changed. Inference remains on individual
+samples and actual timepoint labels, not on the illustrated mean curves.
+
+```{r supplementary-clock-code, code=code_excerpt("code/clock_panels.R", "# Supplementary curves"), eval=FALSE}
+```
+
+```{r supplementary-clocks, fig.width=12, fig.height=4.6}
+grid.arrange(grobs = supplementary_clock_panels, ncol = 3)
+```
+
+PASTA predictions and matched-control global statistics are bundled with the other clocks. The historical timepoint table is retained for completeness but its asterisks are not displayed in the current clock curves:
+
+```{r pasta-tests}
+pasta_global <- read.csv("data/supplementary/global_statistics.csv")
+pasta_timepoint <- read.csv("data/supplementary/own_control_posthoc_Holm6.csv")
+table_show(subset(pasta_global, grepl("PASTA", clock)), digits = 12)
+table_show(subset(pasta_timepoint, grepl("PASTA", clock)), digits = 10)
+```
+
+## c — External-fibroblast coverage
+
+Coverage comprises 34 samples, 15 individuals and seven tissues. Columns
+identify source individuals ordered by age; squares show sampled tissues,
+age and sex. This is the external aging cohort, not the perturbation experiment.
+
+```{r coverage-code, code=code_excerpt("code/signature_plots.R", "# Sampling coverage", "contribution <-"), eval=FALSE}
+```
+
+```{r coverage, fig.width=8.5, fig.height=4.5}
+print(coverage_plot)
+```
+
+## d — Tissue contributions to pan-HF signatures
+
+Violin dots are tissue-specific partial Pearson coefficients for the final
+HF-UP/DN genes. Sample size is five per tissue except palate (four). Labels
+show **arithmetic mean r** within each set, not the Fisher aggregate defining
+the signature. These descriptive distributions use the same tissues from
+which sets were selected; a gene-wise independence test would not provide
+independent validation.
+
+```{r contribution-code, code=code_excerpt("code/signature_plots.R", "contribution <-", "# Reconstruct weighted"), eval=FALSE}
+```
+
+```{r contributions, fig.width=13, fig.height=3.5}
+print(contribution_plot)
+table_show(contribution_means, digits = 3)
+```
+
+## e — Six running-enrichment curves
+
+Curves use the same signed Wald ranking and first-match semantics as main g.
+Ticks mark set members; the bottom strip shows the rank statistic. Labels use
+historical simple NES and multilevel global BH (4,721 sets). Every pair is
+**UP then DN**, including pan-tissue B then C. Defined and matched sizes are
+different quantities; both are given in the main statistics table.
+
+```{r running-enrichment-code, code=code_excerpt("code/signature_plots.R", "# Reconstruct weighted", "# The final S3f"), eval=FALSE}
+```
+
+```{r enrichment-curves, fig.width=13, fig.height=3.7}
+grid.arrange(grobs = enrichment_plots, ncol = 6)
+```
+
+## f — Complete signature overlaps
+
+Numbers are intersection sizes; color is Jaccard similarity. The gray diagonal
+contains unique-gene counts and is excluded from the scale. These are complete
+definitions, **not leading-edge sets**. PanTissue-UP has 354 unique genes and
+PanTissue-DN 355.
+
+```{r overlap-code, code=code_excerpt("code/signature_plots.R", "# The final S3f"), eval=FALSE}
+```
+
+```{r overlap, fig.width=6.2, fig.height=4.8}
+print(overlap_plot)
+```
+
+## g — Leave-one-tissue-out sensitivity
+
+Each plot omits one tissue before recalculating the equal-Fisher HF aggregate
+and its strict 1% tails. The requirement of five finite tissue coefficients
+remains. Only D/E change; B/C/F/G stay fixed, including when gingiva is omitted
+from the pan-HF aggregation. This post hoc sensitivity analysis is not a new
+signature-selection filter. Stable downstream enrichment does not by itself
+imply stable gene membership.
+
+Definitions are recomputed and validated in the signature-analysis code above;
+the plot function is shared with main g. Historical NES and multilevel FDR are
+reported for all six signatures in each run.
+
+```{r loto-code, code=code_excerpt("code/signature_plots.R", "loto_plots <-", "# Sampling coverage"), eval=FALSE}
+```
+
+```{r loto, fig.width=14, fig.height=3.7}
+grid.arrange(grobs = loto_plots, ncol = 7)
+table_show(loto_statistics[, c("variant", "letter", "label", "n_supplied", "n_matched",
+  "NES_simple", "pval", "q_global_BH", "q_six_BH")], digits = 9)
+```
+
+## h — Selected regulatory trajectories
+
+Order is p53 (PROGENy), EGFR, MAPK, ELK1 (VIPER), MYC and ATF4. Both control
+arms are shown. Error bars/ribbons are mean ± SEM; thick curves retain the
+accepted descriptive fits and main-style timepoint display spacing.
+
+The global comparison tests an overall treatment shift controlling for
+categorical time and a run random intercept. BH families remain all ten TF-arm
+tests or all 28 pathway-arm tests, not just the selected panels. PROGENy
+inference is conditional on its preprocessed scores. Boundary random-effect
+fits and sensitivity tests are recorded in the complete table. These are
+within-donor, model-based results.
+
+```{r activity-code, code=code_excerpt("code/activity_panels.R", "activity <-"), eval=FALSE}
+```
+
+```{r activity, fig.width=14, fig.height=3.5}
+print(activity_plot)
+table_show(activity$tests[, c("feature", "arm", "p_global_shift", "family_n", "q_global_shift_BH_panel")], digits = 10)
+```
+
+## i — Macrocluster identity markers
+
+Dot area is the fraction of cells expressing each gene; color is the
+across-macrogroup z score of `log1p(mean normalized counts)`. Means pool cells
+with cell-count weighting rather than averaging subclusters equally. The
+131,475 cells in these five macroclasses exclude cycling/myogenic categories;
+the UMAP retains all 133,335 cells. Both fibroblast subclusters are combined.
+MCAM is retained as a canonical perivascular marker, not claimed as a specific
+selection of the original publication.
+
+```{r marker-code, code=code_excerpt("code/singlecell_panels.R", "# Pooled macrocluster"), eval=FALSE}
+```
+
+```{r markers, fig.width=12, fig.height=4.2}
+grid.arrange(marker_plot, umap_plot, ncol = 2, widths = c(2.2, 1))
+```
+
+## j — Transcriptome position of miR-29 targets
+
+The y-axis is the percentile of each gene's signed Wald statistic within the
+tested transcriptome for that contrast. Higher values mean a more positive
+treatment-associated statistic; lower values a more negative statistic. This
+is **not expression abundance**. Gray boxes represent background genes and
+colored boxes/dots represent targets. The frozen percentile table preserves
+the original ranking and target-universe choices.
+
+Inference uses the archived competitive CAMERA-style test with assumed
+inter-gene correlation 0.01 and its saved multiple-testing correction, not a
+test treating genes as independent biological replicates. Alternative
+correlation sensitivity results are retained in the checkpoint.
+
+```{r targets-code, code=code_excerpt("code/other_panels.R", "# Signed-Wald"), eval=FALSE}
+```
+
+```{r targets, fig.width=10, fig.height=4}
+print(target_plot)
+table_show(target_tests, digits = 12)
+```
+
+# Validation record
+
+Normal rendering stops on a failed numerical assertion. Checks cover partial
+correlations; full and omitted-tissue gene membership; all six historical NES;
+BH families; matched-control activity matrices and dendrograms; growth means;
+DE counts; PCA singular values; and single-cell/marker dimensions.
+
+Machine-readable tables are written to `validation/`; executable modules are
+in `code/`. The export script writes newly reconstructed panels to
+`figures/reconstructed/`. Frozen stochastic checkpoints remain authoritative
+for exact Monte Carlo values; optional replay requires the recorded package
+version, seeds, pathway order and parallel backend.
+
+```{r validation}
+table_show(data.frame(Signature = main_statistics$letter, Genes = main_statistics$n_defined,
+  Matched = main_statistics$n_matched, Historical_NES = main_statistics$NES,
+  Multilevel_global_FDR = main_statistics$q_multilevel_global_4721), digits = 10)
+```
+
+## Approved layout references
+
+These are the user-supplied final layouts, separate from the analytical
+reconstructions above; they preserve the final panel selection and artwork.
+
+```{r main-reference, echo=FALSE}
+knitr::include_graphics("reference/Figure3_main_final.png")
+```
+
+```{r supplementary-reference, echo=FALSE}
+knitr::include_graphics("reference/FigureS3_final.png")
+```
+
+## Software session
+
+```{r session}
+sessionInfo()
+```

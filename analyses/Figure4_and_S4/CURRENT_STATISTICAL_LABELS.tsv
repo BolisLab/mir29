@@ -1,0 +1,41 @@
+panel	endpoint	treatment	controls	hypothesis	P_value	q_value	BH_family
+4d	Global methylation	INH	pooled	time_interaction	0.000322573485499964	0.000645146970999927	2 treatment arms per endpoint and control definition
+S4a	Global methylation	INH	matched	time_interaction	0.00627365905826708	0.0125473181165342	2 treatment arms per endpoint and control definition
+4d	Global methylation	MIM	pooled	time_interaction	0.256375865869298	0.256375865869298	2 treatment arms per endpoint and control definition
+S4a	Global methylation	MIM	matched	time_interaction	0.485096665273138	0.485096665273138	2 treatment arms per endpoint and control definition
+4f	entropy	INH	pooled	T6_mean_difference	0.0000219195566824262	0.0000876782267297047	4 T6 entropy/FAE contrasts
+4f legend matched comparator	entropy	INH	matched	T6_mean_difference	0.00413006664948861	0.0118868968955923	4 T6 entropy/FAE contrasts
+4f	entropy	MIM	pooled	T6_mean_difference	0.0286146299818439	0.0381528399757919	4 T6 entropy/FAE contrasts
+4f legend matched comparator	entropy	MIM	matched	T6_mean_difference	0.00765293307383362	0.0118868968955923	4 T6 entropy/FAE contrasts
+4f	FAE	INH	pooled	T6_mean_difference	0.0000930978127856265	0.000186195625571253	4 T6 entropy/FAE contrasts
+4f legend matched comparator	FAE	INH	matched	T6_mean_difference	0.00891517267169423	0.0118868968955923	4 T6 entropy/FAE contrasts
+4f	FAE	MIM	pooled	T6_mean_difference	0.0975944388788263	0.0975944388788263	4 T6 entropy/FAE contrasts
+4f legend matched comparator	FAE	MIM	matched	T6_mean_difference	0.0219573514961497	0.0219573514961497	4 T6 entropy/FAE contrasts
+4i right	Skin & Blood	INH	pooled	average_shift	0.0000511737761471315	0.000102347552294263	2 treatment arms per endpoint and control definition
+S4c	Skin & Blood	INH	matched	average_shift	0.000663404492879398	0.0013268089857588	2 treatment arms per endpoint and control definition
+4i right	Skin & Blood	MIM	pooled	average_shift	0.0184763826590545	0.0184763826590545	2 treatment arms per endpoint and control definition
+S4c	Skin & Blood	MIM	matched	average_shift	0.0160095255296666	0.0160095255296666	2 treatment arms per endpoint and control definition
+4j right	RetroAge	INH	pooled	average_shift	1.81989368768457e-14	3.63978737536914e-14	2 treatment arms per endpoint and control definition
+S4e	RetroAge	INH	matched	average_shift	1.89753731613843e-10	3.79507463227686e-10	2 treatment arms per endpoint and control definition
+4j right	RetroAge	MIM	pooled	average_shift	0.00293726491280391	0.00293726491280391	2 treatment arms per endpoint and control definition
+S4e	RetroAge	MIM	matched	average_shift	0.000583278703793407	0.000583278703793407	2 treatment arms per endpoint and control definition
+S4d	CausAge	INH	matched	Global average shift	0.000115584304450664	0.000231168608901327	2 treatment arms per clock
+S4d	CausAge	MIM	matched	Global average shift	0.0314115411625483	0.0314115411625483	2 treatment arms per clock
+S4d	DamAge	INH	matched	Global average shift	0.000357452691208699	0.000714905382417397	2 treatment arms per clock
+S4d	DamAge	MIM	matched	Global average shift	0.329481283268947	0.329481283268947	2 treatment arms per clock
+S4d	AdaptAge	INH	matched	Global average shift	0.00165720699900557	0.00331441399801113	2 treatment arms per clock
+S4d	AdaptAge	MIM	matched	Global average shift	0.108371330695761	0.108371330695761	2 treatment arms per clock
+S4k	RNAAgeCalc	INH	matched	Global average shift	0.0019094221535584	0.00254589620474454	4 tests per clock: 2 shifts + 2 time interactions
+S4k	RNAAgeCalc	MIM	matched	Global average shift	3.2565104029751e-09	0.0000000130260416119004	4 tests per clock: 2 shifts + 2 time interactions
+S4k	tAge	INH	matched	Global average shift	0.0000102065900518877	0.0000136087867358503	4 tests per clock: 2 shifts + 2 time interactions
+S4k	tAge	MIM	matched	Global average shift	8.90418362262544e-11	3.56167344905017e-10	4 tests per clock: 2 shifts + 2 time interactions
+S4k	PASTA	INH	matched	Global average shift	0.00000119190394471142	0.00000158920525961523	4 tests per clock: 2 shifts + 2 time interactions
+S4k	PASTA	MIM	matched	Global average shift	3.91293730990541e-13	1.56517492396216e-12	4 tests per clock: 2 shifts + 2 time interactions
+4o centre	123-CpG reference distance	INH	matched	Run-mean displacement T1-T6	0.0126313610966905	0.025262722193381	2 treatment arms separately for each endpoint and cellular model
+4o centre	123-CpG reference distance	MIM	matched	Run-mean displacement T1-T6	0.895383395375712	0.895383395375712	2 treatment arms separately for each endpoint and cellular model
+4o right	123-CpG reference distance	INH	matched	Run-mean displacement T5-T6	0.00658122893959195	0.0131624578791839	2 treatment arms separately for each endpoint and cellular model
+4o right	123-CpG reference distance	MIM	matched	Run-mean displacement T5-T6	0.423846822498587	0.423846822498587	2 treatment arms separately for each endpoint and cellular model
+hTERT reference-distance support	123-CpG reference distance	INH	matched	Final-cycle 96-h displacement	0.0204628826981902	0.0409257653963804	2 treatment arms separately for each endpoint and cellular model
+hTERT reference-distance support	123-CpG reference distance	MIM	matched	Final-cycle 96-h displacement	0.405898060562423	0.405898060562423	2 treatment arms separately for each endpoint and cellular model
+hTERT reference-distance support	123-CpG reference distance	INH	matched	Run-mean displacement over three cycles	0.0388458109463457	0.0776916218926913	2 treatment arms separately for each endpoint and cellular model
+hTERT reference-distance support	123-CpG reference distance	MIM	matched	Run-mean displacement over three cycles	0.29397417990276	0.29397417990276	2 treatment arms separately for each endpoint and cellular model

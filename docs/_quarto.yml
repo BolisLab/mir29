@@ -1,0 +1,71 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - reproduce.qmd
+    - datasets.qmd
+    - about.qmd
+    - figures/*.qmd
+  resources:
+    - assets/**
+    - analyses/**
+website:
+  title: "miR-29 · Bolis Lab"
+  description: "The analysis companion to miR-29 trades youthful plasticity for epigenetic fidelity."
+  favicon: assets/mark.svg
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    logo: assets/mark.svg
+    title: "miR-29 / Bolis Lab"
+    background: light
+    left:
+      - text: The study
+        href: index.qmd
+      - text: Analyses
+        menu:
+          - text: "01 · Convergence"
+            href: figures/figure1.qmd
+          - text: "02 · Conservation"
+            href: figures/figure2.qmd
+          - text: "03 · Transcription"
+            href: figures/figure3.qmd
+          - text: "04 · The methylome"
+            href: figures/figure4.qmd
+          - text: "05 · Cancer"
+            href: figures/figure5.qmd
+      - text: Reproduce
+        href: reproduce.qmd
+      - text: Data
+        href: datasets.qmd
+    right:
+      - text: About
+        href: about.qmd
+      - icon: github
+        href: https://github.com/BolisLab/mir29
+        aria-label: Private source repository
+  page-footer:
+    left: "Bolis Lab · miR-29 analysis companion"
+    right: "Private working preview · no public deployment"
+format:
+  html:
+    theme:
+      - cosmo
+      - no-webfonts.scss
+    css: styles.css
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Inspect code"
+    code-copy: true
+    code-overflow: scroll
+    anchor-sections: true
+    smooth-scroll: false
+    html-math-method: plain
+    include-in-header:
+      text: '<meta name="robots" content="noindex, nofollow">'
+execute:
+  eval: false
+  echo: true

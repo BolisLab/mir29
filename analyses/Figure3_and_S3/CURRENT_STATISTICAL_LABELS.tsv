@@ -1,0 +1,31 @@
+panel	endpoint	treatment	controls	hypothesis	P_value	q_value	BH_family
+S3b	RNAAgeCalc	INH	matched	Global average shift	1.29391371065176e-09	2.58782742130353e-09	4 tests per clock/control definition: 2 shifts + 2 quadratic-time interactions
+S3b	RNAAgeCalc	MIM	matched	Global average shift	3.43198804631751e-30	1.372795218527e-29	4 tests per clock/control definition: 2 shifts + 2 quadratic-time interactions
+3e	RNAAgeCalc	INH	pooled	Global average shift	1.6515822314203e-09	3.30316446284061e-09	4 tests per clock/control definition: 2 shifts + 2 quadratic-time interactions
+3e	RNAAgeCalc	MIM	pooled	Global average shift	1.61698432106789e-42	6.46793728427156e-42	4 tests per clock/control definition: 2 shifts + 2 quadratic-time interactions
+S3b	tAge YuGene	INH	matched	Global average shift	6.23428727230284e-14	1.24685745446057e-13	4 tests per clock/control definition: 2 shifts + 2 quadratic-time interactions
+S3b	tAge YuGene	MIM	matched	Global average shift	5.31079595296954e-29	2.12431838118781e-28	4 tests per clock/control definition: 2 shifts + 2 quadratic-time interactions
+3e	tAge YuGene	INH	pooled	Global average shift	5.90841771180083e-17	1.18168354236017e-16	4 tests per clock/control definition: 2 shifts + 2 quadratic-time interactions
+3e	tAge YuGene	MIM	pooled	Global average shift	8.30766754641759e-43	3.32306701856704e-42	4 tests per clock/control definition: 2 shifts + 2 quadratic-time interactions
+S3b	PASTA	INH	matched	Global average shift	2.18553569806872e-13	4.37107139613744e-13	4 tests per clock: 2 shifts + 2 quadratic-time interactions
+S3b	PASTA	MIM	matched	Global average shift	3.8218762954691e-33	1.52875051818764e-32	4 tests per clock: 2 shifts + 2 quadratic-time interactions
+3i legend	EDA2R	INH	matched (pooled display)	DESeq2 global treatment contrast	0.0156840893022732	0.0449567707295486	Transcriptome-wide within each treatment contrast, after independent filtering
+3i legend	EDA2R	MIM	matched (pooled display)	DESeq2 global treatment contrast	7.63989857237243e-33	1.11434759285273e-31	Transcriptome-wide within each treatment contrast, after independent filtering
+3i legend	PTCHD4	INH	matched (pooled display)	DESeq2 global treatment contrast	0.00284972717805029	0.0103897488842248	Transcriptome-wide within each treatment contrast, after independent filtering
+3i legend	PTCHD4	MIM	matched (pooled display)	DESeq2 global treatment contrast	2.64258490097517e-96	2.48814277952518e-94	Transcriptome-wide within each treatment contrast, after independent filtering
+3i legend	DUSP6	INH	matched (pooled display)	DESeq2 global treatment contrast	3.70885749654193e-11	7.41135695166121e-10	Transcriptome-wide within each treatment contrast, after independent filtering
+3i legend	DUSP6	MIM	matched (pooled display)	DESeq2 global treatment contrast	0.492949248394888	0.59363647838785	Transcriptome-wide within each treatment contrast, after independent filtering
+3i legend	EREG	INH	matched (pooled display)	DESeq2 global treatment contrast	5.96704808119454e-25	1.9261631206096e-22	Transcriptome-wide within each treatment contrast, after independent filtering
+3i legend	EREG	MIM	matched (pooled display)	DESeq2 global treatment contrast	0.182761114855293	0.263429441104859	Transcriptome-wide within each treatment contrast, after independent filtering
+S3h	ELK1	INH	matched	Global average shift	0.000000306604187637089	0.000000613208375274179	10 tests in original activity family
+S3h	ELK1	MIM	matched	Global average shift	0.715815729481107	0.715815729481107	10 tests in original activity family
+S3h	MYC	INH	matched	Global average shift	0.0000251797869128937	0.0000419663115214895	10 tests in original activity family
+S3h	MYC	MIM	matched	Global average shift	0.000264604910626782	0.000330756138283477	10 tests in original activity family
+S3h	ATF4	INH	matched	Global average shift	6.15157753265058e-09	0.0000000205052584421686	10 tests in original activity family
+S3h	ATF4	MIM	matched	Global average shift	5.10602792782333e-19	5.10602792782333e-18	10 tests in original activity family
+S3h	p53	INH	matched	Global average shift	0.0713304176017808	0.086837030123907	28 tests in original activity family
+S3h	p53	MIM	matched	Global average shift	5.26866692063016e-13	4.91742245925481e-12	28 tests in original activity family
+S3h	MAPK	INH	matched	Global average shift	9.05135591499536e-11	5.0687593123974e-10	28 tests in original activity family
+S3h	MAPK	MIM	matched	Global average shift	0.0000969512088032634	0.000180975589766092	28 tests in original activity family
+S3h	EGFR	INH	matched	Global average shift	0.00000224630913406443	0.0000062896655753804	28 tests in original activity family
+S3h	EGFR	MIM	matched	Global average shift	0.540876330258624	0.560908786934869	28 tests in original activity family

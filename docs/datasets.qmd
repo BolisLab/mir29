@@ -1,0 +1,48 @@
+---
+title: "A traceable route to the data"
+subtitle: "Data availability, analytical starting points and access boundaries."
+---
+
+## One study, several data layers
+
+The repository is the index of the analysis, not a replacement for the archives
+that host the original datasets. Each figure chapter records its inputs and
+analysis boundary. The machine-readable
+[input catalogue](https://github.com/BolisLab/mir29/blob/main/data/input-catalogue.json)
+tracks the preparation of portable checkpoints.
+
+| Layer | What belongs here | Where it will be available |
+|:--|:--|:--|
+| Source code | Analysis, plotting and upstream-processing recipes | This repository |
+| Public annotations | Reference sequences, assembly identifiers and aggregate metadata | Chapter data files, after review |
+| Analytical checkpoints | Processed matrices and model inputs required to rerun panels | A versioned deposit; links pending |
+| Newly generated raw data | Sequencing and methylation measurements | Appropriate primary archives; accessions pending |
+| External raw datasets | Previously published measurements | Original study accessions listed in the analyses |
+| Controlled metadata | Restricted participant-level phenotypes | Original access-controlled resource, not this repository |
+
+No pending deposition is represented as already complete. Public source accessions
+are retained in the figure chapters, including the small-RNA dataset inventory.
+
+## Figure 2 sequence resources
+
+The curated resources distinguish miR-29 precursor and mature sequences, clustered
+loci and singletons, assembly-specific genomic positions, and the cg10501210
+target-conservation catalogue. These resources accompany the evolutionary
+analysis; they are distinct from expression count matrices and methylation arrays.
+
+## Human data access
+
+Some human analyses use controlled-access GTEx phenotypes. Approval of the study's
+dbGaP project does not make those records redistributable. Restricted donor-level
+metadata, credentials and author-specific access tokens are not included here.
+Public summary statistics and source code should be distinguished from those inputs.
+
+## Before downloading or rerunning
+
+Check the dataset version, genome/annotation release, expected file checksum,
+sample-selection rules and matching identifiers. Aggregates, per-sample values
+and raw measurements are different analytical starting points.
+
+The final download manifest will provide stable URLs and hashes only after the
+files have been checked and deposited. Until then, this remains a private working
+copy; read the [reproduction guide](reproduce.qmd) for the current limits.

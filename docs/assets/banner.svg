@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="600" viewBox="0 0 1440 600" role="img" aria-labelledby="title desc">
+  <title id="title">miR-29 trades youthful plasticity for epigenetic fidelity</title>
+  <desc id="desc">Bolis Lab research companion. Five chapters connect ageing, rejuvenation, evolution, epigenetic remodelling and cancer. Editorial banner in forest green, muted plum and warm white.</desc>
+  <rect width="1440" height="600" fill="#f7f7f1"/>
+  <rect width="14" height="600" fill="#285b43"/>
+  <path d="M72 94h1296" stroke="#d9ded3"/>
+  <text x="76" y="64" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="600" letter-spacing="3" fill="#52665a">BOLIS LAB / RESEARCH COMPANION</text>
+  <text x="76" y="200" font-family="Georgia,Palatino,serif" font-size="72" letter-spacing="-2" fill="#20342c">miR-29 trades youthful</text>
+  <text x="76" y="287" font-family="Georgia,Palatino,serif" font-size="72" letter-spacing="-2" fill="#20342c">plasticity for</text>
+  <text x="76" y="374" font-family="Georgia,Palatino,serif" font-size="72" letter-spacing="-2" fill="#795273">epigenetic fidelity</text>
+  <text x="80" y="438" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#5b6c60">Methods, code and evidence. Figure by figure.</text>
+  <path d="M76 490h1288" stroke="#d9ded3"/>
+  <text x="80" y="545" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="1.5" fill="#52665a">AGEING</text>
+  <text x="239" y="545" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="1.5" fill="#52665a">REJUVENATION</text>
+  <text x="493" y="545" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="1.5" fill="#52665a">EVOLUTION</text>
+  <text x="710" y="545" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="1.5" fill="#52665a">REMODELLING</text>
+  <text x="970" y="545" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="1.5" fill="#52665a">CANCER</text>
+  <rect x="1175" y="169" width="173" height="173" fill="#edeee6"/>
+  <path d="M1196 190h130v130h-130z" fill="none" stroke="#c6d0bf"/>
+  <path d="M1196 190h38M1196 190v38" fill="none" stroke="#285b43" stroke-width="4"/>
+  <path d="M1288 320h38v-38" fill="none" stroke="#795273" stroke-width="4"/>
+  <text x="1261" y="234" font-family="Arial,Helvetica,sans-serif" font-size="24" letter-spacing="2.1" text-anchor="middle" fill="#285b43">miR</text>
+  <text x="1261" y="293" font-family="Georgia,serif" font-size="69" letter-spacing="-4" text-anchor="middle" fill="#20342c">29</text>
+</svg>

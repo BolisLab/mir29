@@ -1,0 +1,39 @@
+---
+title: "The study and its authors"
+subtitle: "miR-29 trades youthful plasticity for epigenetic fidelity"
+---
+
+## Authors
+
+Ilaria Craparotta¹†, Maria Chiara Barbera¹†, Giada Andrea Cassanmagnago¹²³⁴†,
+Anna Chiara Salvatore¹, Alisia Sallemi¹, Luca Guarrera¹, Arianna Vallerga¹,
+Marco Bolis¹²³⁴*.
+
+† Equal contribution. * Corresponding author.
+
+1. Laboratory of Integrative Biomedicine, Department of Oncology, Istituto di
+   Ricerche Farmacologiche ‘Mario Negri’ IRCCS, Milano, Italy.
+2. Bioinformatics Core Unit, Institute of Oncology Research (IOR), Bellinzona, Switzerland.
+3. Università della Svizzera italiana (USI), Faculty of Biomedical Sciences, Bellinzona, Switzerland.
+4. Swiss Institute of Bioinformatics, Bioinformatics Core Unit, Bellinzona, Switzerland.
+
+## Correspondence
+
+Marco Bolis: [marco.bolis@marionegri.it](mailto:marco.bolis@marionegri.it) ·
+[marco.bolis@ior.usi.ch](mailto:marco.bolis@ior.usi.ch).
+
+## Citation
+
+The repository includes a [CITATION.cff file](https://github.com/BolisLab/mir29/blob/main/CITATION.cff).
+The article/preprint identifier and a persistent identifier for the archived code
+release will be added when available. No publication venue or acceptance status
+is implied by this private companion.
+
+## Reuse and release
+
+The repository is private during preparation. The code and documentation licences
+will be confirmed before public release; external data and software retain their
+own terms. See [licensing](https://github.com/BolisLab/mir29/blob/main/LICENSING.md).
+
+The present website is a local preview. GitHub Pages and automatic publication
+are disabled. Scientific manuscript files are maintained separately.

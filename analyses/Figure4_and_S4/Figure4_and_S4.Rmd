@@ -1,0 +1,1037 @@
+---
+title: "MIR29 trades youthful plasticity for epigenetic fidelity"
+subtitle: "Figure 4 and Supplementary Figure S4 — methods, data and executable reconstruction"
+date: "9 October 2026"
+output:
+  html_document:
+    self_contained: true
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    code_folding: show
+    code_download: true
+    fig_caption: true
+    highlight: tango
+    css: styles.css
+    keep_md: true
+---
+
+> **Repository snapshot — input bundle pending.** This chapter preserves the existing analytical narrative, code and rendered outputs. References below to bundled input data describe the full analytical bundle, not this lightweight repository snapshot. Required inputs are not yet fully distributed here, so a fresh clone cannot regenerate the analysis. See [module instructions](README.md).
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,
+  fig.align = "center", dev = "png", dpi = 160, fig.retina = 1, out.width = "100%")
+options(width = 100, scipen = 4, stringsAsFactors = FALSE)
+source("code/load_all.R", local = FALSE)
+code_excerpt <- function(file, from = NULL, until = NULL) {
+  lines <- readLines(file, warn = FALSE)
+  first <- if (is.null(from)) 1L else which(startsWith(lines, from))[1]
+  last <- if (is.null(until)) length(lines) else which(startsWith(lines, until))[1] - 1L
+  stopifnot(is.finite(first), is.finite(last), first <= last)
+  lines[first:last]
+}
+table_show <- function(x, digits = 4) {
+  for (name in names(x)) if (is.numeric(x[[name]])) {
+    tiny <- is.finite(x[[name]]) & x[[name]] != 0 & abs(x[[name]]) < 10^(-digits)
+    if (any(tiny)) x[[name]] <- format(x[[name]], digits = min(digits, 6), scientific = TRUE, trim = TRUE)
+  }
+  knitr::kable(x, digits = digits, row.names = FALSE)
+}
+read_table <- function(name) read.delim(file.path("tables", paste0(name, ".tsv")), check.names = FALSE)
+show_panel <- function(name) knitr::include_graphics(file.path("figures/reconstructed", paste0(name, ".png")))
+```
+
+# Current statistical annotations — 9 October 2026
+
+The active reconstruction uses the **123-CpG fibroblast reference**, selected with an external fibroblast-contrast BH q threshold of 0.20 and the effect-size/stability criteria below. Its [reference and annotations](data/fidelity123/HGF123_reference.tsv), [primary-HGF inputs](data/fidelity123/HGF123_beta.tsv), and [hTERT inputs](data/fidelity123/hTERT123_beta.tsv) are included in this standalone bundle. Panel 4o and its statistics are regenerated from these inputs; historical 43-CpG results are not used as current results.
+
+Clock curves display **global q values only**, without individual-timepoint asterisks. Main-panel pooled-control comparisons and supplementary matched-control comparisons are identified explicitly in both plots and tables. Figure 4l is unchanged. `CURRENT_STATISTICAL_LABELS.tsv` provides unrounded values and test/comparator definitions. In panel 4o, q = 0.025 tests the average inhibitor-minus-matched-control distance over T1–T6, **not** a temporal slope or treatment-by-time interaction.
+
+| Panel | Endpoint | Arm | Controls | Global/endpoint q |
+|---|---|---|---|---:|
+| 4d | Global methylation | INH | pooled | 0.00064515 |
+| S4a | Global methylation | INH | matched | 0.012547 |
+| 4d | Global methylation | MIM | pooled | 0.25638 |
+| S4a | Global methylation | MIM | matched | 0.4851 |
+| 4f | entropy | INH | pooled | 8.7678e-05 |
+| 4f legend matched comparator | entropy | INH | matched | 0.011887 |
+| 4f | entropy | MIM | pooled | 0.038153 |
+| 4f legend matched comparator | entropy | MIM | matched | 0.011887 |
+| 4f | FAE | INH | pooled | 0.0001862 |
+| 4f legend matched comparator | FAE | INH | matched | 0.011887 |
+| 4f | FAE | MIM | pooled | 0.097594 |
+| 4f legend matched comparator | FAE | MIM | matched | 0.021957 |
+| 4i right | Skin & Blood | INH | pooled | 0.00010235 |
+| S4c | Skin & Blood | INH | matched | 0.0013268 |
+| 4i right | Skin & Blood | MIM | pooled | 0.018476 |
+| S4c | Skin & Blood | MIM | matched | 0.01601 |
+| 4j right | RetroAge | INH | pooled | 3.6398e-14 |
+| S4e | RetroAge | INH | matched | 3.7951e-10 |
+| 4j right | RetroAge | MIM | pooled | 0.0029373 |
+| S4e | RetroAge | MIM | matched | 0.00058328 |
+| S4d | CausAge | INH | matched | 0.00023117 |
+| S4d | CausAge | MIM | matched | 0.031412 |
+| S4d | DamAge | INH | matched | 0.00071491 |
+| S4d | DamAge | MIM | matched | 0.32948 |
+| S4d | AdaptAge | INH | matched | 0.0033144 |
+| S4d | AdaptAge | MIM | matched | 0.10837 |
+| S4k | RNAAgeCalc | INH | matched | 0.0025459 |
+| S4k | RNAAgeCalc | MIM | matched | 1.3026e-08 |
+| S4k | tAge | INH | matched | 1.3609e-05 |
+| S4k | tAge | MIM | matched | 3.5617e-10 |
+| S4k | PASTA | INH | matched | 1.5892e-06 |
+| S4k | PASTA | MIM | matched | 1.5652e-12 |
+| 4o centre | Reference distance, mean T1–T6 | INH | matched | 0.025263 |
+| 4o centre | Reference distance, mean T1–T6 | MIM | matched | 0.89538 |
+| 4o right | Reference distance, mean T5–T6 | INH | matched | 0.013162 |
+| 4o right | Reference distance, mean T5–T6 | MIM | matched | 0.42385 |
+| Cross-model reference check | hTERT reference distance, final cycle | INH | matched | 0.040926 |
+| Cross-model reference check | hTERT reference distance, final cycle | MIM | matched | 0.40590 |
+
+# Scope and execution
+
+This document accompanies the final **Figure 4 and Figure S4**. It reconstructs
+the evidence for extensive, directional methylome remodeling in primary human
+gingival fibroblasts (HGF) following miR-29 inhibition, despite lower values of
+several epigenetic clocks. It distinguishes a clock-decreasing score from a
+balanced reversal of age-associated methylation, examines pre-existing temporal
+trajectories, and measures departure from an externally defined fibroblast
+reference. Figure S4 adds control-resolved curves, CHIR-responsive loci,
+immortalized hTERT HGF, and persistence after inhibitor withdrawal in HPF.
+
+The approved Illustrator layouts are preserved unchanged in `reference/`.
+Every **analytical plot** below is newly drawn by the displayed code from the
+bundled numerical inputs. Page composition, cell illustrations and experimental
+schematics remain editorial artwork. Those exceptions are identified explicitly;
+an image of a published plot is never substituted for its analytical reconstruction.
+
+Open `Figure4_main_plus_supplementary.Rproj` in RStudio and knit this file, or run:
+
+```{r execution, eval=FALSE}
+source("render_figure4_and_s4.R")
+# Recalculate panel-level summaries/statistics and export plots without HTML:
+source("run_figure4_and_s4_in_RStudio.R")
+```
+
+Setup executes the clean modules once. The code blocks in each section are read
+from those same executable files, so the displayed code cannot drift into a
+separate, nonfunctional transcription. Supplementary sections include code as
+well as figures. Paths are relative to the bundle root. No automatic package
+installation, data download, clock training or genome-wide model fitting occurs
+during knitting.
+
+## Reproduction boundary and input provenance
+
+The supported starting point is a set of **frozen, verified analytical
+checkpoints**, not the raw IDAT files. These include sample metadata; limma
+temporal statistics/counts; per-sample methylome summaries; fitted global-mean
+contrasts; calibrated clock inputs and coefficients; the 123-CpG beta matrices and
+external-reference centroid; external selection audits; DMRcate calls with local
+beta values; hTERT RNA counts, preprocessing and prediction inputs; and HPF
+selection/retention checkpoints.
+
+Small computations are rerun: clock linear predictors, AUC contributions,
+matched-control reference scores, DKK2 regional responses/interactions, hTERT
+CAMERA, HPF projection checks, and panel-level statistical tests. PCA and
+methylation-walk coordinates and genome-wide DMR/DMP discovery are replayed
+from their audited checkpoints. Their algorithms and upstream recipes are
+documented, but their original large input matrices are not silently reloaded.
+
+`provenance/input_sources.tsv` records original locations, file sizes and MD5
+checksums. `provenance/bundle_checksums.tsv` inventories the delivered code,
+data and reference assets. `validation/` records numerical checks and the
+software environment. Historical source scripts are segregated in
+`provenance/`; they are not an alternative executable entry point.
+
+| Analysis | Input scale / resolution | Batch handling |
+|:--|:--|:--|
+| Genome-wide temporal DMPs and slope geometry | Historical noncollapsed assay-level M-value limma results | Historical model retained; ordinal time retained |
+| PCA and methylation walk | Batch-adjusted noncollapsed M values | Sequential correction protecting the biological design |
+| Global mean methylation | Raw beta, replicate probes collapsed by base CpG | Run included in the statistical model, not removed from the raw matrix |
+| Entropy, FAE, compartment and repeat summaries | Adjusted noncollapsed beta | Historical adjusted matrix; run retained in relevant panel-level tests |
+| Skin & Blood and causal clocks | Adjusted collapsed beta | Frozen preprocessing/calibration; pooled controls in 4i, matched controls in S4c/d |
+| RetroAge | Adjusted noncollapsed beta with EPIC v2 assay IDs | Frozen preprocessing; pooled controls in 4j, matched controls in S4e |
+| 123-CpG fibroblast reference | Raw collapsed beta | Same-run, same-time, same-arm control subtraction |
+| CHIR-responsive loci | Frozen DMRcate discovery plus local beta measurements | Biological experiment in discovery design; complete matched experiments for displays/tests |
+
+Collapsing beta and then converting to M is not generally identical to collapsing
+M values. This reconstruction preserves the historical choice in each analysis;
+it does not replace the source results with a different preprocessing pipeline.
+Counts of noncollapsed assay features must not be interpreted as counts of unique
+base CpGs or genes.
+
+## Experimental units and time
+
+The classic primary-HGF experiment contains separate inhibitor and mimic arms,
+each with its own matched scramble controls and three biological experimental
+runs. There are six timepoints per condition, giving 72 samples in total.
+T1–T6 correspond to 72, 96, 168, 192, 264 and 288 hours. Display positions
+`1, 2, 4, 5, 7, 8` preserve the paired timepoint blocks in ordinal plots; these
+positions are **not hours**. Historical genome-wide models use ordinal time.
+The clock decomposition integrates over actual hours. Statistical curve tests
+use categorical time unless explicitly stated otherwise.
+
+For the 123-CpG cycle display, T1+T2, T3+T4 and T5+T6 are averaged **within each
+biological experiment first**. Their actual-time midpoints are 84, 180 and
+276 hours. Six late observations therefore represent three experiment means,
+not six independent replicates.
+
+## Statistical conventions
+
+All tests are two-sided unless explicitly specified otherwise. Current annotations use pooled-control results where the main panel displays pooled controls (4d, 4f and the clock curves in 4i/j), and matched-control results in the corresponding control-resolved supplementary panels. Both results remain available; the comparator is stated explicitly. Figure 4l and its annotation convention are unchanged. CURRENT_STATISTICAL_LABELS.tsv maps every updated value to its displayed panel and comparator.
+
+- Global methylation and CTRL-selected mover curves: treatment-by-categorical-time
+  interaction, allowing a constant treatment offset; Kenward–Roger F test.
+- Epigenetic clocks: average treatment offset controlling categorical time,
+  with a random intercept for experimental run; Kenward–Roger F test. A separate
+  time-interaction result is provided, not chosen according to significance.
+- T6 entropy/FAE: mixed-model contrasts with run accounted for. Figure 4f uses
+  pooled controls, with matched-control q values also reported in its legend.
+- The 123-CpG reference: two-sided one-sample t tests on three experiment-level
+  matched differences per arm. The centre-panel test averages T1–T6 within
+  experiment; the late test averages T5 and T6 within experiment. The hTERT
+  final-cycle test uses three matched differences at 96 h after cycle 3.
+  Whole-series means, AUCs and temporal slopes are distinct estimands.
+- DKK2: one-sample t test on three paired factorial contrasts,
+  `(INH+CHIR − CHIR) − (INH − CTRL)`, on the beta scale.
+- HPF retention and scatterplots: descriptive projection measures. Their
+  envelope is a range across nested feature universes, **not** a biological
+  SEM or confidence interval.
+
+The retained BH families are: two arms for each global
+epigenetic-clock comparison; 12 timepoint contrasts per epigenetic clock;
+two global-methylation interactions; four entropy/FAE contrasts; four
+CTRL-mover interactions; two reference-distance tests separately for each
+endpoint and cellular model; two nested DKK2 region tests. hTERT RNA-clock inference retains its
+historical four-test family per clock (two arms × shift/interaction), with
+six timepoint tests per clock. Alternative inferential conventions are labelled
+as sensitivities rather than substituted post hoc.
+
+Nominal p and adjusted q are both reported. A nominal p below 0.05 with q above
+0.05 is not labelled FDR-significant. The two-arm test family is not narrowed
+after looking at the results. Singular mixed-model fits are recorded in the
+diagnostic tables; small biological sample sizes remain an inferential limitation.
+
+## Shared display code
+
+Colors, typography, ordinal positions, mean/SEM summaries and quadratic
+descriptive clock curves are shared across main and supplementary panels.
+Unless a panel specifies otherwise, a shaded clock ribbon interpolates the
+pointwise mean ± SEM; it is not the confidence interval of the fitted polynomial.
+Controls have open points and solid error bars; only their curves/connecting
+lines are dashed.
+
+```{r shared-code, eval=FALSE, code=code_excerpt("code/00_setup.R")}
+```
+
+# Figure 4 — primary HGF methylome
+
+## a — Methylome PCA
+
+Noncollapsed M values were corrected sequentially for experiment arm and batch
+with the time-by-group design protected. The 20,000 highest-variance features
+were selected; 19,876 finite features entered the standardized PCA. PC1 and PC2
+explain 56.9% and 9.5% of variance. Axis orientation is arbitrary and is fixed
+here to the accepted layout. Point shading encodes time; distinct control
+symbols distinguish the two experimental arms. Ellipses are descriptive.
+
+The routine reconstruction uses the saved PCA scores and rotation. The cache
+calculation shown below records the original matrix-to-PCA algorithm.
+
+```{r main-a-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4a", "# ---- 4b")}
+```
+```{r main-a, echo=FALSE}
+show_panel("4a_PCA")
+```
+
+## b — Time-resolved differentially methylated probes
+
+This panel uses the final historical **temporal-subset** procedure, not an
+earlier unrestricted contrast table. Within each condition, probes were selected
+by the temporal limma model at BH q < 0.05. For each comparison with CTRL at T1,
+BH adjustment was then recomputed **within that selected set**. Positive and
+negative effects are counted separately. Thus this is a data-selected testing
+family, not an independently controlled genome-wide FDR for each bar.
+
+The temporal sets contain 23,072 CTRL, 160,996 INH and zero MIM assay probes.
+The hypo and hyper halves have separate scales, as in the accepted artwork;
+bar lengths must not be compared across the two halves without reading the axes.
+
+```{r main-b-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4b", "# ---- 4c")}
+```
+```{r main-b, echo=FALSE}
+show_panel("4b_temporal_DMP_counts")
+```
+
+## c — Total temporal DMPs and directional imbalance
+
+Genome-wide temporal limma results are thresholded at their saved BH q < 0.05.
+Hyper/hypomethylation refers to the sign of the ordinal-time coefficient.
+The stacked bars show counts; the adjacent ratio is hyper divided by hypo.
+No ratio is calculated for the zero-DMP mimic set. These are noncollapsed
+assay-probe counts, not distinct genomic-region counts.
+
+```{r main-c-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4c", "# ---- 4d")}
+```
+```{r main-c, echo=FALSE}
+show_panel("4c_temporal_DMP_summary")
+table_show(read_table("panel_c_temporal_DMP_totals")[,c("GROUP","hyper","hypo","total","ratio")])
+```
+
+## d — Global methylation change
+
+Replicate probes are collapsed by averaging available **raw beta** values at
+each base CpG. Complete features are retained before computing the sample mean.
+A mixed model estimates condition-by-time means with experimental run as a
+random intercept. Each condition is contrasted with its own T1 baseline;
+the two control arms are equally combined only for the main display.
+
+The vertical scale is 1,000 × delta mean beta, not percent methylation. Error bars and shading are model-based 90% confidence intervals for those contrasts. The curve is a descriptive quadratic; the inferential test evaluates the treatment-by-time interaction, allowing a constant treatment offset. Figure 4d uses pooled-control q values; S4a resolves the two control trajectories and uses matched-control q values.
+
+```{r main-d-model-code, eval=FALSE, code=code_excerpt("code/upstream/lib_global_methylation.R")}
+```
+```{r main-d-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4d", "# ---- 4e_f_h")}
+```
+```{r main-d, echo=FALSE}
+show_panel("4d_global_methylation")
+```
+
+## e — Genome-wide beta distributions
+
+Adjusted noncollapsed beta values are bounded to [0,1] and evaluated using a
+kernel-density bandwidth of 0.02 over 512 positions. The accepted reconstruction
+uses **no boundary reflection**. Curves represent the mean density across
+samples at T1 or T6, with ±1 between-sample SD where shown. Density height is
+not a fraction of methylated probes. No global-curve significance is inferred
+from this descriptive density display.
+
+```{r main-e-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4e_f_h", "metrics <- readRDS")}
+```
+```{r main-e, echo=FALSE}
+show_panel("4e_beta_distributions")
+```
+
+## f — Entropy and fraction at extremes at T6
+
+For each sample, methylation entropy is −sum(p × log(p)) across 20 equal-width beta bins, using the historical small numerical offset. FAE is the fraction of probes with beta < 0.2 or beta > 0.8 and is displayed as 100 × FAE. Boxes summarize samples, not probes. Figure 4f has six pooled controls and three samples per treatment and reports the pooled T6 contrasts; its legend also reports the matched-control q values. These are T6 endpoint comparisons, not global-curve tests.
+
+```{r main-f-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "metrics <- readRDS", "compartment_order <-")}
+```
+```{r main-f, echo=FALSE}
+show_panel("4f_entropy_FAE")
+```
+
+## g — GTEx methylation context
+
+The upper entropy and FAE plots use **DNAm age**, whereas the lower beta-density
+context uses **chronological age**. They must not be described as having the same
+age variable. Upper-panel summaries use tissue-adjusted sample metrics,
+15-sample sliding windows with step five, and age bins supported by at least
+six windows. The frozen reconstruction contains 161 upper-panel windows.
+The effective GAM basis dimension is three; the original request for `k=1`
+was raised by the fitting software to its supported minimum.
+
+Overlapping windows are not independent replicates; the smooth and its band
+are descriptive and no window-based inferential p-value is claimed. The lower
+curves preserve the accepted cached reconstruction, whose upstream Monte Carlo
+sampling used seed 20260917. That seed reproduces this reconstruction, not an
+unrecorded original random draw.
+
+```{r main-g-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4g", "# ---- 4i_left")}
+```
+```{r main-g, echo=FALSE}
+show_panel("4g_GTEx_context")
+```
+
+## h — Methylation and entropy by genomic compartment
+
+Per-sample summaries use the verified server annotation and adjusted
+noncollapsed beta matrix. Values are averaged within group/timepoint and
+standardized **within each compartment/metric row across all 18 group-time
+combinations**. The color scale is clipped at ±2 row standard deviations.
+Colors describe relative changes within rows, not comparable absolute beta
+or entropy differences between compartments. Neither heatmap color nor a
+CpG annotation is itself a significance test.
+
+```{r main-h-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "compartment_order <-", "# ---- 4g")}
+```
+```{r main-h, echo=FALSE}
+show_panel("4h_compartment_heatmaps")
+```
+
+## i — Net compartment burden and Skin & Blood clock
+
+**Left.** Each noncollapsed tested assay probe retains its own temporal
+statistic. Base-CpG annotations define five sets: promoter CGI, island, shore,
+shelf and open sea. Overlapping annotation categories are resolved with the
+historical priority island > shore > shelf > open sea; promoter membership is
+the union of TSS1500, TSS200, 5′ UTR and first-exon annotations. The quantity is
+`100 × (number hyper − number hypo) / number tested in the compartment`.
+Point size encodes total significant burden, `100 × (hyper + hypo) / N`.
+Promoter CGI is a subset and is not disjoint from the island set.
+
+```{r main-i-left-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4i_left", "# ---- 4j_left")}
+```
+```{r main-i-left, echo=FALSE}
+show_panel("4i_left_compartment_burden")
+```
+
+**Right.** Skin & Blood predictions use the frozen `meffonym` skin model
+(version 1.2.1), adjusted collapsed beta and its calibration. The main plot
+pools the two control arms and uses pooled-control q values; S4c separates
+them and uses matched-control q values. Points are mean ± SEM and the
+quadratic curve is descriptive. The main clock test is the average treatment
+offset adjusted for categorical time, not a test that every part of the curve
+has a different slope. Linear-predictor replay from the calibrated inputs is
+checked against all 72 saved predictions.
+
+```{r main-clocks-code, eval=FALSE, code=code_excerpt("code/02_clocks.R", NULL, "# S4b:")}
+```
+```{r main-i-right, echo=FALSE}
+show_panel("4i_right_SkinBlood")
+```
+
+## j — Repeat-associated methylation and RetroAge
+
+**Left.** Repeat associations use the historical RepeatMasker resource
+AH99003 (hg38, September 2021), including strand-aware overlaps and exact
+collapsed annotation strings. Mean beta is summarized by group/timepoint and
+row-standardized as in panel h. ERVL includes ERVL-MaLR. The historical artwork
+labels `DNA/hAT` and `SINE/Alu` refer to the broader **DNA** and **SINE** class
+selections implemented in the source; they must not be read as hAT-only or
+Alu-only analyses. The explicit class/family selectors are retained below.
+
+```{r main-j-left-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4j_left", "# ---- 4l")}
+```
+```{r main-j-left, echo=FALSE}
+show_panel("4j_left_repeat_heatmap")
+```
+
+**Right.** RetroAge uses the supplied EPIC v2 coefficients and noncollapsed
+assay IDs. The predictor is the saved intercept plus the weighted beta sum;
+missing matrix entries use their probe's cohort mean. All 1,378 coefficient
+features are available. No Horvath inverse-age transformation is applied.
+Control display and inference follow panel i-right; S4e resolves the control arms.
+
+```{r main-j-right, echo=FALSE}
+show_panel("4j_right_RetroAge")
+```
+
+## k — Asymmetric components of the clock shift
+
+This panel decomposes the INH-minus-matched-control clock shift across the
+**whole T1–T6 trajectory**, not only T5–T6. For each probe and biological run,
+the beta difference is integrated by signed trapezoids at 72, 96, 168, 192,
+264 and 288 hours and divided by the 216-hour duration. Endpoint weights are
+12 hours and the four internal weights are 48 hours. The result is a
+time-averaged beta difference, retaining its sign.
+
+Each probe's integrated difference is multiplied by its original clock
+coefficient, then assigned to one of four routes:
+
+| Beta change | Coefficient sign | Effect on linear clock predictor |
+|:--|:--|:--|
+| Hypermethylation | Negative | Decrease |
+| Hypomethylation | Positive | Decrease |
+| Hypermethylation | Positive | Increase |
+| Hypomethylation | Negative | Increase |
+
+Routing occurs **after integration within run**, not after averaging unsigned
+instantaneous effects. Route contributions are averaged across three runs and
+divided by the mean total absolute per-probe contribution. The absolute bar
+segments therefore sum to 100%; the diamond is the signed net contribution
+on the same scale. These percentages are not percentages of probes, years
+rejuvenated or percentages of a biological aging process.
+
+Skin & Blood and Horvath pan-tissue contributions are decomposed on their
+additive predictor scales **before** the nonlinear inverse-age transform.
+The five retained rows are Skin & Blood, RetroAge, CausAge, DamAge and Horvath
+pan-tissue. AdaptAge remains in S4d but is not a row in the final decomposition.
+Available-feature coverage and missing absolute coefficient weight are recorded
+for every model; missing coefficients are not silently renormalized.
+
+```{r main-k-code, eval=FALSE, code=code_excerpt("code/02b_clock_decomposition.R")}
+```
+```{r main-k, echo=FALSE}
+show_panel("4k_clock_component_AUC")
+```
+
+## l — Responses of CTRL-defined temporal movers
+
+CTRL temporal DMPs are selected at BH q < 0.05 and split into 2,188
+hypomethylating and 20,884 hypermethylating assay probes. Adjusted noncollapsed
+beta values are centered on each condition's own T1 mean, then averaged within
+biological run. GAM curves use a four-dimensional time smooth and a random
+run term; plotted predictions exclude the run-specific smooth, with 90%
+model-based intervals. The descriptive GAM is distinct from the categorical
+time-interaction test reported in the statistics section.
+
+Selection and display use the same experiment. These are conditional
+descriptions of CTRL-selected sets, not an independent confirmation that a
+preselected external signature changes with time.
+
+```{r main-l-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4l", "# ---- 4m_S4f")}
+```
+```{r main-l, echo=FALSE}
+show_panel("4l_CTRL_temporal_movers")
+```
+
+## m — Geometry of temporal effects
+
+For each treatment/control pair, the plotted universe is the union of probes
+with temporal BH q < 0.05 in either condition: 165,312 for INH and 23,072 for
+MIM. The axes are limma ordinal-time M-value coefficients. The identity line
+is descriptive; the colored line is a through-origin regression of treated
+on control slopes. The resulting slope ratios are approximately 2.39 and
+0.071. They are not fold changes of methylation percentages and do not replace
+an interaction test. The classification function also supplies S4f.
+
+```{r main-m-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4m_S4f", "summary$class <-")}
+```
+```{r main-m, echo=FALSE}
+show_panel("4m_temporal_slope_scatter")
+```
+
+## n — Methylation displacement
+
+The methylation walk uses the 50,000 most variable finite features of the
+**adjusted noncollapsed M matrix**. Condition/time centroids define successive
+changes; a shared two-dimensional step representation preserves the relevant
+displacement geometry and RMS scaling. This is not an ordinary PCA or UMAP
+of samples. The accepted panel uses the saved original orientation, without
+the exploratory 90-degree rotation. Coordinates, selected probes, matrix name
+and displacement metrics are bundled explicitly.
+
+```{r main-n-algorithm, eval=FALSE, code=code_excerpt("code/upstream/lib_methylation_walk.R")}
+```
+```{r main-n-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "# ---- 4n")}
+```
+```{r main-n, echo=FALSE}
+show_panel("4n_methylation_walk")
+```
+
+## o — Deviation from the fibroblast reference
+
+### Left: external selection of 123 CpGs
+
+The adopted set is defined by probe-level criteria in external reference cohorts.
+The initial dataset contains 485,512 measured probes; 384,494 autosomal,
+platform-compatible sites enter the initial screen. The selection proceeds
+hierarchically, not as three parallel signatures:
+
+1. GSE77135 paired dura/scalp fibroblasts: adequate detection, absolute
+   tissue effect ≤0.05 beta, age slope ≤0.001 beta/year, and sex contrast
+   ≤0.05 beta yield **222,344** sites. Donor-level covariates use donor means,
+   avoiding pseudoreplication of paired tissue samples. The reference centroid
+   is the per-CpG median in this fibroblast reference.
+2. GSE179847 normal/control fibroblast culture series: detection ≥90% and
+   predicted full-range culture change within ±0.05 beta in both unadjusted
+   and batch-adjusted models yield **169,861** culture-filtered sites.
+3. Cell-type association: a balanced fibroblast-versus-epithelial/SMC contrast
+   in GSE31848, with gender-adjusted BH q ≤0.20, adequate detection, concordant
+   adjusted/unadjusted signs, and absolute effect ≥0.10 beta in both fits.
+   The same effect direction and ≥0.10 magnitude are required against purified
+   immune cells in GSE110554. This yields **123 CpGs** (36 fibroblast-high and
+   87 fibroblast-low). The complete probe list,
+   external medians, selection statistics and gene annotations are supplied
+   in `data/fidelity123/HGF123_reference.tsv` and Supplementary Data 4.
+
+The immune cohort contributes to selection and is not held-out validation.
+The comparator scope is epithelial, SMC/perivascular and immune cells, not
+every human lineage. “Stable” denotes the stated effect-size bounds, not a
+formal equivalence test or proof of independence from every covariate. Sex
+robustness is especially limited by the reference cohort's sex imbalance.
+The term **fibroblast-associated reference** is therefore more precise than
+an unrestricted claim of fibroblast-specific lineage identity.
+
+```{r reference-selection-code, eval=FALSE, code=code_excerpt("code/upstream/reference_selection.R")}
+```
+The left-hand cell/selection schematic is editorial artwork; its updated
+123-CpG label is visible in the approved full Figure 4 at the end of this document.
+
+### Center and right: score, pairing and uncertainty
+
+For sample `s`, the score is the **unweighted mean absolute distance** to the
+frozen fibroblast centroid across the same 123 CpGs:
+
+\[
+D_s=\frac{1}{123}\sum_{j=1}^{123}|\beta_{js}-r_j|,\qquad
+\Delta D_{b,t}=100\,[D_{\mathrm{treated},b,t}-D_{\mathrm{CTRL},b,t}].
+\]
+
+The historical object calls this raw WAR. In this implementation it is an
+unweighted absolute-residual score, not a directional mean beta difference.
+A positive delta means **greater distance from the reference than the matched
+control**. One percentage point is a 0.01 increase in mean absolute beta
+distance; it is neither “1% of lineage lost” nor necessarily +0.01 beta at every
+site. A global methylation shift can contribute to this distance, so the result
+does not alone establish transdifferentiation or loss of transcriptional identity.
+
+The center shows the mean of three within-run cycle means and their SEM.
+A quadratic is fitted through the three mean values and the interpolated SEM
+is placed around that descriptive curve. The right panel shows T5 and T6 for
+each run, with lines joining the two observations and diamonds at the run mean.
+No extra methylation-level batch correction is applied to the accepted score;
+same-run control subtraction supplies the pairing.
+
+For inference, the **arithmetic mean over T1–T6 is first calculated within
+each experiment** and the three experiment means are tested against zero.
+The displayed global q values are 0.0253 (INH) and 0.895 (MIM). These assess
+mean displacement from matched controls, not whether displacement grows
+significantly with time. The late endpoint uses the three T5–T6 experiment
+means and yields q = 0.0132 (INH) and q = 0.424 (MIM). BH correction is applied
+across the two arms separately for each endpoint. Timepoints and CpGs are
+not counted as additional experimental replicates.
+
+```{r main-o-code, eval=FALSE, code=code_excerpt("code/03_fidelity.R")}
+```
+```{r main-o, echo=FALSE}
+show_panel("4o_center_and_right")
+table_show(read_table("4o_late_tests"))
+table_show(read_table("4o_global_tests"))
+```
+
+### The same reference in hTERT HGF and the HPF series
+
+The **same 123 CpGs and the same external medians** are applied to independently
+sourced, donor-distinct hTERT gingival fibroblasts, without reselecting the
+signature in that model. Treatment is compared with its contemporaneous
+same-run control. At 96 h after the third cycle, INH shows increased distance
+with q = 0.0409; MIM q = 0.406. These are final-cycle endpoint tests on three
+matched experimental differences, not primary-HGF T5–T6 tests and not tests
+of a temporal increase. The mean over all three hTERT cycles gives q = 0.0777
+(INH) and q = 0.294 (MIM), reported separately for completeness.
+
+```{r htert-reference-results, echo=FALSE}
+table_show(read_table("hTERT_123CpG_reference_tests"))
+```
+
+The SV40-HPF reference-distance series is descriptive: one treated/control
+pair is available per observation and no p or q value is assigned. It is
+distinct from the genome-wide persistence projections in S4m/n.
+
+```{r hpf-reference-results, echo=FALSE}
+table_show(read.delim("data/fidelity123/HPF_descriptive.tsv", check.names = FALSE))
+```
+
+# Figure S4 — control resolution and complementary models
+
+## a — Global methylation with separate controls
+
+This is the same raw-beta, own-T1, mixed-model estimand as Figure 4d, now with
+separate INH and MIM control curves and ordinal display positions 1,2,4,5,7,8.
+Intervals remain model-based 90% confidence intervals, not SEM. Changing the
+display axis does not refit the historical genome-wide temporal models.
+The annotated q values compare each treatment with its matched-control arm,
+using the treatment-by-categorical-time interaction; Figure 4d instead shows
+the corresponding pooled-control tests.
+
+```{r supp-a-code, eval=FALSE, code=code_excerpt("code/02_clocks.R", "# S4a:")}
+```
+```{r supp-a, echo=FALSE}
+show_panel("S4a_global_methylation_separate_controls")
+```
+
+## b — Entropy and FAE relative to matched controls
+
+Each sample's own same-run, same-timepoint control value is subtracted from
+the treatment value: **treatment minus control**. Means and SEM are
+then calculated across three independent runs per arm/timepoint. FAE deltas
+are in percentage points; entropy deltas retain natural-log units. Controls
+are represented by zero rather than additional curves. These are changes in
+sample-level distribution metrics, not averages of paired probe-level entropy.
+
+```{r supp-b-code, eval=FALSE, code=code_excerpt("code/02_clocks.R", "# S4b:", "# S4a:")}
+```
+```{r supp-b, echo=FALSE}
+show_panel("S4b_entropy_FAE_deltas")
+```
+
+## c–e — Epigenetic clocks with resolved control arms
+
+S4c shows Skin & Blood; S4d shows CausAge, DamAge and AdaptAge; S4e shows
+RetroAge. All use the shared ordinal-axis display and their own controls.
+Only matched-control global average-shift q values are annotated, with BH
+adjustment across two arms separately within each clock; no individual-TP
+asterisks are drawn.
+CausAge is shown on its original score scale. DamAge and AdaptAge retain the
+historical pooled-CTRL-T1 display baseline, which is a constant display shift,
+not a change to the underlying scores or statistical tests.
+
+The additional models use fixed supplied coefficient tables. Available CpGs
+are 496/585 for CausAge, 1,016/1,089 for DamAge and 938/999 for AdaptAge.
+Missing features are omitted without renormalizing the remaining weights,
+and missing matrix entries use the source probe-mean rule. These are
+**available-feature scores**, not fully covered externally validated ages.
+Coverage and missing absolute coefficient weight are included in the table.
+
+The complete scoring checks and drawing loop are shared with Figure 4i/j;
+they are included here as executable source, not merely as linked figures.
+
+```{r supp-clocks-code, eval=FALSE, code=code_excerpt("code/02_clocks.R", NULL, "# S4b:")}
+```
+```{r supp-c, echo=FALSE}
+show_panel("S4c")
+```
+```{r supp-d, echo=FALSE}
+show_panel("S4d_causal_clocks")
+table_show(read_table("epigenetic_clock_coverage")[,c("clock","n_required","n_present","missing_absolute_weight_fraction")])
+```
+```{r supp-e, echo=FALSE}
+show_panel("S4e")
+```
+
+## f — Temporal trajectory outcome classes
+
+DNAm and RNA are analyzed separately, using the union of significant temporal
+features within each treatment/control pair. Nominal p < 0.05 supports an
+individual temporal direction. A supported CTRL trajectory without support in
+the treatment is classified as **attenuated/lost support**, not automatically
+as a smaller estimated slope. Supported same-direction slopes are compared
+using a 20% relative-magnitude band; opposite directions or newly supported
+trajectories contribute to the rewired categories. The full decision hierarchy
+is defined by the `pair()` function shown in Figure 4m.
+
+These labels are descriptive, support-aware categories; they are not a test
+of significant differences between slopes. In particular, a nonsignificant
+treated slope does not prove a zero biological effect.
+
+```{r supp-f-classification, eval=FALSE, code=code_excerpt("code/01_primary.R", "standardize <-", "geometries <-")}
+```
+```{r supp-f-code, eval=FALSE, code=code_excerpt("code/01_primary.R", "summary$class <-", "# ---- 4n")}
+```
+```{r supp-f, echo=FALSE}
+show_panel("S4f_trajectory_outcomes")
+```
+
+## g — CHIR-responsive regions
+
+The WNT/CHIR experiment is distinct from the classic primary-HGF timecourse.
+CTRL is scramble; INH is miR-29 inhibitor; CHIR is scramble plus CHIR; COMBO
+is **INH+CHIR**, not a separate drug. Biological experiment is determined by
+the verified `BATCH` field, not potentially inconsistent short sample labels.
+
+Historical DMRcate discovery uses all available samples, including incomplete
+EXP65, with biological experiment included in the design. The original
+`CHIR vs CTRL` output contains four DMRs. Applying the fixed absolute regional
+mean beta-change threshold ≥0.10 retains three loci: DKK2, HOXB3/HOXB-AS3,
+and the C1QTNF3/AMACR locus. PHLDB2 is below this effect-size threshold.
+Two genes assigned to one region do not constitute two independent DMRs.
+
+The Circos uses hg38 cytobands and true region-midpoint coordinates; enlarged
+markers are pointers, not genomic widths or whole-genome assay coverage.
+Labels use native `min_smoothed_fdr`, the **minimum smoothed evidence within
+the region**, not a whole-region BH q-value. DKK2 is highlighted for its
+mechanistic relevance to the WNT question, not because it has the largest
+mean methylation change. All selected loci remain disclosed.
+
+```{r supp-g-code, eval=FALSE, code=code_excerpt("code/04d_wnt_circos.R")}
+```
+```{r supp-g, echo=FALSE}
+show_panel("S4g_CHIR_responsive_loci")
+table_show(read_table("S4g_complete_CHIR_discovery_and_selection")[,c("locus","seqnames","start","end","no.cpgs","meandiff","min_smoothed_fdr","retained")])
+```
+
+## h — DKK2: regional calls, profile and heatmap
+
+The upper tracks show native DMRcate intervals in the fixed order INH vs CTRL,
+CHIR vs CTRL, and INH+CHIR vs CTRL. The shaded CHIR-defined core contains
+three CpGs. “No overlapping DMR” means that no region was called in that
+comparison; it does **not** establish that every inhibitor-alone beta
+difference is zero.
+
+Discovery intervals use the all-sample historical analysis. In contrast, the
+profile and heatmap use only the complete matched experiments EXP66–68.
+For each CpG, `100 × (treated beta − same-experiment CTRL beta)` is displayed.
+The profile summarizes those three paired differences by mean ± SEM; the
+heatmap retains individual experiments. Connectors map true genomic positions
+to equally spaced heatmap columns. The core is outlined within the full 16-CpG
+interval. Excluding incomplete EXP65 for a paired display is not an independent
+validation of regions discovered partly from the same experiments.
+
+```{r supp-h-code, eval=FALSE, code=code_excerpt("code/04a_wnt_locus.R")}
+```
+```{r supp-h, echo=FALSE}
+show_panel("S4h_DKK2_aligned_locus")
+```
+
+## i — DKK2 paired responses and beta-scale interaction
+
+The left and right summaries use the same samples but different nested regions:
+the three-CpG CHIR core and the extended 16-CpG interval. Beta is first averaged
+across the selected CpGs **within each sample**, then the matched control is
+subtracted. Circles are biological experiments, gray lines preserve pairing,
+diamonds are group means and bars are SEM across three experiments. CpGs are
+not treated as independent biological replicates.
+
+The forest plot tests `100 × [(COMBO − CHIR) − (INH − CTRL)]` separately for
+the two regions. It reports a mean paired interaction and 95% t interval
+(df=2), with BH correction across the two nested DKK2 tests. This is evidence
+about nonadditivity on the **beta scale**, conditional on the selected loci;
+it is not a genome-wide interaction discovery or independent validation.
+M-scale interactions answer a different question and are not interchanged
+with these tests according to significance. Native DMRcate evidence and
+regional paired inference are reported as distinct analyses.
+
+```{r supp-i-response-code, eval=FALSE, code=code_excerpt("code/04b_wnt_responses.R")}
+```
+```{r supp-i-interaction-code, eval=FALSE, code=code_excerpt("code/04c_wnt_statistics.R")}
+```
+```{r supp-i, echo=FALSE}
+show_panel("S4i_DKK2_paired_responses")
+show_panel("S4i_DKK2_interaction_forest")
+table_show(read_table("S4i_interaction_tests"))
+```
+
+## j — hTERT HGF temporal methylation and CAMERA
+
+hTERT HGF are a complementary immortalized model, not additional replicates
+of the primary-HGF donor. The temporal inhibitor analysis contains 937,687
+assay features and identifies 3,632 DMPs: 3,207 hyper and 425 hypo (88%/12%).
+No temporal DMPs pass the same cutoff in the CTRL or mimic tables. The count
+axis is in thousands, not the 0–150k scale of primary HGF.
+
+All probes are ranked by the inhibitor temporal moderated t statistic.
+Only the dense gray background is thinned for display; every significant
+probe remains plotted. The INH-derived hyper/hypo probe sets are projected
+onto CTRL and mimic temporal statistics using **limma `cameraPR`**, with
+`use.ranks=FALSE` and inter-probe correlation 0.01. The bars show
+`−log10(BH FDR)`, adjusting the two sets within each target. Red/blue encode
+CAMERA Up/Down direction; they are not NES values. The code independently
+reproduces the stored p/q values and their bar lengths.
+
+```{r supp-j-code, eval=FALSE, code=code_excerpt("code/05_htert_hpf.R", NULL, "rna <- hp_input")}
+```
+```{r supp-j-plot-code, eval=FALSE, code=code_excerpt("code/05_htert_hpf.R", "colors <-", "hp <- hpf_panel")}
+```
+```{r supp-j, echo=FALSE}
+show_panel("S4j_hTERT")
+table_show(read_table("panel_p_CAMERA_statistics"))
+```
+
+## k — Transcriptomic clocks in hTERT HGF
+
+The 42 RNA samples comprise four INH/control runs and three MIM/control runs,
+each measured at three timepoints. RNAAgeCalc uses frozen gene lengths,
+FPKM, sequential design-protected experiment/batch adjustment, zero-clipping
+of negative adjusted expression, and the historical all-tissue Caucasian model.
+PASTA uses the official model-gene filtering and rank normalization **once**,
+followed by its frozen predictor and calibration multiplier.
+
+tAge uses the human-inclusive YuGene model, tAge 1.1.0 preprocessing, and
+control subtraction within each experimental arm. The exact prediction
+environment uses scikit-learn 1.3.2 and the checksum-verified serialized model.
+The display removes run offsets while preserving arm means, subtracts own-arm
+CTRL at T1, and applies the historical 122.5 multiplier. This plotted delta is
+identified as a **relative model-scaled tAge score**, not an independently
+validated chronological age of a cell line.
+
+These are newly computed hTERT predictions, not inherited primary-HGF ages or
+p-values. Historical global inference uses ML likelihood-ratio tests for shift
+and interaction, with four-test BH adjustment per clock. Kenward–Roger
+average-shift and run-mean paired sensitivities are retained transparently.
+Only the matched-control global shift q values are drawn on these curves;
+individual-timepoint significance symbols are not displayed.
+The display and raw inference inputs are separate. The frozen input matrices,
+prediction recipes and model assets are bundled; normal knitting need not
+reinstall the historical prediction environment.
+
+```{r supp-k-prediction-code, eval=FALSE, code=code_excerpt("code/upstream/transcriptomic_clock_recipes.R")}
+```
+```{r supp-k-code, eval=FALSE, code=code_excerpt("code/05b_htert_clocks.R")}
+```
+```{r supp-k, echo=FALSE}
+show_panel("S4k_hTERT_transcriptomic_clocks")
+table_show(read_table("S4k_clock_global_statistics")[,c("clock","arm","n_runs","p_global_shift","q_global_BH4","p_interaction","q_interaction_BH4","p_KR_average_shift","q_runmean_BH2")])
+```
+
+## l — HPF treatment and withdrawal design
+
+The SV40 HPF series contains repeated inhibitor/scramble treatment and
+reseeding, followed by withdrawal after T6. T1–T6 are the retained 96-hour
+post-treatment samples. T7 and T8 represent the recorded post-withdrawal
+observations. The diagram below is the approved editorial schematic, not a
+plot generated by the retention model. The actual sample metadata, rather
+than distances in this illustration, define the analytical ordering.
+
+```{r supp-l, echo=FALSE, out.width="45%", fig.cap="Editorial HPF design schematic preserved from the approved Figure S4."}
+knitr::include_graphics("reference/S4l_HPF_design_artwork.png")
+```
+
+## m — Persistence of the T6-responsive state
+
+For a fixed feature universe, the observed paired treatment effect at each
+time is projected onto the observed T6 effect vector:
+
+\[
+R_t=\frac{\sum_j\Delta_{j,T6}\Delta_{j,t}}
+           {\sum_j\Delta_{j,T6}^{2}}.
+\]
+
+T6 is therefore exactly one. Zero means no component along the T6 vector;
+negative values indicate an opposite component, not “negative methylation”.
+RNA uses observed VST differences and a 419-gene T6 core selected by nominal
+p < 0.05. DNAm uses observed M-value differences and the 1,809-CpG core
+selected by the saved T6-offset BH FDR < 0.05. Selection criteria are not
+interchanged between omics.
+
+The envelope spans seven nested feature universes. It is a **feature-set
+sensitivity range**, not a confidence interval or uncertainty across seven
+biological replicates. The timecourse is not a replicated withdrawal experiment.
+At T8, the projection is approximately −6% for RNA and 63% for DNAm.
+The RNA curves are recomputed from their observed-effect matrix; DNAm curves
+are cross-checked against the verified collapsed-CpG decision checkpoint.
+
+```{r supp-m-analysis-code, eval=FALSE, code=code_excerpt("code/05_htert_hpf.R", "rna <- hp_input", "colors <-")}
+```
+```{r supp-m-code, eval=FALSE, code=code_excerpt("code/05_htert_hpf.R", "hp <- hpf_panel", "scatter_plot <-")}
+```
+```{r supp-m, echo=FALSE}
+show_panel("S4m_HPF_retention")
+```
+
+## n — Observed residual effects at T8
+
+The scatter coordinates are the **observed** matched effects at T6 and T8,
+not model-predicted coefficients. Pearson correlation and the through-origin
+projection ratio summarize complementary aspects of retention. Correlation
+does not equal the fraction of effect retained. The RNA correlation is about
+−0.12; the DNAm correlation is about 0.90.
+
+Two historical DNAm exports differ in T8 retention by approximately 4.5×10⁻⁶
+(0.00045 percentage points). Their accepted curve and scatter values are
+preserved and explicitly checked within 10⁻⁵; they are not described as
+bit-identical. This does not affect the displayed 63% value.
+
+```{r supp-n-code, eval=FALSE, code=code_excerpt("code/05_htert_hpf.R", "scatter_plot <-")}
+```
+```{r supp-n, echo=FALSE}
+show_panel("S4n_HPF_residual_effect")
+table_show(read_table("panel_s_statistics"))
+```
+
+# Statistical results and executable inference
+
+## Primary own-control tests
+
+The following table uses final panel names. In the internal historical
+checkpoints, `h` corresponds to current 4i-right and `i-right` to current
+4j-right. The displayed table resolves that mapping rather than propagating
+old panel letters into the paper.
+
+```{r primary-statistics, echo=FALSE}
+s <- read_table("final_main_statistics_own_controls")
+table_show(s[,c("final_panel","endpoint","arm","hypothesis","n_runs","p","q_BH_panel","singular")])
+```
+
+The code below re-fits the small panel-level models. Both pooled-control and matched-control outputs are retained. The current main pooled displays use pooled-control statistics, whereas the control-resolved supplementary displays use matched-control statistics. Figure 4l remains unchanged. The random run intercept adjusts for experimental batch; it does not imply that the plotted raw input has been batch-corrected.
+
+```{r statistical-model-code, eval=FALSE, code=code_excerpt("code/06a_statistics.R")}
+```
+```{r control-definition-code, eval=FALSE, code=code_excerpt("code/06b_statistics_sensitivity.R")}
+```
+
+## Epigenetic clock global and timepoint tests
+
+Use the global average-shift q values for current epigenetic-clock curve annotations, with the comparator specified in CURRENT_STATISTICAL_LABELS.tsv. The stored q_BH_two_arms values refer to matched-control tests. Do not substitute time-interaction q values for this hypothesis. Current curves display global q values only; historical timepoint tests, adjusted across 12 comparisons within each clock, are retained below but not displayed as timepoint stars.
+
+```{r clock-statistics-code, eval=FALSE, code=code_excerpt("code/06c_clock_statistics.R")}
+```
+```{r clock-global-results, echo=FALSE}
+table_show(read_table("S4_epigenetic_clock_global_statistics")[,c("clock","arm","p_average_shift","q_BH_two_arms","p_time_interaction","q_interaction_two_arms","singular_average")])
+```
+```{r clock-timepoint-results, echo=FALSE}
+table_show(read_table("S4_epigenetic_clock_timepoint_statistics")[,c("clock","arm","time","estimate","p.value","q_BH_12_TP_tests")])
+```
+
+## Current annotation code and panel mapping
+
+The analytical reconstructions use `CURRENT_STATISTICAL_LABELS.tsv`, with
+pooled and matched comparisons identified. The annotation module executes
+after the statistical modules and checks the q values against their numerical
+outputs. Current clock curves display global q values only; Figure 4l remains
+unchanged.
+
+```{r current-annotation-code, eval=FALSE, code=code_excerpt("code/08_current_annotations.R")}
+```
+
+
+- Figure 4d uses pooled-control global interaction q values; S4a shows the corresponding matched-control results.
+- Skin & Blood and RetroAge main curves use pooled-control global average-shift q values, and S4c/e use matched-control q values. No clock timepoint stars are displayed.
+- The 123-CpG centre-panel q tests the mean T1–T6 displacement, and the right
+  panel tests the T5–T6 mean; neither annotation is a slope-test result.
+- S4g labels must identify **minimum smoothed FDR**, not an unspecified
+  whole-region corrected p-value. S4h discovery and matched display populations
+  differ as described above.
+- S4j CAMERA bars match the reproduced q values. The analytical count axis is
+  0–4k. Any duplicated thumbnail in the Illustrator composition is editorial,
+  not an extra analysis to reproduce.
+- S4m shading is a nested-universe range. S4n uses observed, not fitted, effects.
+
+# The 123-CpG reference and annotation table
+
+`data/fidelity123/HGF123_reference.tsv` contains all 123 unique CpGs, the
+external-reference medians and available genomic, gene and selection
+annotations. It is the same reference as Supplementary Data 4. Coordinates
+and nearest-gene annotations are descriptive; proximity does not establish
+a causal regulatory target. Raw collapsed beta values are retained for each
+CpG/sample; multiple array designs for one CpG are not independent signature
+members.
+
+Historical 43-CpG annotation exports and their optional replay scripts are
+retained only under `provenance/`; they are not used to score or annotate the
+current 123-CpG analysis. No new supplementary workbook is created here.
+
+```{r annotation-preview, echo=FALSE}
+a <- read.delim("data/fidelity123/HGF123_reference.tsv", check.names = FALSE, na.strings = "\\N")
+table_show(a[,intersect(c("probe","chr","pos","nearest_symbol","nearest_tss_symbols","nearest_tss_distance_bp","fibroblast_direction"), names(a)), drop = FALSE])
+```
+
+# Validation, software and approved layouts
+
+## Numerical checks
+
+The checks below compare regenerated quantities against the frozen accepted
+analyses, including component shares, DKK2 interactions, CAMERA, HPF curves,
+reference selection, clock predictors and panel-level statistics. Agreement
+with a historical result is a reproducibility check, not proof that its
+scientific assumptions are universally valid.
+
+```{r validation-code, eval=FALSE, code=code_excerpt("code/07_validate_assets.R")}
+```
+```{r validation-results, echo=FALSE}
+table_show(read.delim("validation/numeric_checks.tsv", check.names = FALSE))
+```
+
+## Optional upstream work
+
+`code/upstream/README.md` distinguishes optional large-matrix regeneration,
+reference-selection functions and predictor replay from the routine panel
+reconstruction. The verified HPF server pipeline is retained in
+`code/upstream/hpf/`; it requires the original `hpf_beta_all`,
+`hpf_beta_all.collapsed`, `hpf_mval_all.collapsed` and `hpf_samples_all` inputs.
+The bundle does not claim that those large server objects or the IDAT pipeline
+were regenerated during this document build.
+
+For exact tAge predictor replay, the frozen model and centered YuGene matrix
+are supplied along with a Python entry point. Use the recorded scikit-learn
+1.3.2 environment. Published clocks are not re-trained or tuned here.
+
+## Software environment
+
+```{r session-info, echo=FALSE}
+sessionInfo()
+```
+
+## Approved reference layouts
+
+These are the unchanged supplied figures for visual comparison. They are
+separate from the reconstructed plots above; manual layout differences do
+not change the underlying numerical results.
+
+```{r original-main, echo=FALSE, fig.cap="Approved Figure 4 Illustrator layout, preserved unchanged."}
+knitr::include_graphics("reference/Figure4_main_final.png")
+```
+```{r original-supp, echo=FALSE, fig.cap="Approved Figure S4 Illustrator layout, preserved unchanged."}
+knitr::include_graphics("reference/FigureS4_final.png")
+```

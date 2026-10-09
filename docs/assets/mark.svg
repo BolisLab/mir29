@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 112 112" role="img" aria-labelledby="title desc">
+  <title id="title">miR-29 research companion</title>
+  <desc id="desc">Typographic miR-29 monogram in forest green and muted plum.</desc>
+  <rect width="112" height="112" rx="2" fill="#edeee6"/>
+  <path d="M17 17h78v78H17z" fill="none" stroke="#c6d0bf"/>
+  <path d="M17 17h28M17 17v28" fill="none" stroke="#285b43" stroke-width="3"/>
+  <path d="M67 95h28V67" fill="none" stroke="#795273" stroke-width="3"/>
+  <text x="56" y="43" font-family="Arial,Helvetica,sans-serif" font-size="15" letter-spacing="1.4" text-anchor="middle" fill="#285b43">miR</text>
+  <text x="56" y="81" font-family="Georgia,serif" font-size="43" letter-spacing="-3" text-anchor="middle" fill="#20342c">29</text>
+</svg>

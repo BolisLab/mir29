@@ -1,0 +1,3 @@
+endpoint	arm	n_experiments	mean_pp	sem_pp	ci_low_pp	ci_high_pp	t	df	p	q	test	q_family
+all_T1_T6	INH	3	0.379146778377175	0.0430206863513478	0.194043704811853	0.564249851942497	8.81312713797037	2	0.0126313610966899	0.0252627221933798	Two-sided one-sample t-test of matched run summaries against zero	BH across INH and MIM, separately for this endpoint
+all_T1_T6	MIM	3	-0.0122956793776778	0.082650828851516	-0.367913493751709	0.343322134996353	-0.148766558648398	2	0.895383395375712	0.895383395375712	Two-sided one-sample t-test of matched run summaries against zero	BH across INH and MIM, separately for this endpoint

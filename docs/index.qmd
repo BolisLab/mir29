@@ -1,0 +1,170 @@
+---
+title: "miR-29 trades youthful plasticity for epigenetic fidelity"
+description: "The Bolis Lab research companion: methods, code and figure-by-figure analyses of miR-29, ageing, rejuvenation and cancer."
+page-layout: full
+toc: false
+title-block-style: none
+---
+
+::: {.mir29-landing}
+
+::: {.landing-kicker}
+<span>BOLIS LAB / RESEARCH COMPANION</span><span class="working-status">Private working preview</span>
+:::
+
+::: {.research-hero}
+::: {.hero-copy}
+# miR-29 trades youthful plasticity for epigenetic fidelity {.hero-title .unnumbered}
+
+::: {.hero-deck}
+A figure-by-figure journey through ageing, rejuvenation and evolution—and the distinction between molecular age, the capacity for change and the state reached by that change.
+:::
+
+::: {.hero-actions}
+[Explore the analyses](#explore){.primary-link}
+[Reproduce the results](reproduce.qmd){.text-link}
+:::
+:::
+
+::: {.hero-note}
+<img src="assets/mark.svg" class="hero-mark" alt="miR-29 research companion monogram" width="112" height="112">
+
+::: {.eyebrow}
+THE CENTRAL DISTINCTION
+:::
+
+### A younger estimate is not the whole story. {.unnumbered}
+
+Lower molecular-age estimates can coexist with greater departure from a somatic methylation reference. The analyses connect these readouts without treating them as interchangeable.
+
+::: {.note-key}
+<span class="inh-dot" aria-hidden="true"></span> Inhibitor <span class="mim-dot" aria-hidden="true"></span> Mimic
+:::
+:::
+:::
+
+::: {.reader-strip}
+::: {.reader-strip-label}
+ONE STUDY, THREE WAYS IN
+:::
+[Read the evidence](#explore) · [Inspect the methods and code](reproduce.qmd) · [Find the underlying datasets](datasets.qmd)
+:::
+
+::: {#explore .evidence-section}
+::: {.section-heading}
+::: {.eyebrow}
+01 / EXPLORE
+:::
+## Follow the evidence. {.unnumbered}
+
+Five connected chapters. Main and supplementary figures together, with the analysis behind each panel.
+:::
+
+::: {.chapter-list}
+::: {.chapter-row}
+::: {.chapter-number}
+01
+:::
+::: {.chapter-content}
+### [Where ageing and rejuvenation converge](figures/figure1.qmd) {.unnumbered}
+
+Transcriptional programmes across physiological ageing, somatic reprogramming and early development.
+:::
+::: {.chapter-meta}
+[FIGURE 1 + S1 ↗](figures/figure1.qmd)
+:::
+:::
+
+::: {.chapter-row}
+::: {.chapter-number}
+02
+:::
+::: {.chapter-content}
+### [An evolutionary perspective](figures/figure2.qmd) {.unnumbered}
+
+miRNA complements, mature sequences, age-associated expression and conservation of a regulatory CpG.
+:::
+::: {.chapter-meta}
+[FIGURE 2 + S2 ↗](figures/figure2.qmd)
+:::
+:::
+
+::: {.chapter-row}
+::: {.chapter-number}
+03
+:::
+::: {.chapter-content}
+### [Perturbing the transcriptional state](figures/figure3.qmd) {.unnumbered}
+
+Opposing miR-29 perturbations, transcriptional-age readouts and independently defined ageing programmes.
+:::
+::: {.chapter-meta}
+[FIGURE 3 + S3 ↗](figures/figure3.qmd)
+:::
+:::
+
+::: {.chapter-row}
+::: {.chapter-number}
+04
+:::
+::: {.chapter-content}
+### [Remodelling and its destination](figures/figure4.qmd) {.unnumbered}
+
+Methylome dynamics, epigenetic clocks and distance from the 123-CpG fibroblast reference.
+:::
+::: {.chapter-meta}
+[FIGURE 4 + S4 ↗](figures/figure4.qmd)
+:::
+:::
+
+::: {.chapter-row}
+::: {.chapter-number}
+05
+:::
+::: {.chapter-content}
+### [The relationship in cancer](figures/figure5.qmd) {.unnumbered}
+
+miR-29, molecular age and methylation divergence in tumours, with complementary cancer-cell-line analyses.
+:::
+::: {.chapter-meta}
+[FIGURE 5 + S5 ↗](figures/figure5.qmd)
+:::
+:::
+:::
+:::
+
+::: {.practical-section}
+::: {.reproduce-panel}
+::: {.eyebrow}
+02 / REPRODUCE
+:::
+## From a panel to its analysis. {.unnumbered}
+
+Follow the documented inputs, contrasts and code. Start with the figure modules, then use the reproduction guide to identify the data and computing environment each analysis needs.
+
+[Open the reproduction guide →](reproduce.qmd){.panel-link}
+
+::: {.small-note}
+This working edition is being prepared for release. Module availability and verification boundaries are documented; complete end-to-end reproduction is not yet claimed.
+:::
+:::
+
+::: {.data-panel}
+::: {.eyebrow}
+03 / FIND & REUSE
+:::
+## Every result has a source. {.unnumbered}
+
+Dataset provenance, analysis inputs and access requirements belong alongside the code. Large files and controlled-access data are kept separate from the repository.
+
+[Browse datasets and access information →](datasets.qmd){.panel-link}
+
+[About the study and citation →](about.qmd){.panel-link .secondary-panel-link}
+:::
+:::
+
+::: {.landing-colophon}
+<span>miR-29 / BOLIS LAB</span><span>Research code, context and evidence.</span>
+:::
+
+:::

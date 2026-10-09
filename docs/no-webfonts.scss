@@ -1,0 +1,6 @@
+/*-- scss:defaults --*/
+
+// Keep the research companion self-contained: Cosmo imports its Google font
+// only when this variable is truthy. Use the same system stack as styles.css.
+$web-font-path: false;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;

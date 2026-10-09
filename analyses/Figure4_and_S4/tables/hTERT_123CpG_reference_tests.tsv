@@ -1,0 +1,5 @@
+endpoint	arm	n_experiments	mean_pp	sem_pp	ci_low_pp	ci_high_pp	t	df	p	q	test	q_family
+mean_three_rounds_pp	INH	3	0.13295195197195	0.0269969450821682	0.0167934725192624	0.249110431424637	4.92470357543402	2	0.038845810946345	0.07769162189269	Two-sided one-sample t-test of matched run summaries against zero	BH across INH and MIM, separately for this endpoint
+mean_three_rounds_pp	MIM	3	0.0792673547481321	0.0562219853094215	-0.162636323815384	0.321171033311649	1.40989960265328	2	0.293974179902763	0.293974179902763	Two-sided one-sample t-test of matched run summaries against zero	BH across INH and MIM, separately for this endpoint
+third_cycle_96h	INH	3	0.122139395783552	0.01774537184624	0.0457872231689083	0.198491568398196	6.8828873715279	2	0.0204628826981932	0.0409257653963864	Two-sided one-sample t-test of matched run summaries against zero	BH across INH and MIM, separately for this endpoint
+third_cycle_96h	MIM	3	0.0569577861718397	0.0545310256320955	-0.177670280120134	0.291585852463813	1.04450238211393	2	0.405898060562434	0.405898060562434	Two-sided one-sample t-test of matched run summaries against zero	BH across INH and MIM, separately for this endpoint

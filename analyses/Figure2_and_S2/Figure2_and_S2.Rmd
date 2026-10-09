@@ -1,0 +1,788 @@
+---
+title: "MIR29 trades youthful plasticity for epigenetic fidelity"
+subtitle: "Figure 2 and Supplementary Figure S2 — reproducible evolutionary and pan-mammalian reconstruction"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    self_contained: true
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: false
+    code_folding: show
+    code_download: true
+    fig_caption: true
+    highlight: tango
+    css: styles.css
+params:
+  seed: 123
+  export_dpi: 300
+---
+
+> **Repository snapshot — input bundle pending.** This chapter preserves the existing analytical narrative, code and rendered outputs. References below to bundled input data describe the full analytical bundle, not this lightweight repository snapshot. Required inputs are not yet fully distributed here, so a fresh clone cannot regenerate the analysis. See [module instructions](README.md).
+>
+> **Reading copy.** Converted from the existing rendered chapter; this is not a newly executed analysis.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.retina = 1,
+  dev = "svglite",
+  cache.path = "cache/figure2-and-s2-",
+  out.width = "100%"
+)
+
+options(width = 110, scipen = 4, stringsAsFactors = FALSE)
+set.seed(params$seed)
+```
+
+# Prepare and import the data
+
+This notebook is the portable analytical reconstruction of the current main
+Figure 2 and the approved Supplementary Figure S2 (panels a–i). All paths used during a normal knit are relative to this folder. The
+small analysis-ready objects, cached phylogeny, alignments, manifests and
+reference artwork are stored locally so that the project can be moved to a
+different computer without editing absolute paths.
+
+The original normalized pan-mammalian beta matrix is approximately 3.9 GB. It
+is not needed to reproduce the displayed correlations and is therefore not
+duplicated here. Instead, the bundle contains the complete 37,554-probe
+tissue-level correlation objects consumed by panels h, j and k, together with
+the filtered sample annotation and sequence-alignment table. The raw source is
+recorded in the provenance manifest for optional audit. For S2, a compact
+sample-level extract of cg10501210 is also included: the human bootstrap
+intervals can be recalculated without the full beta matrix.
+
+Open `Figure2_main.Rproj` in RStudio, then Knit this document, or run
+`source("render_figure2_and_s2.R")`. To build the plots without knitting, use
+`source("run_figure2_and_s2_in_RStudio.R")`. To inspect saved plots immediately,
+use `load("figures/supplementary_s2/Figure2_and_S2_workspace.RData")`.
+
+## Upstream small-RNA processing
+
+Eight animal datasets were reprocessed from raw reads with nf-core/smrnaseq 2.4.1. Mouse, rat and macaque instead used published expression matrices. The [dataset and run-settings inventory](data/miRNA_phylogeny/smallRNA_reprocessing_settings.tsv) records accessions, tissues, reference assemblies, adapter and read-length parameters. Mature counts were exported through EDGER_QC from the Bowtie/SAMtools branch. The local patch disabled downstream mirtop; those outputs were not used. Species-specific miRBase FASTAs were downloaded in May 2026. N. furzeri used the [NFINgb](https://nfingb.leibniz-fli.de/) genome and matching miRNA annotation, with strand-aware sequence extraction and header normalization that left mature sequences unchanged. The notebook starts from the resulting analysis-ready inputs and does not rerun raw-read processing.
+
+## Complete analysis modules
+
+The two folded blocks below contain the complete standalone R code. They can
+be copied into RStudio and run with the working directory set to this project
+folder. The normal knit executes the same scripts in a clean environment.
+
+```{r mirna-module-source, eval=FALSE, class.source='fold-hide', code=readLines('code/figure2_mirna_phylogeny.R', warn=FALSE)}
+```
+
+```{r methylation-module-source, eval=FALSE, class.source='fold-hide', code=readLines('code/figure2_methylation.R', warn=FALSE)}
+```
+
+## Load packages and reconstruct the analytical panels
+
+```{r run-analysis-modules, include=FALSE, cache=FALSE}
+required_packages <- c(
+  "ape", "cowplot", "dplyr", "ggplot2", "gghalves", "ggrepel",
+  "ggrastr", "ggtree", "ggtext", "grid", "knitr", "purrr", "readr", "ragg",
+  "scales", "stringr", "svglite", "tibble", "tidyr"
+)
+
+missing_packages <- required_packages[
+  !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
+]
+if (length(missing_packages)) {
+  stop(
+    "Install the following R packages before knitting: ",
+    paste(missing_packages, collapse = ", ")
+  )
+}
+
+# Keep plotting environments independent of knitr's HTML-render state. This
+# avoids serializing the whole rendered notebook into each reusable plot.
+main_analysis_env <- new.env(parent = globalenv())
+source("code/figure2_mirna_phylogeny.R", local = main_analysis_env)
+source("code/figure2_methylation.R", local = main_analysis_env)
+list2env(as.list(main_analysis_env, all.names = TRUE), envir = knitr::knit_global())
+
+figure2_plot_objects <- list(
+  panel_a = panel_a_tree,
+  panel_f = panel_f,
+  panel_g = panel_g,
+  panel_h = panel_h,
+  panel_i = panel_i,
+  panel_j = panel_j,
+  panel_k = panel_k
+)
+
+dir.create("figures/generated", recursive = TRUE, showWarnings = FALSE)
+if (!file.exists("figures/generated/figure2_plot_objects.rds")) {
+  saveRDS(
+    figure2_plot_objects,
+    "figures/generated/figure2_plot_objects.rds",
+    compress = "gzip"
+  )
+}
+if (!file.exists("figures/generated/figure2_workspace.RData")) {
+  save(
+    panel_a_tree, panel_f, panel_g, panel_h, panel_i, panel_j, panel_k,
+    figure2_mirna_checks, figure2_methylation_checks,
+    file = "figures/generated/figure2_workspace.RData",
+    compress = "gzip"
+  )
+}
+```
+
+```{r figure-settings, include=FALSE}
+figure_font <- "sans"
+
+figure2_colors <- c(
+  mir29a = "#F7C514",
+  mir29b = "#9FD4E3",
+  mir29c = "#EF6170",
+  mir29b1 = "#5269BA",
+  mir29b2 = "#2A8E7C",
+  positive = "#8B5FBF",
+  negative = "#73C9A5",
+  target = "#FFD11A",
+  accent = "#6F385F"
+)
+
+theme_figure2 <- function(base_size = 11) {
+  ggplot2::theme_classic(base_size = base_size, base_family = figure_font) +
+    ggplot2::theme(
+      axis.title = ggplot2::element_text(color = "black"),
+      axis.text = ggplot2::element_text(color = "black"),
+      axis.ticks = ggplot2::element_line(color = "black", linewidth = 0.35),
+      plot.background = ggplot2::element_rect(fill = "white", color = NA),
+      panel.background = ggplot2::element_rect(fill = "white", color = NA),
+      legend.background = ggplot2::element_rect(fill = "white", color = NA)
+    )
+}
+```
+
+<div class="figure-lead">
+Figure 2 combines three levels of evidence: evolutionary reconstruction of the
+miR-29 family, mature-miRNA associations with age across species, and a
+pan-mammalian DNA-methylation analysis of cg10501210 near MIR29B2CHG. The
+notebook labels each panel as recomputed in R, analytically reconstructed with
+editorial finishing, or imported manuscript artwork.
+</div>
+
+```{r input-summary, echo=FALSE}
+input_summary <- data.frame(
+  Analysis = c(
+    "Vertebrate phylogeny",
+    "Mature miRNA-age atlas",
+    "AGCACCA seed meta-analysis",
+    "Pan-mammalian CpG-age atlas",
+    "Sequence and cluster artwork"
+  ),
+  Portable_input = c(
+    "Cached Newick tree and species annotation",
+    "Eleven analysis-ready species RDS objects",
+    "Frozen seed workspace and mature-sequence FASTA",
+    "Tissue-level rho matrices for 37,554 probes",
+    "Alignment workbooks, state tables and reference crops"
+  ),
+  Scope = c(
+    "Vertebrate topology used in panel a",
+    "1,403 profiles before seed-level availability filtering",
+    "1,385 profiles; 10 species; Human excluded",
+    "5,774 profiles; 36 species; five macroclades",
+    "Panels b-e and editorial portion of panel i"
+  ),
+  stringsAsFactors = FALSE
+)
+
+knitr::kable(
+  input_summary,
+  align = c("l", "l", "l"),
+  caption = "Portable inputs retained in the Figure 2 project."
+)
+```
+
+```{r panel-status, echo=FALSE}
+panel_status <- data.frame(
+  Panel = letters[1:11],
+  Status = c(
+    "Hybrid: topology reconstructed in R; final evolutionary artwork imported",
+    "Imported alignment artwork",
+    "Editorial schematic",
+    "Imported evolutionary sequence reconstruction",
+    "Imported cluster-architecture summary",
+    "Recomputed in R",
+    "Recomputed in R",
+    "Recomputed in R",
+    "Analytical alignment reconstructed; final artwork imported",
+    "Recomputed in R",
+    "Analytical distribution reconstructed; final annotations are editorial"
+  ),
+  stringsAsFactors = FALSE
+)
+
+knitr::kable(
+  panel_status,
+  align = c("c", "l"),
+  caption = "Reproducibility status of every main-figure panel."
+)
+```
+
+# Panel a - Origin and vertebrate phylogeny
+
+The vertebrate topology is reconstructed from the cached resolved tree. This
+eliminates any dependency on the Open Tree API during a normal knit and makes
+the result deterministic. The surrounding non-bilaterian origin schematic,
+icons and detailed miR-29 cluster annotation are editorial layers retained in
+the Illustrator reference.
+
+## Draw the analytical radial tree
+
+```{r panel-a-tree, fig.width=10.5, fig.height=8.1, fig.cap="Panel a analytical component. Cached vertebrate phylogeny used to organize the miR-29 evolutionary reconstruction."}
+panel_a_tree
+```
+
+## Final editorial reference
+
+```{r panel-a-reference, echo=FALSE, out.width='100%', fig.cap="Panel a manuscript reference. The final artwork combines the reproducible topology with sequence-state annotations, icons and the inferred origin schematic."}
+knitr::include_graphics("reference/panel_a_reference.png")
+```
+
+# Panel b - Cross-species miR-29 locus alignment
+
+Panel b was generated with dedicated alignment software outside R and then
+assembled in Illustrator. The complete final panel is represented here, while
+the underlying alignment/provenance files are retained in
+`data/manual_and_alignment/`. It is intentionally not presented as an R
+recalculation.
+
+The sequence catalogue in Supplementary Data 2 covers the 59 displayed
+vertebrate species: 121 clusters containing 257 precursor loci, plus nine
+singletons (266 loci in total). Each mature sequence is contained in its
+corresponding precursor fragment. Assembly and nucleotide accessions,
+chromosome/scaffold, strand and separate precursor and mature coordinates
+are provided in the [locus catalogue](data/sequence_catalog/miR29_loci_and_sequences.tsv).
+Coordinates are 1-based and inclusive; precursor-fragment boundaries denote
+the extracted sequence around the mature miRNA, not experimentally mapped
+processing boundaries. Sequence matches were determined in both orientations
+on the designated reference chromosome or scaffold. Figure 2b remains an
+illustrative alignment; use the catalogue and accompanying FASTAs for
+sequence-level reuse.
+
+```{r panel-b-reference, echo=FALSE, out.width='48%', fig.cap="Panel b. Cross-species alignment of host-gene, mature-3p and paralogue regions; imported manuscript artwork."}
+knitr::include_graphics("reference/panel_b_reference.png")
+```
+
+# Panel c - Human miR-29 loci and mature sequences
+
+This editorial schematic summarizes the two human host loci, the mature
+miR-29a/b/c sequences, the shared seed and the nuclear-localization motif. It
+does not encode a statistical calculation.
+
+```{r panel-c-reference, echo=FALSE, out.width='75%', fig.cap="Panel c. Human LINC-PINT and MIR29B2CHG loci and mature miR-29 sequences; imported manuscript schematic."}
+knitr::include_graphics("reference/panel_c_reference.png")
+```
+
+# Panel d - Evolutionary reconstruction of mature miR-29
+
+Panel d is the graphical reconstruction of sequence and localization changes
+from xenacoelomorphs and tunicates to vertebrate miR-29 family members. The
+display is retained as artwork because the final reconstruction includes
+manual biological interpretation rather than a purely algorithmic layout.
+
+```{r panel-d-reference, echo=FALSE, out.width='62%', fig.cap="Panel d. Reconstructed evolutionary transitions of mature miR-29 sequences; imported manuscript artwork."}
+knitr::include_graphics("reference/panel_d_reference.png")
+```
+
+# Panel e - Cluster architecture across major clades
+
+The cluster/host-gene state matrix is an editorial synthesis of the curated
+sequence survey. Its machine-readable source files and accession-level
+provenance accompany the bundle; the exact box-glyph layout is imported.
+
+```{r panel-e-reference, echo=FALSE, out.width='72%', fig.cap="Panel e. miR-29 cluster organization and host-gene status across major vertebrate groups; imported manuscript artwork."}
+knitr::include_graphics("reference/panel_e_reference.png")
+```
+
+# Panel f - Mature-miRNA associations with age
+
+Panel f places the distribution of all measured mature-miRNA age correlations
+in each species against the corresponding miR-29 family coefficients. The
+analysis uses Spearman correlations. *Capra hircus* sample `SRR9663090` is
+corrected from 24 days to 1 day, and *Macaca mulatta* is restricted to the 14
+brain samples; the historical testis series is excluded.
+
+## Draw panel f
+
+```{r panel-f, fig.width=15.0, fig.height=4.6, fig.cap="Panel f. Mature-miRNA associations with age across 11 species. Coloured circles identify the available miR-29 family members."}
+panel_f
+```
+
+```{r panel-f-summary, echo=FALSE}
+if (exists("species_config") && is.data.frame(species_config)) {
+  knitr::kable(
+    species_config |>
+      dplyr::transmute(
+        Species = species_label,
+        Samples = sample_n,
+        Tissues = stringr::str_replace_all(tissues, "\\n", " "),
+        Macroclade = clade
+      ),
+    caption = "Species-level coverage used in panel f."
+  )
+}
+```
+
+# Panel g - AGCACCA seed meta-analysis
+
+Mature miRNAs are first collapsed by seed within species in Fisher-z space.
+Species are then equally weighted within their macroclade, and the five
+macroclades are equally weighted in the final vertebrate summary. Human is
+excluded from this current panel; the corrected goat and brain-only macaque
+inputs are retained.
+
+## Draw panel g
+
+```{r panel-g, fig.width=4.2, fig.height=5.4, fig.cap="Panel g. Equal-macroclade mature-miRNA seed meta-analysis excluding Human."}
+panel_g
+```
+
+The locked AGCACCA result is rho = 0.8923, rank 1 of 76 tested seeds, with
+1,385 profiles from 10 species.
+
+# Pan-mammalian DNA-methylation analysis
+
+The methylation panels use one locked hierarchy throughout:
+
+1. Spearman correlation between probe beta and chronological age within each
+   eligible species-tissue stratum;
+2. unweighted arithmetic mean of tissue rho values within species;
+3. equal-unit Fisher-z averaging above species, including the five-clade
+   Boreoeutheria aggregate.
+
+Samples require a recorded age and `Confidenceinageestimate > 80`. A
+species–tissue stratum requires at least 10 retained samples; at least one
+eligible tissue suffices for a species, and age-association plots require an
+estimable target coefficient. The retained probe universe contains 37,554
+mammalian-array probes. Species-level sample and tissue counts are reported
+in Supplementary Data 2. The 36 conserved-target species in the five-clade
+aggregate are a subset of the wider sequence survey, not all species that
+pass the tissue filter.
+
+# Panel h - Human CpG-age correlation atlas
+
+The Human distribution includes all 37,554 probe-level tissue-balanced age
+correlations. `cg10501210`, located in the regulatory region associated with
+`MIR29B2CHG`, is the most negatively age-associated probe.
+
+```{r panel-h, fig.width=4.8, fig.height=5.0, fig.cap="Panel h. Human tissue-balanced CpG-age correlation distribution with cg10501210 highlighted."}
+panel_h
+```
+
+Locked result: rho = -0.5091, rank 1 of 37,554, across 1,126 filtered Human
+profiles.
+
+# Panel i - Conservation of the cg10501210 sequence
+
+The portable alignment table reconstructs the analytical sequence matrix and
+marks whether the target CpG dinucleotide is intact. Species ordering and
+sequence calls are data-derived; animal silhouettes and the final curved probe
+annotation remain editorial artwork.
+
+For the illustrative alignment, 60 genomic fragments were uploaded to
+[NGPhylogeny.fr](https://doi.org/10.1093/nar/gkz303) in PhyML-SMS/OneClick
+mode. MAFFT v7.467 (L-INS-i) aligned the sequences, followed by BMGE trimming.
+The displayed alignment is the BMGE cleaned FASTA (step 7), shown in
+MSAViewer with the nucleotide colour scheme; it is not the inferred PhyML
+tree. The retained output has 60 sequences and 119 alignment columns.
+The [genomic-fragment catalogue](data/sequence_catalog/cg10501210_conservation.tsv)
+and [FASTA](data/sequence_catalog/cg10501210_60_genomic_fragments_DNA.fasta)
+provide the final sequence records and assembly-specific coordinates for
+sequence-level reuse, independently of the illustrative artwork.
+
+The survey comprises 77 species with eligible tissues. The target CpG is
+conserved in 41 and non-conserved in 25: 19 retain an alignable region with
+a disrupted target dinucleotide, whereas six have an available reference
+genome but no identified homologous probe-target region. Eleven species
+are not assessable because the exact-species reference genome was
+unavailable or inadequate and are excluded from the conserved/non-conserved
+comparison. Thus the 60 available fragments represent 41 conserved and 19
+non-conserved targets; their number does not arise from a requirement for
+multiple tissues. The analysis uses *Sus scrofa* and does not pool the
+separately labelled *Sus scrofa domesticus* samples.
+
+## Analytical reconstruction
+
+```{r panel-i, fig.width=10.0, fig.height=5.0, fig.cap="Panel i analytical component. Cross-species alignment around cg10501210 and target-CpG conservation."}
+panel_i
+```
+
+## Final editorial reference
+
+```{r panel-i-reference, echo=FALSE, out.width='64%', fig.cap="Panel i manuscript reference, including the editorial species silhouettes and probe-position callout."}
+knitr::include_graphics("reference/panel_i_reference.png")
+```
+
+# Panel j - Macroclade-resolved CpG-age associations
+
+The target probe is compared with the full probe distribution in five
+macroclades. Each species first contributes one tissue-balanced rho value and
+species are then equally combined in Fisher-z space within each clade.
+
+```{r panel-j, fig.width=12.0, fig.height=5.1, fig.cap="Panel j. Macroclade-resolved CpG-age correlation distributions with cg10501210 highlighted."}
+panel_j
+```
+
+# Panel k - Boreoeutheria aggregate
+
+The five macroclades contribute equally to the final Boreoeutheria
+distribution. Human is included within the primate component. The surrounding
+sequence and clade-tree labels in the manuscript are editorial; the complete
+distribution and target ranking are calculated here.
+
+```{r panel-k, fig.width=4.4, fig.height=5.4, fig.cap="Panel k. Equal-macroclade Boreoeutheria CpG-age correlation distribution."}
+panel_k
+```
+
+Locked result: `cg10501210` rho = -0.6176, rank 1 of 37,554, from 5,774
+profiles representing 36 species.
+
+# Complete Figure 2 reference
+
+The final A4 page below is the current Illustrator composition. It provides
+the authoritative panel packing, connective artwork and final typography; the
+analytical plots above are the reproducible counterparts.
+
+```{r figure2-reference, echo=FALSE, out.width='82%', fig.cap="Current main Figure 2 Illustrator reference (source filename figure_03 because the preceding pages were renumbered after Figure 1 was merged)."}
+knitr::include_graphics("reference/Figure2_reference.png")
+```
+
+# Supplementary Figure S2
+
+<div class="figure-lead">
+S2 follows the approved figure: locus-resolved miR-29 complement; expression
+and methylation coverage; tissue-resolved associations; sequence-status
+controls; human tissue effects; and leave-one-out robustness. The calculations
+are unchanged by the Illustrator layout edits. Correlation coefficients shown
+in S2 are Spearman coefficients, not Pearson coefficients.
+</div>
+
+## Complete S2 reconstruction code
+
+These three modules contain the data preparation, plotting code and numerical
+checks. They use only files inside this project. Frozen annotations and
+coefficient tables retain the original upstream analyses; h also recomputes
+its sample-level bootstrap, and i recomputes all 41 omission analyses from the
+complete 37,554-probe tissue matrices. No external database query is required.
+
+```{r s2-abc-source, eval=FALSE, class.source='fold-hide', code=readLines('code/figure2_s2_abc.R', warn=FALSE)}
+```
+
+```{r s2-defg-source, eval=FALSE, class.source='fold-hide', code=readLines('code/figure2_s2_defg.R', warn=FALSE)}
+```
+
+```{r s2-hi-source, eval=FALSE, class.source='fold-hide', code=readLines('code/figure2_s2_hi.R', warn=FALSE)}
+```
+
+```{r run-s2-modules, include=FALSE, cache=FALSE}
+figure2_s2_root <- "."
+s2_export <- TRUE
+source("code/figure2_s2_build.R", local = knitr::knit_global())
+```
+
+## S2a — Locus-resolved miR-29 complement
+
+Species follow the main radial phylogeny counterclockwise, from *C. milii* to
+*H. sapiens*. Rows represent two positions in each of three clusters and a
+separate singleton locus; the dot colour specifies the miRNA identity at that
+position. Thus miR-29a replaces miR-29c within cluster I rather than occupying
+an additional row. The green amphibian points in cluster I denote beta-2;
+beta-1 is in cluster III of the three indicated teleosts. Small black centres
+mark the annotated duplications. Empty positions indicate no annotated member
+in the supplied reconstruction, not proof of biological absence.
+
+The host-gene labels identify the corresponding human loci; they should not be
+read as evidence that the same host-transcript annotation is conserved in
+every species. The source table is the curated evolutionary reconstruction,
+not an inference from the age-association datasets.
+
+Cluster I–III, row identities and singleton assignments follow this panel.
+The [species summary](data/sequence_catalog/miR29_species_and_clusters.tsv)
+reports the number and composition of clusters and singletons. Within a
+cluster, loci are ordered from the first miR-29b in the 5′-to-3′ direction,
+accounting for strand. For b–c–b–c or b–c–c arrangements, the more distal
+repeated locus receives the second copy index. This distinguishes separate
+genomic copies even when their precursor sequences are identical. The
+catalogue contains 15 additional intracluster copies, without overlapping
+precursor fragments within a cluster. The source-tree outgroup
+*Saccoglossus kowalevskii* is not one of the 59 displayed vertebrates.
+
+```{r s2a-complement, fig.width=9.0, fig.height=2.9, fig.cap="S2a. Cluster- and locus-resolved miR-29 family complement, ordered as in the main phylogeny."}
+p_S2a
+```
+
+## S2b–c — Expression coverage and tissue-resolved effects
+
+The non-human expression coverage uses the corrected goat age (24 hours =
+1 day) and the brain-only macaque cohort (14 samples). The Human row is the
+Figure 1 GTEx RNA atlas reference (16,232 samples across 30 tissues), not a
+human cohort included in Figure 2f or the seed analysis in Figure 2g. In
+particular, it must not be interpreted as the number of directly measured,
+paired mature-miRNA libraries.
+
+```{r s2b-coverage, fig.width=3.8, fig.height=2.9, out.width='55%', fig.cap="S2b. Species-level expression coverage. The separated Human row provides Figure 1 context and is excluded from the Figure 2f/g non-human analyses."}
+p_S2b
+```
+
+For c, only the five non-human species with more than one analyzed tissue are
+shown, in main-figure order. Each grey half-box summarizes the distribution of
+miRNA–age coefficients; the background points are individual miRNAs, coloured
+by direction. The larger coloured circles identify the selected miR-29 family
+members. Box widths, jitter and point sizes are graphical encodings, not
+confidence intervals. The box spans the interquartile range, with a median
+line and standard 1.5-IQR whiskers. The compact tissue-level source
+coefficients preserve the species-specific processing used in the main panel.
+
+```{r s2c-tissue-mirna, fig.width=14.8, fig.height=4.35, fig.cap="S2c. Mature-miRNA age associations resolved by tissue in the multi-tissue species. Animal icons in the Illustrator page are editorial layers."}
+p_S2c
+```
+
+## S2d–e — Methylation coverage and tissue-resolved cg10501210
+
+The coverage panel reports samples in eligible species–tissue strata after
+the age-confidence filter (`Confidenceinageestimate > 80`) and the minimum
+of 10 samples per tissue. The five macroclades and 36 species correspond to
+the aggregate in main K, including Human within Primates. These eligible
+sample counts need not equal the broader annotation totals used in main K:
+the per-tissue eligibility filter is made explicit here.
+
+```{r s2d-methylation-coverage, fig.width=2.75, fig.height=5.25, out.width='48%', fig.cap="S2d. Methylation sample coverage by species and macroclade, with eligible sample and tissue counts."}
+p_S2d
+```
+
+Panel e uses the complete available CpG correlation distribution for each
+tissue, not a distribution restricted to selected probes. Purple and green
+indicate positive and negative Spearman associations, respectively; the
+yellow circle identifies cg10501210. The final layout places the remaining
+multi-tissue mammals first, the three non-human primates second, and Human
+last. Of 43 eligible tissues across 12 multi-tissue species, 41 yield finite
+correlations. Human keratinocytes and placenta are not plotted as zero:
+their age-invariant annotations make an age correlation undefined. They
+remain documented in the eligibility tables.
+
+```{r s2e-tissue-methylation, fig.width=5.15, fig.height=4.65, fig.cap="S2e. Tissue-resolved methylation–age distributions, with cg10501210 highlighted. Only estimable tissue distributions are displayed."}
+p_S2e
+```
+
+## S2f–g — Target sequence status
+
+These panels use the wider mapped sequence-status comparison, not only the
+36 species entering main K. They compare 41 species with a conserved target
+CpG and 25 with a non-conserved target, including both disrupted target
+dinucleotides and absent homologous probe-target regions. The 11
+not-assessable species are excluded. Supplementary Data 2 distinguishes
+these sequence contexts and gives the available genomic fragments.
+
+For f, normalized cg10501210 beta values are summarized within tissue and then
+across tissues with equal tissue weight, yielding one point per species.
+For g, species-level effects are arithmetic means of the eligible tissue
+Spearman coefficients, consistently with the main methylation analysis.
+Dot size in g represents sample coverage. Violin and box distributions
+describe differences between species; they are not confidence intervals.
+
+The beta comparison is an assay/sequence-status control: altered hybridization
+or absence of the interrogated CpG can affect the signal. Low beta values in
+the non-conserved group must not be interpreted as a direct measure of biological
+hypomethylation at a conserved target. These comparisons are descriptive and
+do not correct for phylogenetic non-independence.
+
+```{r s2f-sequence-beta, fig.width=1.45, fig.height=1.70, out.width='32%', fig.cap="S2f. Species-level beta signal grouped by mapped target-CpG status."}
+p_S2f
+```
+
+```{r s2g-sequence-rho, fig.width=2.25, fig.height=1.70, out.width='49%', fig.cap="S2g. Species-level cg10501210 age associations grouped by mapped target-CpG status."}
+p_S2g
+```
+
+## S2h — Human tissue effects and bootstrap confidence intervals
+
+The 13 estimable tissues are alphabetical, with the aggregate at the bottom.
+The point estimate is the sample-level Spearman correlation of age with the
+normalized cg10501210 beta signal within that tissue. Samples are resampled
+with replacement **within tissue**, preserving each age–beta pair and the
+original sample size. Spearman rho is recalculated in each of 2,000 draws
+using seed 290105. The endpoints are the 2.5th and 97.5th percentiles
+(`quantile(type = 6)`), not symmetric standard-error bars. Thus a point need
+not be centred between its two endpoints. Point area increases with sample
+coverage and is not an inverse-variance weight.
+
+The yellow diamond marks the **unweighted arithmetic mean of the 13 tissue
+rho values**, not a random-effects meta-analysis. The aggregate interval is
+obtained by taking that mean within each bootstrap iteration and then its
+percentiles. It is conditional on these 13 tissues, does not resample tissues,
+and does not account for cross-tissue donor dependence. We therefore do not
+call it a donor-clustered or random-effects interval. The diamond itself has
+a fixed graphical size; the horizontal whisker reports its interval.
+
+```{r s2h-human-forest, fig.width=1.575, fig.height=1.417, out.width='45%', fig.cap="S2h. Alphabetical human tissue effects with sample-bootstrap 95% intervals; the bottom diamond is the arithmetic tissue aggregate."}
+p_S2h
+```
+
+```{r s2h-ci-table, echo=FALSE}
+knitr::kable(s2_hi_data$human_display[, c("label", "n_complete", "rho_cached", "ci_low", "ci_high")],
+             digits = 4, caption = "Exact points and interval endpoints for S2h.")
+```
+
+## S2i — Leave-one-species-out and leave-one-clade-out
+
+Each lower-panel point is the rebuilt global K coefficient after omitting
+one species; its line connects it to the complete-analysis baseline
+(`rho = -0.617636318578119`). These lines are changes relative to baseline,
+**not confidence intervals**. All 37,554 probes are reaggregated and reranked
+for each omission; the rank is not calculated using only cg10501210.
+
+The hierarchy remains the one used in main K: arithmetic averaging across
+tissues within species, Fisher-z averaging above species, with *Myotis* and
+*Tursiops* retained as balanced genus-level units. If one of their species is
+omitted, the genus unit is rebuilt from the remaining members. Five
+macroclades receive equal weight in the full aggregate; after omitting a
+clade, the four remaining macroclades receive equal weight.
+
+The compact top strip reports the global coefficient and ascending global
+rank after omitting each macroclade. Rank 1 means the most negative
+coefficient. The target retains global rank 1 in all 36 species omissions;
+clade omissions give ranks 1, 1, 1, 2 and 2. The full source table also retains
+the target's within-clade rank after each species omission, which is a
+different quantity and should not be confused with its global rank.
+
+```{r s2i-omissions, fig.width=3.307, fig.height=1.929, out.width='95%', fig.cap="S2i. Compact clade-omission summary above species-omission effects. The dashed line is the full main-K baseline."}
+p_S2i
+```
+
+```{r s2i-rank-table, echo=FALSE}
+knitr::kable(s2_hi_data$clade_display[, c("omitted", "global_rho", "global_rank_ascending_min")],
+             digits = 4, caption = "Leave-one-clade-out global results; the rank universe contains 37,554 CpGs.")
+```
+
+## Complete approved S2 reference
+
+The page below is the approved Illustrator composition with the updated
+alphabetical h panel and the compact clade-omission strip. It is preserved
+separately from the analytical reconstructions above, so editorial icons,
+panel placement and typography remain available without confusing them with
+the statistical analysis. The original manuscript PDF is not modified.
+
+```{r s2-approved-reference, echo=FALSE, out.width='85%', fig.cap="Approved Supplementary Figure S2. The individual analytical panels above are generated by the bundled R code."}
+knitr::include_graphics("reference/Figure2_S2_reference.png")
+```
+
+# Sequence catalogue and alignment references
+
+The machine-readable sequence catalogue corresponds to the sequence and
+cluster sheets of Supplementary Data 2:
+
+- [Species and clusters](data/sequence_catalog/miR29_species_and_clusters.tsv)
+- [Loci, precursor and mature sequences](data/sequence_catalog/miR29_loci_and_sequences.tsv)
+- [All 266 precursor fragments, DNA FASTA](data/sequence_catalog/miR29_precursors_266_DNA.fasta)
+- [The 257 clustered precursor fragments, DNA FASTA](data/sequence_catalog/miR29_clustered_precursors_257_DNA.fasta)
+- [All 266 mature sequences, RNA FASTA](data/sequence_catalog/miR29_mature_266_RNA.fasta)
+- [CpG conservation and genomic coordinates](data/sequence_catalog/cg10501210_conservation.tsv)
+- [The 60 cg10501210 genomic fragments, DNA FASTA](data/sequence_catalog/cg10501210_60_genomic_fragments_DNA.fasta)
+
+RNA sequences are written 5′ to 3′, and the seed is nucleotides 2–8 of the
+recorded mature sequence. Genomic coordinates use the reference sequence's
+forward-coordinate system and a separate strand field. The CpG-coordinate
+columns describe the entire supplied fragment, not the individual CpG.
+The catalogue preserves species labels used by each analysis; genome
+annotations from a different species are not substituted for missing loci.
+
+The panel 2i alignment workflow uses NGPhylogeny.fr (Lemoine et al., 2019,
+[doi:10.1093/nar/gkz303](https://doi.org/10.1093/nar/gkz303)), MAFFT (Katoh
+and Standley, 2013, [doi:10.1093/molbev/mst010](https://doi.org/10.1093/molbev/mst010)),
+BMGE (Criscuolo and Gribaldo, 2010,
+[doi:10.1186/1471-2148-10-210](https://doi.org/10.1186/1471-2148-10-210))
+and MSAViewer (Yachdav et al., 2016,
+[doi:10.1093/bioinformatics/btw474](https://doi.org/10.1093/bioinformatics/btw474)).
+
+# Exported analytical files
+
+The standalone modules write editable SVG and PDF files, 300-dpi PNG previews,
+and reusable R workspaces to `figures/generated/`. These files are linked below
+when present.
+
+```{r export-links, echo=FALSE, results='asis'}
+export_files <- c(
+  "figures/generated/panel_A_phylogeny_radial_R_reconstruction.svg",
+  "figures/generated/panel_A_phylogeny_radial_R_reconstruction.pdf",
+  "figures/generated/panel_F_mature_miRNA_age_across_species.svg",
+  "figures/generated/panel_F_mature_miRNA_age_across_species.pdf",
+  "figures/generated/panel_G_miRNA_seed_age_no_human.svg",
+  "figures/generated/panel_G_miRNA_seed_age_no_human.pdf",
+  "figures/generated/Figure2H_human_methylation_age.svg",
+  "figures/generated/Figure2H_human_methylation_age.pdf",
+  "figures/generated/Figure2I_cg10501210_sequence_inventory.svg",
+  "figures/generated/Figure2I_cg10501210_sequence_inventory.pdf",
+  "figures/generated/Figure2J_methylation_macroclades.svg",
+  "figures/generated/Figure2J_methylation_macroclades.pdf",
+  "figures/generated/Figure2K_boreoeutheria_rank.svg",
+  "figures/generated/Figure2K_boreoeutheria_rank.pdf",
+  "figures/generated/figure2_plot_objects.rds",
+  "figures/generated/figure2_workspace.RData"
+)
+export_files <- c(export_files,
+  list.files("figures/supplementary_s2", pattern = "\\.(pdf|svg|rds|RData)$", full.names = TRUE),
+  "reference/mir29_figure_02S_preprint_final.pdf")
+
+available_exports <- export_files[file.exists(export_files)]
+if (length(available_exports)) {
+  cat(paste0("- [", basename(available_exports), "](", available_exports, ")\n"))
+} else {
+  cat("The export module did not report any files. Re-run the two standalone scripts and inspect `logs/`.\n")
+}
+```
+
+# Reproducibility checks
+
+```{r reproducibility-table, echo=FALSE}
+check_objects <- list()
+if (exists("figure2_mirna_checks")) {
+  check_objects[["miRNA / phylogeny"]] <- figure2_mirna_checks
+}
+if (exists("figure2_methylation_checks")) {
+  check_objects[["methylation"]] <- figure2_methylation_checks
+}
+
+if (length(check_objects)) {
+  checks <- dplyr::bind_rows(check_objects, .id = "Module")
+  knitr::kable(
+    checks,
+    caption = "Numerical safeguards for the portable Figure 2 workflow."
+  )
+}
+knitr::kable(s2_checks, caption = "Numerical and layout safeguards for the approved S2 reconstruction.")
+```
+
+```{r source-manifests, echo=FALSE}
+manifest_files <- c(
+  "data/miRNA_phylogeny/input_manifest.tsv",
+  "data/methylation/MANIFEST.tsv",
+  "data/manual_and_alignment/provenance_manifest.tsv"
+)
+manifest_files <- manifest_files[file.exists(manifest_files)]
+
+if (length(manifest_files)) {
+  manifest_counts <- data.frame(
+    Manifest = manifest_files,
+    Records = vapply(
+      manifest_files,
+      function(path) max(0L, length(readLines(path, warn = FALSE)) - 1L),
+      integer(1)
+    )
+  )
+  knitr::kable(manifest_counts, caption = "Bundled provenance manifests.")
+}
+```
+
+## Session information
+
+```{r session-information}
+sessionInfo()
+```
