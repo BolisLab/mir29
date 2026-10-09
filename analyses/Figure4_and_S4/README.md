@@ -12,7 +12,11 @@ This private-review snapshot includes the analytical source, the existing render
 
 Starts from methylation and predictor checkpoints and the 123-CpG reference extract. The reference-distance and pooled/matched statistics are recalculated by the source modules; raw IDAT preprocessing and genome-wide discovery are separate upstream steps.
 
-**The external input bundle is not yet distributed with this repository.** Data-availability and redistribution review must be completed before promising an executable fresh clone. Text inside the archived reading chapter describing inputs as “bundled” refers to the original full analytical bundle. No statistical analyses were rerun during this repository staging step.
+**Inputs: `MIR29_Figure4_S4_inputs_v1.zip`**, uploaded to the unpublished, restricted Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
+
+**Current execution boundary:** Full unmodified execution still reads withheld data/primary/gtex_sample_metrics.rds. Existing aggregate windows are included but do not automatically bypass this read.
+
+**Verification:** 123-CpG selection, HGF/hTERT subset matrices and existing aggregate GTEx windows verified. This does not certify a complete raw-data-to-figure rerun.
 
 ## Intended execution, after input installation
 
@@ -22,7 +26,7 @@ From this module directory, in an R environment with the recorded dependencies:
 Rscript render_figure4_and_s4.R
 ```
 
-This regenerates the chapter from its analytical checkpoints; it does not repeat all upstream raw-data processing. Inspect the source and the module-specific scripts before execution. Required input locations will be supplied with the data manifest; do not substitute a different input or reference silently.
+This regenerates the chapter from its analytical checkpoints; it does not repeat all upstream raw-data processing. Inspect the source and the module-specific scripts before execution. Input locations and hashes are listed in the manifest; do not substitute a different input or reference silently.
 
 ## Dependencies
 

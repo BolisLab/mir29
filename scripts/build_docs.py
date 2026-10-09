@@ -64,6 +64,16 @@ def main():
             raise SystemExit(f"Missing required chapter: {readable}")
         destination = ROOT / "docs" / "analyses" / module
         shutil.copytree(source, destination, dirs_exist_ok=True)
+        # Module instructions are served beneath docs/analyses in the site.
+        # Repository-level data documentation remains in GitHub, not docs/data.
+        module_readme = destination / "README.md"
+        module_readme.write_text(
+            module_readme.read_text(encoding="utf-8").replace(
+                "](../../data/",
+                "](https://github.com/BolisLab/mir29/blob/main/data/",
+            ),
+            encoding="utf-8",
+        )
         header = (
             f'---\ntitle: "{title}"\n'
             f'subtitle: "Figure {number} + Supplementary Figure S{number}"\n'

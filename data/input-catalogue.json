@@ -1,19 +1,23 @@
 {
   "schema_version": "1.0",
   "updated": "2026-10-09",
-  "status": "private preparation; no public checkpoint release",
+  "status": "input packages uploaded to an unpublished restricted Zenodo draft; no public release",
   "path_convention": "module-relative input paths; module identity follows the figure-specific R Markdown filename",
   "source_sha256_scope": "Checksums identify the authoritative pre-staging R Markdown sources, not the repository copies after portability and distribution-boundary notices were added.",
   "status_definitions": {
     "locally_recovered": "A numerical checkpoint was located locally; this does not imply redistribution approval or inclusion in Git.",
     "intentionally_external": "Not required by the documented routine checkpoint workflow; needed for an upstream raw-data analysis.",
     "restricted_withheld": "Must not be committed or redistributed without applicable data-use authorization and sharing review.",
-    "missing": "Required by the supported routine workflow but no recoverable source has been identified."
+    "missing": "Required by the supported routine workflow but no recoverable source has been identified.",
+    "included_in_repository": "Included directly in the code repository; not duplicated in the Zenodo input archives.",
+    "deposited_draft": "Included in the uploaded Zenodo input packages; unpublished and accessible only under separately granted draft access."
   },
   "global_requirements": [
-    "R, R Markdown/knitr and Pandoc for executable notebook rendering",
-    "Module-specific packages and recorded environment versions",
-    "Frozen input packages must be deposited and independently download-tested before a complete reproducibility release is claimed"
+    "R, R Markdown/knitr and Pandoc for notebook rendering, with module-specific dependencies",
+    "Authorised access to the Zenodo draft followed by ZIP extraction into the repository root",
+    "Authorised local dbGaP inputs for unchanged GTEx-dependent Figure 1 and Figure 4 full-notebook paths",
+    "The Figure 3 renderer automatically runs a PDF checksum check when digest is installed; it fails without the original reference PDFs outside this data deposit",
+    "Full clean-environment chapter rendering remains distinct from completed targeted numerical and file-integrity checks"
   ],
   "modules": [
     {
@@ -22,19 +26,82 @@
       "notebook": "Figure1_and_S1.Rmd",
       "source_sha256": "bfe3f737baf0258d5b6cda951a83b51796d72479dc1c453d1ace7e27b1c60e25",
       "boundary": "Compact count-matrix analysis and processed cross-tissue coefficient reconstruction; not raw GTEx preprocessing.",
-      "checkpoint_status": "locally_recovered",
+      "checkpoint_status": "deposited_draft",
       "public_release_ready": false,
       "download_url": null,
       "input_groups": [
-        {"path": "data/figure1_ipsc_inputs.rds", "status": "locally_recovered", "accessions": ["GSE165176"], "bytes": 931972, "sha256": "ca75eaf06d0e781b3dea906dc51520c1d95124fb8330c6c536157bc939dfcb93", "contents": "63241 genes x 36 RNA-seq samples; aligned annotations and methylation data"},
-        {"path": "data/figure1_zga_inputs.rds", "status": "locally_recovered", "accessions": ["GSE101571", "GSE157834", "GSE71318", "GSE65481", "GSE133854"], "bytes": 4058828, "sha256": "c4bbd44afd19c8de91ef5c9ffb05cf865ad1c277b06f22d2bef3e7097c9a5f16", "contents": "63241 genes x 113 RNA-seq samples; aligned annotations"},
-        {"paths": ["data/coefficients.age.RDS", "data/coefficients.age.sub7.RDS", "data/coefficients.clock.RDS", "data/coefficients.mirnanew.RDS", "data/hs_gene_annotations.RDS"], "status": "locally_recovered", "contents": "Feature-by-tissue aggregate coefficient tables and gene annotations; redistribution review pending"},
-        {"path": "data/epiclock_preds_GTEX.RDS", "status": "restricted_withheld", "contents": "Tissue-specific data frames include sample-level AGE and clock predictions", "action": "Use authorized local execution or a privacy-reviewed aggregate replacement; do not upload the original object"},
-        {"path": "data/figure1_s1/", "status": "locally_recovered", "contents": "Supplementary panel inputs; inspect sample-level content before distribution"},
-        {"accessions": ["GSE62776"], "status": "locally_recovered", "contents": "Published reprogramming small-RNA count table"}
+        {
+          "path": "data/figure1_ipsc_inputs.rds",
+          "status": "deposited_draft",
+          "accessions": [
+            "GSE165176"
+          ],
+          "bytes": 931972,
+          "sha256": "ca75eaf06d0e781b3dea906dc51520c1d95124fb8330c6c536157bc939dfcb93",
+          "contents": "63241 genes x 36 RNA-seq samples; aligned annotations and methylation data"
+        },
+        {
+          "path": "data/figure1_zga_inputs.rds",
+          "status": "deposited_draft",
+          "accessions": [
+            "GSE101571",
+            "GSE157834",
+            "GSE71318",
+            "GSE65481",
+            "GSE133854"
+          ],
+          "bytes": 4058828,
+          "sha256": "c4bbd44afd19c8de91ef5c9ffb05cf865ad1c277b06f22d2bef3e7097c9a5f16",
+          "contents": "63241 genes x 113 RNA-seq samples; aligned annotations"
+        },
+        {
+          "paths": [
+            "data/coefficients.age.RDS",
+            "data/coefficients.age.sub7.RDS",
+            "data/coefficients.clock.RDS",
+            "data/coefficients.mirnanew.RDS",
+            "data/hs_gene_annotations.RDS"
+          ],
+          "status": "deposited_draft",
+          "contents": "Feature-by-tissue aggregate coefficient tables and gene annotations; source-specific terms apply"
+        },
+        {
+          "path": "data/epiclock_preds_GTEX.RDS",
+          "status": "restricted_withheld",
+          "contents": "Tissue-specific data frames include sample-level AGE and clock predictions",
+          "action": "Use authorized local execution or a privacy-reviewed aggregate replacement; do not upload the original object"
+        },
+        {
+          "path": "data/figure1_s1/",
+          "status": "deposited_draft",
+          "contents": "Supplementary panel inputs; inspect sample-level content before distribution"
+        },
+        {
+          "accessions": [
+            "GSE62776"
+          ],
+          "status": "deposited_draft",
+          "contents": "Published reprogramming small-RNA count table"
+        }
       ],
       "raw_data_status": "intentionally_external",
-      "release_actions": ["Prepare a GTEx-safe checkpoint boundary", "Review processed third-party data permissions", "Validate current code against recovered inputs"]
+      "release_actions": [
+        "Finalize attribution and applicable source/release terms",
+        "Verify full rendering with documented dependencies and access boundaries",
+        "Activate public access only after author approval"
+      ],
+      "zenodo_doi": "10.5281/zenodo.23266285",
+      "package": {
+        "filename": "MIR29_Figure1_S1_inputs_v1.zip",
+        "bytes": 83751089,
+        "sha256": "980b47bbcae67de9f73b166dc87db0b87bcc479c4530fbda6c4bf4fddb80f88b",
+        "file_count": 23,
+        "rds_count": 8,
+        "uncompressed_bytes": 83990632
+      },
+      "extraction_root": "repository root",
+      "execution_boundary": "Full notebook initialization still reads withheld data/epiclock_preds_GTEX.RDS. Authorised local input is required; the aggregate S1 helper can run without it.",
+      "verification": "Aggregate S1 helper: assertions and six panel constructions passed."
     },
     {
       "id": "figure2_s2",
@@ -42,29 +109,88 @@
       "notebook": "Figure2_and_S2.Rmd",
       "source_sha256": "b1037ea15aef351f6bf16199ce653bb710c881b08acaad075c9b2dca2ba2452f",
       "boundary": "Processed species/seed and methylation coefficient reconstruction plus curated sequence catalogues; not a rerun of raw sequencing or genome searches.",
-      "checkpoint_status": "locally_recovered",
+      "checkpoint_status": "deposited_draft",
       "public_release_ready": false,
       "download_url": null,
       "input_groups": [
-        {"path": "data/methylation/figure2_methylation_portable_input.rds", "status": "locally_recovered", "bytes": 9209496, "sha256": "d3759408f52aeffc0b0ebafb95b35477c32fe1525799774cfafcbeaec88451a2", "contents": "Frozen tissue-Spearman inputs, 37554 probes and 36 retained methylation species; tissue minimum n=10"},
-        {"path": "data/miRNA_phylogeny/", "status": "locally_recovered", "contents": "Per-species coefficients, corrected goat and macaque inputs, seed references, phylogenetic annotations and expected results"},
-        {"path": "data/sequence_catalog/", "status": "locally_recovered", "contents": "266 precursors; 266 mature miRNA records; 257 clustered precursors; 60 cg10501210 genomic fragments"},
-        {"path": "data/figure2_s2/", "status": "locally_recovered", "contents": "Supplementary analytical checkpoints"}
+        {
+          "path": "data/methylation/figure2_methylation_portable_input.rds",
+          "status": "deposited_draft",
+          "bytes": 9209496,
+          "sha256": "d3759408f52aeffc0b0ebafb95b35477c32fe1525799774cfafcbeaec88451a2",
+          "contents": "Frozen tissue-Spearman inputs, 37554 probes and 36 retained methylation species; tissue minimum n=10"
+        },
+        {
+          "path": "data/miRNA_phylogeny/",
+          "status": "deposited_draft",
+          "contents": "Per-species coefficients, corrected goat and macaque inputs, seed references, phylogenetic annotations and expected results"
+        },
+        {
+          "path": "data/sequence_catalog/",
+          "status": "included_in_repository",
+          "contents": "266 precursors; 266 mature miRNA records; 257 clustered precursors; 60 cg10501210 genomic fragments"
+        },
+        {
+          "path": "data/figure2_s2/",
+          "status": "deposited_draft",
+          "contents": "Supplementary analytical checkpoints"
+        }
       ],
       "raw_data_status": "intentionally_external",
       "upstream_pipeline": "nf-core/smrnaseq 2.4.1; species-specific reference and parameter settings",
       "raw_reprocessed_accessions": {
-        "Caenorhabditis elegans": ["GSE110846", "GSE110849"],
-        "Danio rerio": ["GSE117807", "GSE117820"],
-        "Nothobranchius furzeri": ["GSE104321", "GSE107062"],
-        "Gallus gallus": ["GSE139304"],
-        "Capra hircus": ["GSE166842", "PRJNA553597"],
-        "Ovis aries": ["PRJNA1195695"],
-        "Sus scrofa": ["GSE64275", "PRJNA196673"],
-        "Oryctolagus cuniculus": ["PRJNA692651"]
+        "Caenorhabditis elegans": [
+          "GSE110846",
+          "GSE110849"
+        ],
+        "Danio rerio": [
+          "GSE117807",
+          "GSE117820"
+        ],
+        "Nothobranchius furzeri": [
+          "GSE104321",
+          "GSE107062"
+        ],
+        "Gallus gallus": [
+          "GSE139304"
+        ],
+        "Capra hircus": [
+          "GSE166842",
+          "PRJNA553597"
+        ],
+        "Ovis aries": [
+          "PRJNA1195695"
+        ],
+        "Sus scrofa": [
+          "GSE64275",
+          "PRJNA196673"
+        ],
+        "Oryctolagus cuniculus": [
+          "PRJNA692651"
+        ]
       },
-      "published_processed_matrix_accessions": {"Mus musculus": "GSE217458", "Rattus norvegicus": "GSE172269", "Macaca mulatta": "GSE18013"},
-      "release_actions": ["Preserve current corrected species coefficients", "Use final sequence catalogues rather than old manual-source tables", "Check rights for third-party reference sequences and assets"]
+      "published_processed_matrix_accessions": {
+        "Mus musculus": "GSE217458",
+        "Rattus norvegicus": "GSE172269",
+        "Macaca mulatta": "GSE18013"
+      },
+      "release_actions": [
+        "Finalize attribution and applicable source/release terms",
+        "Verify full rendering with documented dependencies and access boundaries",
+        "Activate public access only after author approval"
+      ],
+      "zenodo_doi": "10.5281/zenodo.23266285",
+      "package": {
+        "filename": "MIR29_Figure2_S2_inputs_v1.zip",
+        "bytes": 35097108,
+        "sha256": "ad9e10a33f9ca8b303402fa0130d096a4df021a491430e01f443e0a90506538a",
+        "file_count": 42,
+        "rds_count": 11,
+        "uncompressed_bytes": 41356141
+      },
+      "extraction_root": "repository root",
+      "execution_boundary": "Processed inputs and required reference PNGs are included. Raw small-RNA processing and genome alignment are separate upstream workflows.",
+      "verification": "Species, 76-seed ranking, methylation and bootstrap/leave-one-out numerical checks passed."
     },
     {
       "id": "figure3_s3",
@@ -72,13 +198,40 @@
       "notebook": "Figure3_and_S3.Rmd",
       "source_sha256": "f18f14432ca330bd7719df70d743200d47684213eb5a1aa2aaeb1299e3c9a9da",
       "boundary": "Processed signature, enrichment, clock, activity, growth and single-cell checkpoint reconstruction.",
-      "checkpoint_status": "locally_recovered",
+      "checkpoint_status": "deposited_draft",
       "recorded_R_version": "4.2.3",
       "public_release_ready": false,
       "download_url": null,
-      "input_groups": [{"paths": ["data/verified/", "data/main/", "data/supplementary/", "data/singlecell/"], "status": "locally_recovered", "contents": "Frozen numerical inputs; complete standalone bundle identified"}],
+      "input_groups": [
+        {
+          "paths": [
+            "data/verified/",
+            "data/main/",
+            "data/supplementary/",
+            "data/singlecell/"
+          ],
+          "status": "deposited_draft",
+          "contents": "Frozen numerical inputs; complete standalone bundle identified"
+        }
+      ],
       "raw_data_status": "intentionally_external",
-      "release_actions": ["Package checkpoints with current source", "Preserve global pooled/matched labels", "Review sample-level source data and predictor redistribution requirements"]
+      "release_actions": [
+        "Finalize attribution and applicable source/release terms",
+        "Verify full rendering with documented dependencies and access boundaries",
+        "Activate public access only after author approval"
+      ],
+      "zenodo_doi": "10.5281/zenodo.23266285",
+      "package": {
+        "filename": "MIR29_Figure3_S3_inputs_v1.zip",
+        "bytes": 265883256,
+        "sha256": "dfd4dc75a2c1e297ee427eccfcdadeb472f8e4c7572ce8b6709d0e8a18425f6a",
+        "file_count": 27,
+        "rds_count": 25,
+        "uncompressed_bytes": 274004058
+      },
+      "extraction_root": "repository root",
+      "execution_boundary": "Processed numerical inputs are included. When digest is installed, the standard renderer automatically checks two original reference PDFs not in the package; without them this check fails even if HTML rendering has completed.",
+      "verification": "Dependency and serialized-input inspection complete; full chapter replay not run in package preparation."
     },
     {
       "id": "figure4_s4",
@@ -86,15 +239,50 @@
       "notebook": "Figure4_and_S4.Rmd",
       "source_sha256": "3cf310340d20cbcddfe872be90571f6252046bef8e653750804060cd20d02360",
       "boundary": "Panel-level recomputation from methylation/RNA checkpoints; no automatic raw-IDAT preprocessing, genome-wide DMR discovery or clock training.",
-      "checkpoint_status": "locally_recovered",
+      "checkpoint_status": "deposited_draft",
       "recorded_R_version": "4.2.3",
       "optional_predictor_environment": "Exact tAge predictor replay uses the recorded scikit-learn 1.3.2 environment; routine rendering uses frozen predictions.",
       "public_release_ready": false,
       "download_url": null,
-      "input_groups": [{"paths": ["data/fidelity123/", "data/primary/", "data/htert_hpf/", "data/wnt/", "data/clocks/", "data/models/", "data/fidelity/"], "status": "locally_recovered", "contents": "Current 123-CpG reference and annotations, raw collapsed subset betas, reference-selection audits, other verified checkpoints"}],
+      "input_groups": [
+        {
+          "paths": [
+            "data/fidelity123/",
+            "data/primary/",
+            "data/htert_hpf/",
+            "data/wnt/",
+            "data/clocks/",
+            "data/models/",
+            "data/fidelity/"
+          ],
+          "status": "deposited_draft",
+          "contents": "Current 123-CpG reference and annotations, raw collapsed subset betas, reference-selection audits, other verified checkpoints"
+        },
+        {
+          "path": "data/primary/gtex_sample_metrics.rds",
+          "status": "restricted_withheld",
+          "contents": "Individual-level GTEx donor age and sample-level clock/metric records; intentionally absent from Zenodo and GitHub"
+        }
+      ],
       "current_reference_cpg_count": 123,
       "raw_data_status": "intentionally_external",
-      "release_actions": ["Package the complete checkpoint set without historical alternative entry points", "Review model and data redistribution rights", "Preserve mean-displacement versus temporal-slope distinction"]
+      "release_actions": [
+        "Finalize attribution and applicable source/release terms",
+        "Verify full rendering with documented dependencies and access boundaries",
+        "Activate public access only after author approval"
+      ],
+      "zenodo_doi": "10.5281/zenodo.23266285",
+      "package": {
+        "filename": "MIR29_Figure4_S4_inputs_v1.zip",
+        "bytes": 184448924,
+        "sha256": "eda74bfc43038ff29c74292579670a1a7aa329aca4a93141ef62bef895177150",
+        "file_count": 45,
+        "rds_count": 36,
+        "uncompressed_bytes": 190902879
+      },
+      "extraction_root": "repository root",
+      "execution_boundary": "Full unmodified execution still reads withheld data/primary/gtex_sample_metrics.rds. Existing aggregate windows are included but do not automatically bypass this read.",
+      "verification": "123-CpG selection, HGF/hTERT subset matrices and existing aggregate GTEx windows verified."
     },
     {
       "id": "figure5_s5",
@@ -102,13 +290,56 @@
       "notebook": "Figure5_and_S5.Rmd",
       "source_sha256": "6c85cf3354c08e2e9002559ac834426af5a8f00c74b26e3d23bf9dcec2139d77",
       "boundary": "Processed TCGA/CCLE correlations, paired-expression scores and tumor-reference distances; preserves upstream normalization, 100 resampling iterations, clock predictions and RMS scores.",
-      "checkpoint_status": "locally_recovered",
+      "checkpoint_status": "deposited_draft",
       "recorded_R_version": "4.2.3",
       "public_release_ready": false,
       "download_url": null,
-      "input_groups": [{"paths": ["data/source/", "data/reference_selection_metrics.rds", "data/expected_main.rds", "data/expected_supplementary.rds", "data/expected_clock_extensions.rds", "data/expected_compact.rds"], "status": "locally_recovered", "contents": "Cancer/lineage correlations, paired expression, reference selection, sample-level reference distances and numerical locks"}],
+      "input_groups": [
+        {
+          "paths": [
+            "data/source/",
+            "data/reference_selection_metrics.rds",
+            "data/expected_main.rds",
+            "data/expected_supplementary.rds",
+            "data/expected_clock_extensions.rds",
+            "data/expected_compact.rds"
+          ],
+          "status": "deposited_draft",
+          "contents": "Cancer/lineage correlations, paired expression, reference selection, sample-level reference distances and numerical locks"
+        }
+      ],
       "raw_data_status": "intentionally_external",
-      "release_actions": ["Review source-specific permissions before releasing sample-level processed data", "Deposit compact reproducibility checkpoints", "Keep manual Cytoscape/artwork recreation outside the numerical reproducibility claim"]
+      "release_actions": [
+        "Finalize attribution and applicable source/release terms",
+        "Verify full rendering with documented dependencies and access boundaries",
+        "Activate public access only after author approval"
+      ],
+      "zenodo_doi": "10.5281/zenodo.23266285",
+      "package": {
+        "filename": "MIR29_Figure5_S5_inputs_v1.zip",
+        "bytes": 344203391,
+        "sha256": "7abddf1c12fc53ea3150aeb72500182c29c533542adb9533c5433a20b4948e62",
+        "file_count": 56,
+        "rds_count": 56,
+        "uncompressed_bytes": 344793167
+      },
+      "extraction_root": "repository root",
+      "execution_boundary": "Core processed-input replay passed 139 assertions. Full plotting/rendering and upstream raw-data calculations are separate verification levels.",
+      "verification": "139 numerical assertions passed; all seven main-panel numerical objects matched expected values at tolerance 1e-8."
     }
-  ]
+  ],
+  "zenodo_deposit": {
+    "doi": "10.5281/zenodo.23266285",
+    "doi_url": "https://doi.org/10.5281/zenodo.23266285",
+    "doi_status": "reserved; not yet registered or publicly resolving",
+    "record_id": "23266285",
+    "status": "unpublished_restricted_draft",
+    "data_version": "v1",
+    "contents": "Five figure-specific data packages and three accompanying documentation files; no source-code archive",
+    "access": "Draft preview access is granted separately; private access links are not stored in this repository.",
+    "manifest": "data/zenodo-manifest.json",
+    "checksums": "data/zenodo-SHA256SUMS.txt",
+    "compatible_analysis_commit": "ada517267dce6d2665710d79f3d73b54f0cba50b",
+    "public_download_available": false
+  }
 }

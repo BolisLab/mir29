@@ -174,7 +174,10 @@ def inspect_repository(root: Path) -> dict:
             if not notebook.is_file():
                 errors.append(f"Catalogue notebook path does not resolve: {module.get('id', '?')}")
             if not module.get("public_release_ready"):
-                warnings.append(f"{module.get('id', '?')}: checkpoint distribution is pending; fresh checkout is not self-contained.")
+                if module.get("checkpoint_status") == "deposited_draft":
+                    warnings.append(f"{module.get('id', '?')}: inputs are in an unpublished restricted Zenodo draft; access and installation are separate from checkout.")
+                else:
+                    warnings.append(f"{module.get('id', '?')}: checkpoint distribution is pending; fresh checkout is not self-contained.")
         warnings.append("Static checks do not certify scientific reproducibility, redistribution rights or absence of all sensitive data.")
     except (OSError, ValueError, TypeError) as exc:
         errors.append(f"Input catalogue cannot be parsed: {type(exc).__name__}")

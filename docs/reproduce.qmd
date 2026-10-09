@@ -12,10 +12,28 @@ The current website is a **documentation build**, not a fresh statistical run.
 ## 02 · Recreate a panel from checkpoints
 
 The executable R Markdown documents and chapter scripts live in `analyses/`.
-They expect processed inputs at chapter-relative paths. These binary inputs are
-not yet included in this GitHub draft; consult the [data catalogue](datasets.qmd)
-before running an analysis. A missing file must be restored from its verified
-source, not substituted with rounded values read from a figure.
+They expect processed inputs at chapter-relative paths. Code stays in GitHub;
+numerical inputs are supplied separately as five figure-specific ZIP archives
+in Zenodo data package v1. The [data catalogue](datasets.qmd) lists their exact
+filenames and sizes.
+
+**Status: UNPUBLISHED / RESTRICTED DRAFT.** The eight files have been uploaded
+and the draft saved. DOI
+[10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285) is reserved and
+**not active until publication**. Private reviewer access to the files is issued
+separately from access to the GitHub code; no private preview link belongs in
+this repository.
+
+The package records compatible code commit
+[`ada517267dce6d2665710d79f3d73b54f0cba50b`](https://github.com/BolisLab/mir29/commit/ada517267dce6d2665710d79f3d73b54f0cba50b).
+Use that revision or a documented compatible successor. Check the
+[manifest](https://github.com/BolisLab/mir29/blob/main/data/zenodo-manifest.json)
+and [SHA-256 list](https://github.com/BolisLab/mir29/blob/main/data/zenodo-SHA256SUMS.txt),
+then extract the desired ZIPs **into the repository root**. Each archive already
+contains `analyses/FigureN_and_SN/`, so extraction restores the expected paths;
+do not extract inside a figure's `data/` directory. Compare hashes before merging
+with existing inputs. A missing file must be restored from its verified source,
+not substituted with rounded values read from a figure.
 
 | Chapter | Renderer, run from the corresponding chapter directory |
 |:--|:--|
@@ -29,6 +47,31 @@ Restore the inputs, match the recorded software versions, then execute in the
 chapter directory. The renderer may write regenerated figures and tables there.
 Do not install a new package version merely to make an old analysis run without
 checking whether it changes the result.
+
+### Remaining execution limits
+
+The archives support replay from processed checkpoints, but do not make every
+unmodified notebook executable in a fresh environment:
+
+- **Figure 1 + S1:** `data/epiclock_preds_GTEX.RDS` is intentionally withheld
+  because it contains controlled GTEx donor-level information. The notebook reads
+  it during initialization, so a full unmodified render requires authorised local
+  data. The aggregate-input helper for S1a,b,f,g,h,i can run without that object.
+- **Figure 4 + S4:** `data/primary/gtex_sample_metrics.rds` is intentionally
+  withheld. The DNAm-age window module reads it even though aggregate windows
+  are included. A full unmodified render requires the authorised local input
+  or a separately documented code update.
+- **Figure 3 + S3:** when `digest` is installed, the standard renderer automatically
+  runs a post-render hash check requiring two original reference PDFs that are
+  not included. Without them, this check fails even if HTML rendering has completed.
+  Analysis inputs and PNG references do not replace these PDFs.
+
+GTEx access must be obtained through the appropriate dbGaP permissions; the
+Zenodo draft does not confer it. The Figure 5 reference-selection object alone
+occupies about 1.6 GB when loaded in R, with additional memory needed for the
+remaining objects and calculations. File-integrity and targeted numerical checks
+are distinct from a clean-environment render of all five notebooks; no complete
+raw-data rerun or such five-notebook render is claimed.
 
 ## 03 · Repeat upstream processing
 
@@ -70,7 +113,8 @@ library for the documentation preparation script.
 
 ## Release status
 
-Before public release, we will reconcile the remaining reconstruction labels,
-restore and archive the input checkpoints, record software environments and
-test chapter execution. See the
+The input package has been uploaded to an unpublished Zenodo draft; the website
+remains a local preview. Before public release, we will reconcile the remaining
+reconstruction labels, complete access and licensing checks, record software
+environments and test chapter execution. See the
 [release checklist](https://github.com/BolisLab/mir29/blob/main/RELEASE_CHECKLIST.md).

@@ -7,21 +7,55 @@ subtitle: "Data availability, analytical starting points and access boundaries."
 
 The repository is the index of the analysis, not a replacement for the archives
 that host the original datasets. Each figure chapter records its inputs and
-analysis boundary. The machine-readable
+analysis boundary. Source code stays in GitHub; the numerical inputs are packaged
+separately in a Zenodo draft. The machine-readable
 [input catalogue](https://github.com/BolisLab/mir29/blob/main/data/input-catalogue.json)
-tracks the preparation of portable checkpoints.
+tracks the analytical starting points and access boundaries.
 
 | Layer | What belongs here | Where it will be available |
 |:--|:--|:--|
 | Source code | Analysis, plotting and upstream-processing recipes | This repository |
 | Public annotations | Reference sequences, assembly identifiers and aggregate metadata | Chapter data files, after review |
-| Analytical checkpoints | Processed matrices and model inputs required to rerun panels | A versioned deposit; links pending |
+| Analytical checkpoints | Processed matrices and model inputs required to rerun panels | Zenodo data package v1; unpublished, restricted draft |
 | Newly generated raw data | Sequencing and methylation measurements | Appropriate primary archives; accessions pending |
 | External raw datasets | Previously published measurements | Original study accessions listed in the analyses |
 | Controlled metadata | Restricted participant-level phenotypes | Original access-controlled resource, not this repository |
 
-No pending deposition is represented as already complete. Public source accessions
-are retained in the figure chapters, including the small-RNA dataset inventory.
+Public source accessions are retained in the figure chapters, including the
+small-RNA dataset inventory.
+
+## Zenodo input package v1
+
+**Status: UNPUBLISHED / RESTRICTED DRAFT.** The five input archives and the three
+accompanying files (`README.txt`, `MANIFEST.json` and `SHA256SUMS.txt`) have been
+uploaded and the draft saved. The reserved DOI is
+[10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285); it is **not active
+until publication** and does not currently provide a public download. Private
+reviewer access is issued separately. Private preview links are not stored in
+this repository, and access to the GitHub code must also be granted separately.
+
+| Chapter | Input archive | Compressed size |
+|:--|:--|--:|
+| Figure 1 + S1 | `MIR29_Figure1_S1_inputs_v1.zip` | 83.8 MB |
+| Figure 2 + S2 | `MIR29_Figure2_S2_inputs_v1.zip` | 35.1 MB |
+| Figure 3 + S3 | `MIR29_Figure3_S3_inputs_v1.zip` | 265.9 MB |
+| Figure 4 + S4 | `MIR29_Figure4_S4_inputs_v1.zip` | 184.4 MB |
+| Figure 5 + S5 | `MIR29_Figure5_S5_inputs_v1.zip` | 344.2 MB |
+
+Sizes use decimal MB; the five archives total 913.4 MB. The
+[manifest](https://github.com/BolisLab/mir29/blob/main/data/zenodo-manifest.json)
+records each archive member, its purpose, byte size and SHA-256 checksum. The
+[checksum list](https://github.com/BolisLab/mir29/blob/main/data/zenodo-SHA256SUMS.txt)
+identifies the five archives and their accompanying documentation. Most inputs
+are serialized R objects; the packages also include required tables, sequence
+references and rendering assets. They contain no source-code archive.
+
+Extract each desired ZIP **into the root of the code repository**. Its stored
+paths already begin with `analyses/FigureN_and_SN/`; for example, the first archive
+creates `analyses/Figure1_and_S1/data/figure1_ipsc_inputs.rds`. Do not extract it
+inside a chapter's `data/` folder. If inputs are already present, compare their
+hashes before merging. Consult the [reproduction guide](reproduce.qmd) before
+running a chapter.
 
 ## Figure 2 sequence resources
 
@@ -37,12 +71,24 @@ dbGaP project does not make those records redistributable. Restricted donor-leve
 metadata, credentials and author-specific access tokens are not included here.
 Public summary statistics and source code should be distinguished from those inputs.
 
+The withheld files are Figure 1's `data/epiclock_preds_GTEX.RDS` and Figure 4's
+`data/primary/gtex_sample_metrics.rds`. Full unmodified rendering of those two
+chapters still requires authorised local GTEx inputs. Aggregate summaries in
+the archives do not bypass those reads in the current code.
+
+These packages also contain source-attributed public GEO sample annotations,
+processed TCGA sample/clinical records and CCLE/DepMap cell-line metadata; they
+are not universally aggregate-only. Source-specific access and reuse terms
+continue to apply.
+
 ## Before downloading or rerunning
 
 Check the dataset version, genome/annotation release, expected file checksum,
 sample-selection rules and matching identifiers. Aggregates, per-sample values
 and raw measurements are different analytical starting points.
 
-The final download manifest will provide stable URLs and hashes only after the
-files have been checked and deposited. Until then, this remains a private working
-copy; read the [reproduction guide](reproduce.qmd) for the current limits.
+The manifest and checksum list support file-identity checks; they do not certify
+scientific validity or data-use permissions. The draft is not a published release,
+and installing these archives alone does not establish complete reproducibility.
+Read the [reproduction guide](reproduce.qmd) for the remaining execution limits,
+including the Figure 3 reference-PDF check that runs when `digest` is installed.

@@ -1,0 +1,1618 @@
+{
+  "schema_version": "1.0",
+  "data_package_version": "v1",
+  "prepared": "2026-10-09",
+  "deposit_status": "unpublished draft; reserved DOI",
+  "reserved_doi": "10.5281/zenodo.23266285",
+  "code_repository": "https://github.com/BolisLab/mir29",
+  "code_commit": "ada517267dce6d2665710d79f3d73b54f0cba50b",
+  "path_convention": "Archive paths are relative to the root of the code repository, not to individual analysis folders.",
+  "input_integrity": "All archived input and rendering-asset bytes match their reviewed source files; no re-serialization or statistical recalculation was used to create the archives.",
+  "controlled_access": "Individual-level GTEx donor ages and the derived sample-level GTEx clock objects are not distributed. Authorised local inputs must be obtained under dbGaP permissions.",
+  "packages": [
+    {
+      "filename": "MIR29_Figure1_S1_inputs_v1.zip",
+      "module": "analyses/Figure1_and_S1",
+      "topic": "Ageing, reprogramming and development",
+      "bytes": 83751089,
+      "sha256": "980b47bbcae67de9f73b166dc87db0b87bcc479c4530fbda6c4bf4fddb80f88b",
+      "file_count": 23,
+      "rds_count": 8,
+      "uncompressed_bytes": 83990632,
+      "files": [
+        {
+          "path": "analyses/Figure1_and_S1/data/41467_2024_52943_MOESM6_ESM.xlsx",
+          "bytes": 817098,
+          "sha256": "a4a373113932bc22590a62b1ae22230db475185c6d90b07471a8c93e08a9685c",
+          "kind": "analysis_input",
+          "format": "XLSX",
+          "description": "Published processed mature-miRNA source table"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/GSE62776_all_smallRNA_reprogramming.counts_tracking.txt",
+          "bytes": 119671,
+          "sha256": "1e0e38e4f9166040ab95c8f1be40e4472bfdb0757ae30bf2db4ccd4fa9ba45c1",
+          "kind": "analysis_input",
+          "format": "TXT",
+          "description": "Public GSE62776 processed small-RNA count matrix"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/clock_labels_classes.csv",
+          "bytes": 372,
+          "sha256": "4b68d00a43dbf5e6be68996c334d8631c931564c6b27597de14cae531e52f68a",
+          "kind": "analysis_input",
+          "format": "CSV",
+          "description": "Epigenetic-clock label and class annotations"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/coefficients.age.RDS",
+          "bytes": 52756164,
+          "sha256": "3d6ebb3d1b6b01484ba1fd70893314da54298f2d0ee6cd99ffcc3af54bc1e105",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Aggregate cross-tissue chronological-age association coefficients"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/coefficients.age.sub7.RDS",
+          "bytes": 12804345,
+          "sha256": "e4996a504081e692bcb3f30f0a1016f369672a3af8af11031b55734a17ace756",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Aggregate chronological-age association coefficients for the seven-tissue subset"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/coefficients.clock.RDS",
+          "bytes": 10847992,
+          "sha256": "64801e5315b74d86c58a4866cef9466c2fbff88223d51029c972e7b0bb28c3de",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Aggregate cross-tissue DNAm-age association coefficients"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/coefficients.mirnanew.RDS",
+          "bytes": 775535,
+          "sha256": "27f792f47ad0dbab9af67481bc95d707a3eeea96df88b6c0dff55d5c317597c9",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Aggregate mature-miRNA cross-tissue association coefficients"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_ipsc_inputs.rds",
+          "bytes": 931972,
+          "sha256": "ca75eaf06d0e781b3dea906dc51520c1d95124fb8330c6c536157bc939dfcb93",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Processed iPSC expression counts, public sample metadata and methylation readouts (GSE165176)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/ARZ_multiset_score_heatmap_source_data.tsv",
+          "bytes": 6750,
+          "sha256": "0e46a5ce4196f239581d92627c73a7ca77211ca86183d8ab35e8b42ad64bb5fe",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/gtex_30tissue_rna_sample_donor_atlas.tsv",
+          "bytes": 7609,
+          "sha256": "603626b6f907e22dbf5576cc5a0a93a19b51f5edd077fcdb397399dceba8494e",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/gtex_7tissue_multiomic_funnel.tsv",
+          "bytes": 523,
+          "sha256": "9d69f67eb980dda8960c0d5aaec1b40a3d85120bcccd86a98f56251ee368921d",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/gtex_LINC_PINT_30tissue_REML_cluster_bootstrap_summary.tsv",
+          "bytes": 905,
+          "sha256": "2398c2e7acff823561a99cfca75ef0483d4d3baf9b66b3e3394e810f5e612916",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/gtex_LINC_PINT_30tissue_donor_aware_age_sensitivity.tsv",
+          "bytes": 11416,
+          "sha256": "4c3bcdf4d3ce3bc1f01a9df3e93b611fa7de21a1befdf3542ff9dde9e235d234",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/gtex_LINC_PINT_paired_partial_spearman_REML_meta.tsv",
+          "bytes": 685,
+          "sha256": "c28479bb100a786020a5824574e0d1395941966a5ad0f8eaa001ac1ec74471df",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/gtex_LINC_PINT_paired_partial_spearman_tissue.tsv",
+          "bytes": 2919,
+          "sha256": "568389336b2ccc434e2cc474d348d5a45e6ecaf59f2cec5c4941392107d4103b",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/gtex_host_mature_mir29_pan_tissue_summaries.tsv",
+          "bytes": 3208,
+          "sha256": "ed121890fe4f074649bfd45c35990ce3dc33def6f70f4fae2c1724c179d733bb",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/gtex_mir29a_tissue_associations_BH30.tsv",
+          "bytes": 46028,
+          "sha256": "65c78614e8d5323f263cb5d4c8d17ccb8ca718708c184edaabb84fdb099f2507",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/mirna_method4_matrix.rds",
+          "bytes": 187012,
+          "sha256": "9f4e26d46f5039bc361dd91b0a24c050bb2a63d387f8c440263f263896867716",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Aggregate mature-miRNA method-4 coefficient matrix"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/mirna_method4_target_tissue_positions.tsv",
+          "bytes": 6490,
+          "sha256": "a36dc169d936fda95c3724a62ec7048fdcd586e16a7508da2e8a7627f3f4c4a3",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/rz_upset_gene_membership.tsv",
+          "bytes": 40349,
+          "sha256": "d2fd0b1ab404fdcbbc361b89cc47a8a1162cd56c2f97d70ec42ed0535f1a6f27",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_s1/rz_upset_intersection_counts.tsv",
+          "bytes": 79,
+          "sha256": "ac499dec69e167eab4720a09e5be44c6f7c6bca8f1bd933c9a6fa04050346ae2",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Aggregate Figure S1 source table (no individual GTEx ages)"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/figure1_zga_inputs.rds",
+          "bytes": 4058828,
+          "sha256": "c4bbd44afd19c8de91ef5c9ffb05cf865ad1c277b06f22d2bef3e7097c9a5f16",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Processed zygotic-development expression counts and public sample metadata"
+        },
+        {
+          "path": "analyses/Figure1_and_S1/data/hs_gene_annotations.RDS",
+          "bytes": 564682,
+          "sha256": "1c2774c23d46f19bd20929251ce17c214dd3b82ebb493f7db46acc36e3bfdff4",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Human gene annotations"
+        }
+      ]
+    },
+    {
+      "filename": "MIR29_Figure2_S2_inputs_v1.zip",
+      "module": "analyses/Figure2_and_S2",
+      "topic": "Evolutionary conservation and regulatory CpG",
+      "bytes": 35097108,
+      "sha256": "ad9e10a33f9ca8b303402fa0130d096a4df021a491430e01f443e0a90506538a",
+      "file_count": 42,
+      "rds_count": 11,
+      "uncompressed_bytes": 41356141,
+      "files": [
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/abc/S2a_mir29_complement_source.tsv",
+          "bytes": 42145,
+          "sha256": "ab77e4afacf9d945b3d27961e9f0424ff13b2839d8796face5d6a86ee0838888",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/abc/S2b_dataset_provenance.tsv",
+          "bytes": 2483,
+          "sha256": "2a1dca3626cc9051ace0c7f7c8963e65266cd2400c04ba4cbc92d37696ad169f",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/abc/S2b_mirna_coverage_source.tsv",
+          "bytes": 2175,
+          "sha256": "ef804d4af9ea5d73edd802006c88e11f967a14a04af69fe02b1747417e0e7e1f",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/abc/S2c_mirna_tissue_distribution_source.tsv",
+          "bytes": 2438645,
+          "sha256": "23e6aef9a5ff4b2e9ad3835f5b5f79dfb1b67fa41987dadc3f5c6d3b8d3b208d",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/abc/S2c_mirna_tissue_highlights.tsv",
+          "bytes": 13204,
+          "sha256": "d5024c08ac02761a0fdbb1298877f4bb14473df8d432499458471f746f359665",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/abc/S2c_mirna_tissue_index.tsv",
+          "bytes": 1222,
+          "sha256": "a98e25de0b22d13244887ca7d23a7e8c6b145ebde6c3d722204dd518b8419ebc",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/defg/S2d_methylation_coverage_source.tsv",
+          "bytes": 4335,
+          "sha256": "1aaa729d0bf95e6bf51505c05027639825ea8518383ab1b2a3e13a57d8b7bf77",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/defg/S2e_tissue_display_points.tsv",
+          "bytes": 937643,
+          "sha256": "816b538b2eeec08e832500683278b4997512ca0ba9888216e7810137c4d65d6c",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/defg/S2e_tissue_full_distributions.tsv.gz",
+          "bytes": 20341602,
+          "sha256": "5462488b85867bb6c9766c9293f162fbdd44d20db17bbab68c7345bf800a9516",
+          "kind": "analysis_input",
+          "format": "GZ",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/defg/S2e_tissue_target_summary.tsv",
+          "bytes": 3886,
+          "sha256": "df8b23e614aaa326369292f4b620280d3d20c49f7c0e7a329fadb7843f099e99",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/defg/S2f_beta_species_summary.tsv",
+          "bytes": 5134,
+          "sha256": "a15c188e9a7678e7c6d4d76fb0d17a505d8e867a3243db55a2bcfeb92de93fb1",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/defg/S2f_beta_tissue_summary_provenance.tsv",
+          "bytes": 13248,
+          "sha256": "6347f462e12c9438dee2ea85331bbf8e6cee8ffca8d42ed02c8c63389657c229",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/defg/S2g_rho_species_summary.tsv",
+          "bytes": 7023,
+          "sha256": "a6923bc19965df619c3005bad26a890784327f450a1132a1043929fe81b6d746",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/hi/cg10501210_sample_annotation_beta.rds",
+          "bytes": 280757,
+          "sha256": "8a919aba742b0b8ad69ec2784863adc8cd3f9395e0139a46658f28fccf09f796",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Sample-level one-CpG input for unconditional current S2h bootstrap verification"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/hi/human_bootstrap.tsv",
+          "bytes": 2656,
+          "sha256": "1fd8eef1b9e987f9d00ecb27b7e423ec193989d4288055b142b61591a530005f",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/figure2_s2/hi/leave_one_out.tsv",
+          "bytes": 9069,
+          "sha256": "1a2abdd08e70b16750f5de0951bb911ea3c3747c5b9aa65f2ead991d56c43804",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/methylation/figure2_methylation_portable_input.rds",
+          "bytes": 9209496,
+          "sha256": "d3759408f52aeffc0b0ebafb95b35477c32fe1525799774cfafcbeaec88451a2",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "37,554-probe tissue correlation checkpoint for Figure 2H-K and S2 leave-one-out verification"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/corrected_inputs/goat_corrected_all_miRNAs.tsv",
+          "bytes": 29605,
+          "sha256": "54b6920f4923d1d46a0b34cadd107e3b509e3889652776df9c68e5c49f53ed89",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/corrected_inputs/macaca_brain_days_all_miRNAs.tsv",
+          "bytes": 20716,
+          "sha256": "8e4cd4be1bde8de98c57feadd9a03b396219390dcff60d5761c0f849cc80856d",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/corrected_inputs/panel_F_Capra_hircus_age_corrected_coefficients_ranks.tsv",
+          "bytes": 72558,
+          "sha256": "bf8e0c94dc405e66da528d0acd67671b9e1d3caa7b03ee28b2541b662e0c88f0",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_celegans.RDS",
+          "bytes": 5981,
+          "sha256": "ae3cdaaf1ca5a88cf899c7ce1dee560db2b41a1ed55877d7e61fc87658d45f44",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_chicken.RDS",
+          "bytes": 14033,
+          "sha256": "ecc16a8ac5f5f9e7bb744ccde2b121d30ca1d12a0122520561ebc3b01377889f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F and Figure 2G"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_killfish.RDS",
+          "bytes": 47136,
+          "sha256": "46d9f01a1e5288e6d65ea7e1dfcd14696fa4973bc5a6ea2f5e5a5854066a90ac",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F and Figure 2G"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_mouse.RDS",
+          "bytes": 81893,
+          "sha256": "41bf3367b744cba848c448258338a8b82b2b171a46945c690093878e6122b264",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F and Figure 2G"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_pigf.RDS",
+          "bytes": 3443,
+          "sha256": "c7fe590ceb7b00ffa62b6c53042d05ed3cfa7af6ed81806ad945412ae7ba09f8",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F and Figure 2G"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_rabbit_tiebreak_exact.RDS",
+          "bytes": 9915,
+          "sha256": "6829cadbcb055c561ab07e8f887843ad216af7c2e8b03ba1b63142df2268739c",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F and Figure 2G"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_rat.RDS",
+          "bytes": 34418,
+          "sha256": "a35f684247ebfd2be0e5d04a0f9b89d8fcb0937a6812171370a717eba01042e5",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F and Figure 2G"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_sheep.RDS",
+          "bytes": 2593,
+          "sha256": "27ce30c896ac9a62a1d5fec6d2e00de51a49b2ad197eae582b14f2f3418acf3c",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F and Figure 2G"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/per_species_rds/final_zfish.RDS",
+          "bytes": 10574,
+          "sha256": "1049712651e6a6f709dd95e27fcadc42ed3c46b007dfcc903e151421deb2f81a",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen species-level coefficients for Figure 2F and Figure 2G"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/phylogeny/phylo_species_clean_resolved_sub.nwk",
+          "bytes": 1426,
+          "sha256": "f845f0d0265bb73f0937dbde94bc3e405e179a3c01bd53e77020b3cb406b9964",
+          "kind": "analysis_input",
+          "format": "NWK",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/phylogeny/species_annot.tsv",
+          "bytes": 2344,
+          "sha256": "21b780f9d157839e11408e84a67e8110347e3169d5711b6ada91b57b1f8ce735",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/sequence/mature.fa",
+          "bytes": 3866196,
+          "sha256": "3c521fc9bea3c7993e71cf188b11caf73e2d40ac83454e32876455317cc6d342",
+          "kind": "analysis_input",
+          "format": "FA",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/sequence/mature.nfu.fa",
+          "bytes": 46767,
+          "sha256": "1ccf21807c28dc2971e2faa76ee967c2ac35279d055d0761626e5f260ba864e8",
+          "kind": "analysis_input",
+          "format": "FA",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/data/miRNA_phylogeny/validation_reference/seed_ranking_complete.tsv",
+          "bytes": 7447,
+          "sha256": "9d9d71b48b4d06523344d7bf6c70be5c39d0de0e7236090fbaed1dac8b371da6",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical/sequence accessory input"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/reference/Figure2_S2_reference.png",
+          "bytes": 792968,
+          "sha256": "ce0311c8ea9165f13316dff91598fb7dba374bff1ed46146dbfc94fd89d9b0cb",
+          "kind": "rendering_asset",
+          "format": "PNG",
+          "description": "Exact complete Figure S2 reference PNG consumed by knitr::include_graphics"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/reference/Figure2_reference.png",
+          "bytes": 1806542,
+          "sha256": "8c29553a607ca0dcb55d983ada021f705cb3c693f804b5afae95613ef3cf6c04",
+          "kind": "rendering_asset",
+          "format": "PNG",
+          "description": "Exact complete Figure 2 reference PNG consumed by knitr::include_graphics"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/reference/panel_a_reference.png",
+          "bytes": 669629,
+          "sha256": "9a81f2acefbbe4d747abdac0cd580e743c7b07b6e6fed82d95ff9a6166610165",
+          "kind": "rendering_asset",
+          "format": "PNG",
+          "description": "Exact Figure 2A reference PNG consumed by knitr::include_graphics"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/reference/panel_b_reference.png",
+          "bytes": 166102,
+          "sha256": "129648ff922b738ebd787caa4e77e3fc65fa7bb1d558c1f7823356d5953febae",
+          "kind": "rendering_asset",
+          "format": "PNG",
+          "description": "Exact manually curated Figure 2B reference PNG consumed by knitr::include_graphics"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/reference/panel_c_reference.png",
+          "bytes": 97809,
+          "sha256": "ab1cd43307d887b135f6d507056d13ded15c4d26ebe2d77195414ffd23f36761",
+          "kind": "rendering_asset",
+          "format": "PNG",
+          "description": "Exact manually curated Figure 2C reference PNG consumed by knitr::include_graphics"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/reference/panel_d_reference.png",
+          "bytes": 98225,
+          "sha256": "ebe9041be813aba8220936edb6026d3e5457da697d1b3ca44e1ec4dc84869016",
+          "kind": "rendering_asset",
+          "format": "PNG",
+          "description": "Exact manually curated Figure 2D reference PNG consumed by knitr::include_graphics"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/reference/panel_e_reference.png",
+          "bytes": 87128,
+          "sha256": "61c854062865bb3038a856961c0076e1d493ad9f787e8f59dd46c4a6748c5ddf",
+          "kind": "rendering_asset",
+          "format": "PNG",
+          "description": "Exact manually curated Figure 2E reference PNG consumed by knitr::include_graphics"
+        },
+        {
+          "path": "analyses/Figure2_and_S2/reference/panel_i_reference.png",
+          "bytes": 65970,
+          "sha256": "bb1241fe3c1ab4314bbc5e5eeac7bab650c7bee7b806c545cac1abb7e020f5c8",
+          "kind": "rendering_asset",
+          "format": "PNG",
+          "description": "Exact Figure 2I reference/alignment PNG consumed by knitr::include_graphics"
+        }
+      ]
+    },
+    {
+      "filename": "MIR29_Figure3_S3_inputs_v1.zip",
+      "module": "analyses/Figure3_and_S3",
+      "topic": "Transcriptional responses to miR-29 perturbation",
+      "bytes": 265883256,
+      "sha256": "dfd4dc75a2c1e297ee427eccfcdadeb472f8e4c7572ce8b6709d0e8a18425f6a",
+      "file_count": 27,
+      "rds_count": 25,
+      "uncompressed_bytes": 274004058,
+      "files": [
+        {
+          "path": "analyses/Figure3_and_S3/data/main/alluvial/tf_n_o_results.rds",
+          "bytes": 20263,
+          "sha256": "6b43dc7005e5dbf4e0d5cb268c58a0460f4d24a3cb4f83aeb67433a4ebbde9c1",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Alluvial, TF and target gene analytical tables"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/main/panel_b_audit.rds",
+          "bytes": 752715,
+          "sha256": "acb376513ed9cdad6bd3c296cc2c351cc993d97ac60eaa477131f2e2c1d4bef1",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Growth summaries and numerical anchor"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/main/panel_d_audit.rds",
+          "bytes": 15668765,
+          "sha256": "edaa9e41bbeefdca27117ab2d925f2ce1c5d2e9e0f338ff48822bfb4ec90ed6f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "PCA checkpoint and feature/PCA verification"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/singlecell/marker_dotplot_macro_identity.rds",
+          "bytes": 243012,
+          "sha256": "44ce4de18be371c31b71629af772a7480e07553b6e1e9efb3f626fe992c9763a",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Macrocluster expression/detection anchor read as ggplot$data"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/singlecell/reference_plot_data.rds",
+          "bytes": 2379721,
+          "sha256": "182bc09691c869846250050895649c11fba606cc92b70e9c7e1c1598e470b31b",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Preserved oral single-cell coordinates and bulk projections"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/supplementary/LOTO_multilevel_results.rds",
+          "bytes": 8307121,
+          "sha256": "7a29d7707058d3708dc983cddcaf7b5e6300801c7e4fb86926f4fe5d6ec6a6da",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen multilevel probabilities and LOTO verification"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/supplementary/core_candidates.rds",
+          "bytes": 6386380,
+          "sha256": "54fa630e74ca7d5df99f0c2f15388b97479162c483759ac0b48cead52e1c7f2b",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Target ECDF and camera tests through core$data$activity_results"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/supplementary/global_statistics.csv",
+          "bytes": 1116,
+          "sha256": "501d525daa2fa1cee4e405166e404b558c0d4f862fdf556ebeb93a4f4c2b3fce",
+          "kind": "analysis_input",
+          "format": "CSV",
+          "description": "PASTA global test statistics."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/supplementary/own_control_posthoc_Holm6.csv",
+          "bytes": 9393,
+          "sha256": "a7df90041cce9581b6a3edb94645af17dc144bc7f58984c41cac7fb5ef23dff9",
+          "kind": "analysis_input",
+          "format": "CSV",
+          "description": "PASTA timepoint-specific matched-control tests with Holm correction; distinct from the global tests."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/supplementary/signature_support_data.rds",
+          "bytes": 420264,
+          "sha256": "e2d8fbd2f1f3fe2e253497dd78a6289dec4b44351d5b3a3c57e1514218c3b3ec",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Signature sets, enrichment summaries, external-fibroblast sampling metadata"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/activity.rds",
+          "bytes": 583595,
+          "sha256": "7d68903a99b1e854c802c158b4785a1ab10fdae1c3c1712f08afabadb64c12e9",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Selected TF/pathway curves, fitted values and tests."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/authentic.rds",
+          "bytes": 25738429,
+          "sha256": "bc3612886c4581ba2b2c09f52efe3aaf10269de2de44957019bd3a170d5d0f14",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Preserved aggregate pan-tissue signature/correlation and enrichment display data."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/clock_stars.rds",
+          "bytes": 2108890,
+          "sha256": "2065de019c45f2f96c69b5ae19ef83c79745a95871f1af1acc5dc54c5bd00a25",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Timepoint-specific matched-control clock tests; current figure labels use global q values."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/curves.rds",
+          "bytes": 9835309,
+          "sha256": "8c9acc87c0f14978099a46f8389a87db006953233357e62aed9912f1fe9ad5fb",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "HGF correlation and tail-membership verification."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/definitions.rds",
+          "bytes": 11015221,
+          "sha256": "6a2a2ac361017b8bfd54b36f586dae7abcf5668fadba3c5a6f81c5d2f48da05f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Signature definitions, partial correlations, all LOTO definitions and background collection."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/differential_expression.rds",
+          "bytes": 20553046,
+          "sha256": "258b265cc52510f43599ccac036fe219f9fa660ff0cb62789fb2d054534f54ea",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Contrast tables for DE recount and Jaccard recalculation."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/expression.rds",
+          "bytes": 44419957,
+          "sha256": "7cb12967cb889b2d14b856c0f78813cd4de6d6ce44c09fff52425f07e4ac30c1",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Corrected VST for 20,000-gene PCA check; also stores counts/pre-batch VST for optional upstream functions."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/genes.rds",
+          "bytes": 26010,
+          "sha256": "3e81f94bececdd2d914f40d3d6eb9e149fcfa4266aba943ee986c10aa11fc290",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Selected-gene summaries."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/heatmaps.rds",
+          "bytes": 208626,
+          "sha256": "d79a9f80e18e775a1e0742a3acb22b84ba96b870beef4f6f63c88ad32255405c",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Palette, matrices, hclust/dendrogram numerical anchors."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/main_clocks.rds",
+          "bytes": 944880,
+          "sha256": "7fc7f819e16611e5f09402b1ee2358fa631d094ee2171e9b1d7a74d9f328aef9",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Primary RNAAgeCalc and tAge curves and global statistical anchors."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/mobile_clocks.rds",
+          "bytes": 45195503,
+          "sha256": "9377eee17b4d1c389873d5196e6a40b3fcb7577042fd7556c99bb5de5c4a10e2",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Supplementary native clock curves and preserved fitted layers."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/networks.rds",
+          "bytes": 57561924,
+          "sha256": "906e63902692901ea7e2922ba96fa14c5c60e59811c48487fe28080918f24f63",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Prepared network graph tables"
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/overlap.rds",
+          "bytes": 557768,
+          "sha256": "0473a6645c6cff6339ddd2314d09cf513415ea51aebee0ba94feff17823f657f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Historical Jaccard values as numerical anchors."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/progeny.rds",
+          "bytes": 18660,
+          "sha256": "51b033170702457c967649cb276ea348116d3e07183dd69c6e8466ffc5f2b587",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-sample pathway scores and assay metadata."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/simple_results.rds",
+          "bytes": 18229549,
+          "sha256": "66b81c659aa223269e0a6a6ab2256f363f161f9bbbc4a97af303a83d6dff12c3",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Historical Monte Carlo NES and enrichment verification anchors."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/tf.rds",
+          "bytes": 320784,
+          "sha256": "a9dcb0dba85d3b2725f3c442e9c0a647188a936f52ac61798f18416bb6b82c22",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-sample TF scores, assay metadata and matched-control reconstruction anchors."
+        },
+        {
+          "path": "analyses/Figure3_and_S3/data/verified/unadjusted_fibroblast_vst.rds",
+          "bytes": 2497157,
+          "sha256": "1416656e5b6d16f1849b646ef2de189a72cfbe4078ae06a815ab130d20bb7b8f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Pre-sex-correction fibroblast VST and metadata for partial-Pearson/LOTO recalculation."
+        }
+      ]
+    },
+    {
+      "filename": "MIR29_Figure4_S4_inputs_v1.zip",
+      "module": "analyses/Figure4_and_S4",
+      "topic": "Methylation remodelling, clocks and the 123-CpG reference",
+      "bytes": 184448924,
+      "sha256": "eda74bfc43038ff29c74292579670a1a7aa329aca4a93141ef62bef895177150",
+      "file_count": 45,
+      "rds_count": 36,
+      "uncompressed_bytes": 190902879,
+      "files": [
+        {
+          "path": "analyses/Figure4_and_S4/data/clocks/auc_inputs.rds",
+          "bytes": 1311945,
+          "sha256": "6d57ce7e095a63149b9cb8f24085fc636cfebceab8ca19ec74e9e244659b5d66",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Clock linear predictors and attribution inputs"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/clocks/expected_auc_components.tsv",
+          "bytes": 4476,
+          "sha256": "b59d9054c44d80d8e095d94362cea352ea8df16135741509cc325da9ae6865d3",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Expected clock AUC attribution components for numerical validation."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/clocks/htert_PASTA_inputs.rds",
+          "bytes": 750379,
+          "sha256": "564fed46fe5f2544c8691ad9c113157711e361b3517dfed410ec08d2bf04fabe",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "HTERT rank matrix and predictions for routine PASTA model verification"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/clocks/htert_clocks.rds",
+          "bytes": 4546,
+          "sha256": "afa9e25e1e6f7358fcc30a20eedd1577f239717ca9577b91a068828d230c8c58",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "HTERT RNA clock display and global tests"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/clocks/primary_clocks.rds",
+          "bytes": 1239440,
+          "sha256": "99f551a4b3b086570a32f4430d8a9ccfae7e6da03569d1080469b97af56850f9",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Primary epigenetic clock predictions, coefficients and limited beta inputs"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity/culture_checkpoint.rds",
+          "bytes": 15176170,
+          "sha256": "6f23934193a489d5180fa407490dde9b6d0c1e3198910be3e3f1dd3f8b48926b",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "GSE179847 culture-stability probe audit; includes public-source culture/donor metadata not consumed by current selector."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity/initial_stability_audit.rds",
+          "bytes": 21406520,
+          "sha256": "c4f2315ceab945f3418dc2da448e4d6882801b2d1ff138b3ec15e823eeffafb0",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "GSE77135 probe-level initial stability audit"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity/selection_checkpoint.rds",
+          "bytes": 22432898,
+          "sha256": "8fb5d0648b0c3511e71ece6c4d2e05137907468122c90061e4da7891cc664f05",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "External-centroid and probe-selection inputs. The current analysis applies q <= 0.20 and verifies the adopted 123-CpG reference; earlier selections stored in this checkpoint are not the current membership."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity123/HGF123_beta.tsv",
+          "bytes": 437633,
+          "sha256": "26772a158a2098b2c7735634efc56b91cc63c02308cf2a1ba881f86dc7b3beac",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "123-probe raw beta values for all 72 primary HGF samples."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity123/HGF_samples.tsv",
+          "bytes": 4656,
+          "sha256": "59637a0b076c7a66fb996956676937df054854b301d89aa14afb800d9c99cac3",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Primary HGF sample/experiment/run/time matching annotations."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity123/HGF_tests.tsv",
+          "bytes": 30973,
+          "sha256": "40af4c0f65710d6e2c2d086b50e875974bd9ea7940c142de058450bdd01b307b",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Numerical anchors for all-T1-T6 mean, late-T5-T6 endpoint and separate AUC sensitivity tests."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity123/HPF_descriptive.tsv",
+          "bytes": 2790,
+          "sha256": "63be4786d839433fa88a19c1eac9ceb3980ebc7f1fa49215dcb06d980e457cd1",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Descriptive HPF transfer table, with one matched pair per timepoint."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity123/hTERT123_beta.tsv",
+          "bytes": 218984,
+          "sha256": "4a5969b4d2a14dd316afa06c051a72fcfa4604fa2e7d0b8684ed084cf1d892cd",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Raw methylation beta values for 123 selected probes across 36 hTERT assay samples."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity123/hTERT_samples.tsv",
+          "bytes": 3131,
+          "sha256": "428b8f88413d0db993118a9e9ab03a0d3f78736e6c701737a60c7fd0d236c3f0",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "HTERT arm/experiment/run/collection matching annotations."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/fidelity123/hTERT_tests.tsv",
+          "bytes": 1738,
+          "sha256": "6ba1a483050661147d6feba39ef7af9e97e64af3b31c97f70537c60407b2ac6d",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "HTERT three-round mean and third-cycle endpoint numerical anchors."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/htert_hpf/hpf_dnam_inputs.rds",
+          "bytes": 547187,
+          "sha256": "ad74bb159a412cd359d213fbd1b3324045cb12a7852b92973f147823d5051e63",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "HPF DNAm selected effects and historical selection/model specification."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/htert_hpf/hpf_dnam_selection_audit.rds",
+          "bytes": 18872320,
+          "sha256": "75f4a84b7632448815ecafc5f368abcef068a8113a6b6e411bedd1b62a906dcc",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Complete probe-level HPF selection audit"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/htert_hpf/hpf_rna_inputs.rds",
+          "bytes": 3093235,
+          "sha256": "f07296cb19f2a84ff72e4f39e5096c0360f5400f2196e208c5dea81debaf81c9",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "HPF RNA analytical inputs and metadata."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/htert_hpf/htert_historical_enrichment.rds",
+          "bytes": 20294,
+          "sha256": "9d3740320e62c050936f7b6982a148b1f3b1b10b0bcd973f9a7e743368846ebc",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "HTERT gene sets, enrichment settings and results."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/htert_hpf/htert_temporal_tables.rds",
+          "bytes": 85306131,
+          "sha256": "cb2be86d5f4c8c7977e23434006168bfb46573b2e502f9d4b7486bb7640bda3f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "HTERT temporal limma tables for frozen pathway/signature verification."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/models/PASTA_linear_predictor.rds",
+          "bytes": 93121,
+          "sha256": "03165038b229e93f2a6fdc6ab566ffa02beca3063d49f1eca2c2a7f585077512",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Serialized fixed PASTA coefficients/intercept/scale for routine verification"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/models/horvath_calibrated_input.rds",
+          "bytes": 364911,
+          "sha256": "3425d6c1df61f9edc6593e02ef8817c05ba2928eca32610f35d39bc691dcfd32",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Calibrated primary-HGF beta/model-age input for SkinBlood and Horvath2013 verification"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/clock_predictions.rds",
+          "bytes": 2386,
+          "sha256": "a381c5990887d3d357653776302439ebea3015354db85da053b95ef95a487067",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Primary methylation-age predictions for models and verification"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/ctrl_mover_trajectories.rds",
+          "bytes": 137940,
+          "sha256": "f5b791075c5e8e90c66b0b01248ea27a1757010aabe5e25a96cd60a14e2076a0",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Control-selected probe sets, replicate means and fitted curves"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/global_mean_mixed_model.rds",
+          "bytes": 37203,
+          "sha256": "77416f6f566494db9c9b1a33e6da387e3b7d4cfe44f3f8ba4aebb75b79156ebc",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen condition/time global-methylation model and contrasts"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/global_raw_collapsed_metrics.rds",
+          "bytes": 1969,
+          "sha256": "88e6b29b3c0bb97f77920df4d595ae3b71835b5a6cb8ff6e0e351490329de8be",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Raw collapsed complete-probe global means for plotting and statistical reanalysis"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/gtex_meta_density.rds",
+          "bytes": 37165,
+          "sha256": "204d9a863840e71b1a3f1d84f38aadeac1a6f8f74ef66c49ff7b04aba7950a14",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Existing aggregate chronological-age GTEx beta-density curves; 4608 rows, beta/density/age_mid/age_bin only"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/gtex_windows_DNAmAge.rds",
+          "bytes": 4360,
+          "sha256": "699f1dc141bf85fe24846fac353851b0422c612532a6c2816b671f929b497466",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "161 aggregate GTEx tissue/DNAm-age-window summaries; a reference table not automatically loaded by the current notebook."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/hgf_compartment_metrics_adjusted_verified_annotation.rds",
+          "bytes": 11836,
+          "sha256": "68a8c02342bc6a5fbe8ee2a688cda8ae407b4b67bfec231943c7f47ec39d4e3e",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-assay compartment metrics for figures and statistical recalculation"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/hgf_density_adjusted_no_reflection.rds",
+          "bytes": 103563,
+          "sha256": "b7a8c57e59122f64b835a3ffd61c1e498dec21ebc8b769fcf1803c0def45709e",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Adjusted HGF per-assay beta density checkpoint"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/limma_contrast_counts.rds",
+          "bytes": 641,
+          "sha256": "cd0c96263bd22d2df176da3cdf2ebc527642b43439b86c5e1a8ab1ee07482f6f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Temporal DMP contrast counts"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/main_statistics_own_vs_pooled.rds",
+          "bytes": 329821,
+          "sha256": "7b650b0756b44e2b5f96df2d8a2bd59d39086f08efb447ef94f281d77777b2ce",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen reference statistics"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/panel_b_historical_restricted_counts.rds",
+          "bytes": 317,
+          "sha256": "e280e9d715db1935271aab05e1e4399c6e8d671741e3bb0fbbd070aeddb36a6c",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen restricted temporal DMP count family"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/panel_k_compartment_burden.rds",
+          "bytes": 3816740,
+          "sha256": "db46b4734b39062a838a84f83231af3879e81711517157b59a94f19107cb6a5a",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Compartment feature sets and aggregate temporal burdens"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/pca.rds",
+          "bytes": 525545,
+          "sha256": "4b5a3e96d2e1384882e0ae3549a0424ab305252d0dcaa0978e7e1308052b1827",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen PCA samples, explained variance, probe loadings"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/repeat_beta_metrics_historical_specification.rds",
+          "bytes": 8564,
+          "sha256": "27a60bc82d5b19d71aae90b286cb79ec03445f4a1290d20fa50a2963cd4fe259",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-assay historical repeat beta checkpoint"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/retroage_model_and_input.rds",
+          "bytes": 784894,
+          "sha256": "fa6a12acc431fcdae080debf6f7eaadd5e24398acfb2952af1a4baab4480dc67",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "RetroAge coefficient/input/prediction replay"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/sample_metadata.rds",
+          "bytes": 1148,
+          "sha256": "7610de9bb651febeebb1e78daf690b0e5b531c6d9f263e8c6f435fe94962e08b",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "HGF experiment/time/treatment/run annotations required by 06a_statistics.R:18; no GTEx metadata."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/temporal_slope_geometries.rds",
+          "bytes": 11615750,
+          "sha256": "42a759fd36df055634ee0068d7841b2c1961a91c67aca995061e866678b8b224",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen RNA/DNAm temporal feature slopes and geometry"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/primary/walk_pan_mval_all.adj_26june2026.rds",
+          "bytes": 293199,
+          "sha256": "1ca83ffc01a12d779762cd68d4a7994fd6930eb28b481941ef588f8da32fb653",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Default frozen adjusted-M methylation walk; dynamic key at 01_primary.R:458-462."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/wnt/chromosome_geometry.tsv",
+          "bytes": 1226,
+          "sha256": "34c51275667a3860e24dd438d26cf744df7a7ccdc0d9d4991ce68f0811ba926a",
+          "kind": "analysis_input",
+          "format": "TSV",
+          "description": "Genome assembly chromosome extents"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/wnt/dmrcate_display_data.rds",
+          "bytes": 31152,
+          "sha256": "125e59ede5055220657b4f5a858fb6108bd6f9e0d467bba930434105257471ff",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "WNT locus, response and interaction inputs; modules 04a-04d."
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/wnt/hg38_cytobands.rds",
+          "bytes": 9420,
+          "sha256": "cbff627d3704d40cdaa94f68c47048d415ca71f65f64babbba35270f7a75647f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Public hg38 cytoband coordinates"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/wnt/historical_DMRCATE_calls.rds",
+          "bytes": 1823921,
+          "sha256": "b50a730a8c17ef52bc6a35e8559c4e4dfac2de6188b715e024a894978df9ddd2",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Genomic DMR ranges"
+        },
+        {
+          "path": "analyses/Figure4_and_S4/data/wnt/interaction_statistics_by_gene.rds",
+          "bytes": 641,
+          "sha256": "9527aa15acc2c605c154c72f5b7773478c7ee2afaa4a43e1c9ee449d274b2fa2",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen factorial-interaction numerical checks"
+        }
+      ]
+    },
+    {
+      "filename": "MIR29_Figure5_S5_inputs_v1.zip",
+      "module": "analyses/Figure5_and_S5",
+      "topic": "Tumours and cancer cell lines",
+      "bytes": 344203391,
+      "sha256": "7abddf1c12fc53ea3150aeb72500182c29c533542adb9533c5433a20b4948e62",
+      "file_count": 56,
+      "rds_count": 56,
+      "uncompressed_bytes": 344793167,
+      "files": [
+        {
+          "path": "analyses/Figure5_and_S5/data/expected_clock_extensions.rds",
+          "bytes": 2388732,
+          "sha256": "0821a15afb5bf2bdb753cd5bb941371380803df307ecf5931d13e316854e4382",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Expected TCGA/CCLE age-clock rankings and leave-one-stratum-out estimates."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/expected_compact.rds",
+          "bytes": 552274,
+          "sha256": "8489ab60953a2403b59dadd172e22889be81025c9e40d0b694b4c5f2f602432b",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Expected full RNA distribution summaries for S5g."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/expected_main.rds",
+          "bytes": 17802416,
+          "sha256": "6b5ea60e725f90f566c9756184b2cabc83472b9bff58ed9b0ff7ea4b9ae75d2d",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Complete expected Figure5 checkpoint"
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/expected_supplementary.rds",
+          "bytes": 1715099,
+          "sha256": "b7c4d966e4eaff3ddbd3a19478d9491b78261caeb29b0e352011da73a646330c",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Expected S5 paired robustness, reference counts/distributions and fidelity meta-analysis values."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/reference_selection_metrics.rds",
+          "bytes": 244651201,
+          "sha256": "5a731f9614b3c1af81c85fc12b8745c5dd08b50d1bd4f31f553a1b151760f131",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "S5j: per-CpG normal-reference variability and age-stability metrics used to recalculate reference QC distributions."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/CCLE_miR29_DNAmAge_FINAL/CCLE_miR29_Age_Horvath_Skin_with_acceleration_N20_FINAL.rds",
+          "bytes": 1149103,
+          "sha256": "133a9decbfb299e9275a84ffcd63278b2262d229a5683b46ed209ef9b6a0bbee",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "CCLE cohort metadata, per-lineage miRNA–age/clock coefficients and rankings for 5b/S5d–f."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6C_TCGA_RNA_FINAL/FIG6C_TCGA_RNA_Horvath_FINAL.rds",
+          "bytes": 43509414,
+          "sha256": "7d9108891b5334537dc3ea4b4f3a09a746bd3ba3b13d6291cee86bf5ba4fc411",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-cancer RNA–clock coefficient matrix and meta-ranks for 5c/S5g."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_FINAL16_miR29_ERC_ge5pairs/FIG6E_FINAL16_miR29_ERC_ge5pairs.rds",
+          "bytes": 47147,
+          "sha256": "6f74ab22dde5953756f33aae9dc5fcb823a9548c3bb53e5a329959282dfa3278",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Frozen strict paired-patient effects and meta-analyses used to validate reconstruction of5e–f."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/BLCA_FIG6E_v1.rds",
+          "bytes": 42187,
+          "sha256": "de8a6d6d5cd4ab359798f41252c7f12fda3a50161e3b8d1666a19ea6f89ded71",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/BRCA_FIG6E_v1.rds",
+          "bytes": 117398,
+          "sha256": "8c39a11330b8fa2d17649fe9c6a2e3ae6bce9389253a3a629bea110a6b203be8",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/CHOL_FIG6E_v1.rds",
+          "bytes": 4849,
+          "sha256": "b604bdd63c3e54fbf9463722da82829b3a0fa68f3ba6e43c5099f7e18cc8cdea",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/COAD_FIG6E_v1.rds",
+          "bytes": 47256,
+          "sha256": "5f03535040c6c23891f698b6fb6f84ec7eae49ccb8067b939585906977f7eae6",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/ESCA_FIG6E_v1.rds",
+          "bytes": 16757,
+          "sha256": "a6f3db51b3c27e752e193154da8f1ed47a36ba8d6fd80232cd338b371c0f89f1",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/HNSC_FIG6E_v1.rds",
+          "bytes": 54865,
+          "sha256": "9ce66342dfc5178dc3010cb611497a16361f6b4cb891668e652d5bd2bc1e8eb3",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/KICH_FIG6E_v1.rds",
+          "bytes": 9302,
+          "sha256": "ce615cff0d651dac42259787a1a83b96d6de41433d8aa09ef93b067b8b98ffcf",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/KIRC_FIG6E_v1.rds",
+          "bytes": 59872,
+          "sha256": "6bddc47e68f6ea8db89396aaf7355e369fb9b8c1e353bc3bbac6d348aeafb0e8",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/KIRP_FIG6E_v1.rds",
+          "bytes": 31471,
+          "sha256": "d27d07f77ef714668fbb05dc0115d9efcf842b5239a76fa33bb4efdbaf60f553",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/LIHC_FIG6E_v1.rds",
+          "bytes": 42580,
+          "sha256": "0b34bf41e4da330f35cda214dd8fe3ed146a033c6224d78201555346893281ce",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/LUAD_FIG6E_v1.rds",
+          "bytes": 56483,
+          "sha256": "b7411a283f1c19db9e6d6684615a36f0d9f5037f36d48369130f1aa23ba6d161",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/LUSC_FIG6E_v1.rds",
+          "bytes": 54029,
+          "sha256": "5e93c64c3e0afa155f1cff9cd77855fd651cfe94b265a90b74df146604607006",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/PRAD_FIG6E_v1.rds",
+          "bytes": 55205,
+          "sha256": "fd32eace2ede44f221a539f315ca1f8b012927a04a2ceeffb2e2adf0564979ab",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/STAD_FIG6E_v1.rds",
+          "bytes": 42035,
+          "sha256": "837eba283972a1c8126c3df5217e23067c5eb644ded91c97d18a901065f1279a",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/THCA_FIG6E_v1.rds",
+          "bytes": 56367,
+          "sha256": "ab1a494b58c639abde4aa5d5b352cea12b6769bdd72250a0e7eb546b7e338786",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/FIG6E_TCGA_miR29_ERC/cache/UCEC_FIG6E_v1.rds",
+          "bytes": 56564,
+          "sha256": "bb6548bff75092e676a5ea9a6b599705338c5d6fde2130bc04bd80ac8b4717f4",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miRNA/MRC scores and patient pairing inputs for 5e–f,5h-right andS5h–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_Horvath_repeated_resampling/MIR29_CLOCK_RESULTS_Horvath_AGE_Acceleration_Pearson_Spearman_v1.rds",
+          "bytes": 11748520,
+          "sha256": "78861498491a5e7d425c6cef7c408ef52f39857510a64110bae3bfd0eb2e023c",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Thirty-histotype miRNA–age/clock resampling summaries and cohort annotations for 5a/S5a–c."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_FINAL16FLOW/cache_final_autosomal_fidelity_16flow_ge5_v2/fidelity_own_CHOL_ge5pairs.rds",
+          "bytes": 693080,
+          "sha256": "343ae0a0ef6fb23d5887a6eb9b73421b97d782145a8fa4658160c7a0a956123b",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "CHOL ≥5-pair-flow own-normal reference and fidelity scores; required current CHOL branch."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_FINAL16FLOW/cache_final_autosomal_fidelity_16flow_ge5_v2/miR29_CHOL.rds",
+          "bytes": 3216,
+          "sha256": "058ea7516699d837397f9b095d1e6f0fe33b186ffc0b909a128e7c1b6e5bc3b1",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_BLCA.rds",
+          "bytes": 814914,
+          "sha256": "15e9abc139ff9d2ba31877a6df0adca7c24e754aa8c117a0e7ae51a6e7dfa8b6",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_BRCA.rds",
+          "bytes": 1215045,
+          "sha256": "4991707b419b1f81c6c47ed51bfa599b9081ba95ee29253775ec31b486c7da8e",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_COAD.rds",
+          "bytes": 893870,
+          "sha256": "2b26e139d164ee1d6cae3fd07fa1f800fb4f11506310fd187295448882c0d8b2",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_ESCA.rds",
+          "bytes": 546007,
+          "sha256": "e680ca4136a946cd4706dfbd1835009a16d0ddefca1f47dfcf761817b3c2c95a",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_HNSC.rds",
+          "bytes": 1073349,
+          "sha256": "4c11d35d61ca266473dfcbe2747417e8f51b90e2db7e2ec259f3a6bfb2e0ef40",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_LIHC.rds",
+          "bytes": 1085254,
+          "sha256": "78b49d796f74001dbc078fa1039b3fde48dd03ea0be6f89a01b79bc423105af6",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_LUAD.rds",
+          "bytes": 1191103,
+          "sha256": "c9be991f91c9a160259b5e7ca6129918df49dcefbdff6af18a8cc2d056c3bee2",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_LUSC.rds",
+          "bytes": 1262012,
+          "sha256": "202667529b84bba0a8c2b70e5a592835afa2a67342c0222fa016c7f4437dd1c8",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_PRAD.rds",
+          "bytes": 1036991,
+          "sha256": "254edda573e0a7ce2b90de6f583eef2fb7c539e49aa50809e5658bdd8b99a13b",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_THCA.rds",
+          "bytes": 1333110,
+          "sha256": "04818216c7df024ed38442e84737eebdf8e3182653878e59240446e4670fd993",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/fidelity_own_UCEC.rds",
+          "bytes": 1018274,
+          "sha256": "77e4f38164d4564aef0404f696ade198946f96e8d4b290c8a9b7eb614ffdc8e0",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal tumour reference, stable CpGs, QC and fidelity scores for 5h/S5j–k."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/kidney3_shared_KIRC_KIRP_reference.rds",
+          "bytes": 3176508,
+          "sha256": "fede4056401fb3f76659622de3ff0adb35daf921c9dcec0be83d0a52fa2bb751",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "KICH fidelity scores based on the shared KIRC+KIRP normal reference; required dynamic KICH branch."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_BLCA.rds",
+          "bytes": 29784,
+          "sha256": "14f88674e3ea7669fc3df54981f41d992fd13d85ac82d883eef21c4fe50ada26",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_BRCA.rds",
+          "bytes": 78713,
+          "sha256": "acffc0702bf163469ea2ad81bbd6f3fbd3a799b7c2a51b0ae370e50497a8ec5e",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_COAD.rds",
+          "bytes": 31224,
+          "sha256": "d5c7ddc998ea60714c77c161524de369663e44da92b3fe4736e69f1983cb8362",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_ESCA.rds",
+          "bytes": 12952,
+          "sha256": "534ad598f358cca78a22bd010d95ebe84fb78d47ebbc92f5abbfed42ee79eed4",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_HNSC.rds",
+          "bytes": 38322,
+          "sha256": "7bcf65b82ed4698b65213040e73f2f6d725ed8bc3d4e53646c878cbeca3139bb",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_KICH.rds",
+          "bytes": 5993,
+          "sha256": "e2121a85853cd552bae2688ccd0e54dcc860624d835ddec3c457aba775dc3726",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_KIRC.rds",
+          "bytes": 38926,
+          "sha256": "b6163f62d8fd2c287628063d06cdcc3ba42d260ef54333581753523d822c82e4",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_KIRP.rds",
+          "bytes": 22335,
+          "sha256": "6086d1433bfe269501b3a52ee0b4163302b6cf3d65c5af6d3094684422f6350f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_LIHC.rds",
+          "bytes": 28946,
+          "sha256": "c55d1d5f3ef0be13cf982caf44c7443e02fadc617419ad9041c7ecad416052a2",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_LUAD.rds",
+          "bytes": 38244,
+          "sha256": "5dbd73676a7186ea783e3f878798d5a037894ea74375309ac549a697a2074184",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_LUSC.rds",
+          "bytes": 35887,
+          "sha256": "5a99ee0017f8e66ae041bf14b1b31b2e026cbc168cd768c1b904c62c24a5b63c",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_PRAD.rds",
+          "bytes": 37431,
+          "sha256": "d9ec0f2733959c9d069dd2e345571e05a9071f35c95434c76d0537306c2d891f",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_THCA.rds",
+          "bytes": 38389,
+          "sha256": "548783c8165fb4aedbcc80436f4abe4d3a86849725c08a0d945c34adb0a86553",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/miR29_UCEC.rds",
+          "bytes": 38606,
+          "sha256": "79251171606b954d8f1c695fda930258ff83d58a60b12dd8117b3e894ab72f70",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Per-histotype processed miR-29 scores for 5h-left/S5k matched TCGA cohorts."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/sensitivity_KIRC_own_reference.rds",
+          "bytes": 1423163,
+          "sha256": "373c207d163efcc7c0c2b621645085e2e628352519318203390d5ab23948bc9a",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal kidney reference and fidelity scores; required current KIRC/KIRP branch despite the historical sensitivity filename."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/miR29_TCGA_epigenetic_fidelity_MAIN14/cache_final_autosomal_fidelity_MAIN14_N10_v1/sensitivity_KIRP_own_reference.rds",
+          "bytes": 1206472,
+          "sha256": "7f983370b02df370016a80803675cdbc6bd9078f49c923a50551fdfe945c5edf",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "Own-normal kidney reference and fidelity scores; required current KIRC/KIRP branch despite the historical sensitivity filename."
+        },
+        {
+          "path": "analyses/Figure5_and_S5/data/source/rstudio-export-7/allPred450K.RDS",
+          "bytes": 2033921,
+          "sha256": "e35169c40c5cf7748d05c60a09808c4deecff966023eda88a70e3c3b424c36d5",
+          "kind": "analysis_input",
+          "format": "RDS",
+          "description": "TCGA sample-indexed chronological age and epigenetic-clock predictions used for 5h/S5k overlap and covariate adjustment."
+        }
+      ]
+    }
+  ]
+}

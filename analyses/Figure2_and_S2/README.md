@@ -12,7 +12,11 @@ This private-review snapshot includes the analytical source, the existing render
 
 Starts from analysis-ready miRNA and methylation correlation objects, sequence catalogs and cached phylogeny; it does not rerun the nf-core small-RNA workflows or whole-genome alignments.
 
-**The external input bundle is not yet distributed with this repository.** Data-availability and redistribution review must be completed before promising an executable fresh clone. Text inside the archived reading chapter describing inputs as “bundled” refers to the original full analytical bundle. No statistical analyses were rerun during this repository staging step.
+**Inputs: `MIR29_Figure2_S2_inputs_v1.zip`**, uploaded to the unpublished, restricted Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
+
+**Current execution boundary:** Processed inputs and required reference PNGs are included. Raw small-RNA processing and genome alignment are separate upstream workflows.
+
+**Verification:** Species, 76-seed ranking, methylation and bootstrap/leave-one-out numerical checks passed. This does not certify a complete raw-data-to-figure rerun.
 
 ## Intended execution, after input installation
 
@@ -22,7 +26,7 @@ From this module directory, in an R environment with the recorded dependencies:
 Rscript render_figure2_and_s2.R
 ```
 
-This regenerates the chapter from its analytical checkpoints; it does not repeat all upstream raw-data processing. Inspect the source and the module-specific scripts before execution. Required input locations will be supplied with the data manifest; do not substitute a different input or reference silently.
+This regenerates the chapter from its analytical checkpoints; it does not repeat all upstream raw-data processing. Inspect the source and the module-specific scripts before execution. Input locations and hashes are listed in the manifest; do not substitute a different input or reference silently.
 
 ## Dependencies
 

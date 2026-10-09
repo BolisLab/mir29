@@ -10,9 +10,13 @@ This private-review snapshot includes the analytical source, the existing render
 
 ## Reproduction boundary
 
-Starts from selected STAR gene-count files and analysis-ready developmental, ageing and mature-miRNA checkpoints; it does not repeat all raw-read alignment or clock training.
+Starts from compact iPSC/development count matrices and analysis-ready ageing and mature-miRNA checkpoints. Reconstruction of those matrices from STAR gene-count files is documented but not executed by the routine notebook; raw-read alignment and clock training are separate.
 
-**The external input bundle is not yet distributed with this repository.** Data-availability and redistribution review must be completed before promising an executable fresh clone. Text inside the archived reading chapter describing inputs as “bundled” refers to the original full analytical bundle. No statistical analyses were rerun during this repository staging step.
+**Inputs: `MIR29_Figure1_S1_inputs_v1.zip`**, uploaded to the unpublished, restricted Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
+
+**Current execution boundary:** Full notebook initialization still reads withheld data/epiclock_preds_GTEX.RDS. Authorised local input is required; the aggregate S1 helper can run without it.
+
+**Verification:** Aggregate S1 helper: assertions and six panel constructions passed. This does not certify a complete raw-data-to-figure rerun.
 
 ## Intended execution, after input installation
 
@@ -22,11 +26,10 @@ From this module directory, in an R environment with the recorded dependencies:
 Rscript render_figure1_and_s1.R
 ```
 
-This regenerates the chapter from its analytical checkpoints; it does not repeat all upstream raw-data processing. Inspect the source and the module-specific scripts before execution. Required input locations will be supplied with the data manifest; do not substitute a different input or reference silently.
+This regenerates the chapter from its analytical checkpoints; it does not repeat all upstream raw-data processing. Inspect the source and the module-specific scripts before execution. Input locations and hashes are listed in the manifest; do not substitute a different input or reference silently.
 
 ## Dependencies
 
 Directly detected R dependencies (not a validated lockfile): `ComplexHeatmap`, `DESeq2`, `SingleCellExperiment`, `circlize`, `cowplot`, `data.table`, `dendextend`, `dplyr`, `edgeR`, `forcats`, `gghalves`, `ggplot2`, `ggplotify`, `ggrastr`, `ggrepel`, `grDevices`, `grid`, `knitr`, `limma`, `org.Hs.eg.db`, `png`, `ragg`, `readxl`, `rmarkdown`, `scales`, `scater`, `scico`, `slingshot`, `svglite`, `tidyr`.
 
 Pandoc, rmarkdown and knitr are required for notebook rendering. Where present, `RECORDED_R_SESSION.txt` records the original analytical environment, not a newly tested installation. Optional Python predictor replay may require its separate recorded environment.
-

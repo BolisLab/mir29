@@ -11,9 +11,26 @@ the analysis code, and trace each result to its inputs and statistical compariso
 [Explore the five chapters](#explore-the-study) · [Reproduction guide](docs/reproduce.qmd) · [Data catalogue](data/README.md) · [Authors & citation](docs/about.qmd)
 
 > **Private working version.** This repository is being prepared for release.
-> The reading materials and source code are available here; large analytical
-> checkpoints are not yet deposited. A successful documentation build does not
-> certify a raw-data-to-figure analysis run. No website is currently published.
+> Code and reading materials are here; the five input packages have been uploaded
+> to an **unpublished, restricted Zenodo draft**. The reserved DOI is
+> [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285) and will become
+> active when the deposit is published. Reviewer access is provided separately.
+> A documentation build does not certify a raw-data-to-figure run. No website is currently published.
+
+## Analysis inputs on Zenodo
+
+Download the figure-specific ZIPs from the Zenodo deposit once you have access:
+`MIR29_Figure1_S1_inputs_v1.zip` through `MIR29_Figure5_S5_inputs_v1.zip`.
+The five packages contain 136 RDS objects and required supporting inputs
+(913.4 MB compressed in total). **While the record remains a draft, the DOI is
+not a public download link.** Editors and reviewers need separately granted
+draft-preview access; private access links are never stored in this repository.
+
+Extract the ZIPs into the **repository root**, preserving their
+`analyses/FigureN_and_SN/` paths. See the [data and installation guide](data/README.md),
+[file manifest](data/zenodo-manifest.json) and [checksums](data/zenodo-SHA256SUMS.txt).
+Individual GTEx donor ages are excluded; the guide explains the remaining
+controlled-access execution boundaries. No code archive is part of this data deposit.
 
 ## Explore the study
 
@@ -61,8 +78,8 @@ CITATION.cff    Study authors and software citation metadata
 ```
 
 Large raw data, binary checkpoints, controlled-access phenotypes and internal
-editorial files are not committed here. Public deposition links will be added
-after access and redistribution checks; no placeholder DOI is presented as real.
+editorial files are not committed here. Processed inputs are kept in the Zenodo
+data deposit above; new raw-data accessions will be added when assigned.
 
 ## Statistical reading guide
 
