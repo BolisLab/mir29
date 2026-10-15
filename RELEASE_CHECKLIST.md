@@ -6,7 +6,9 @@ This checklist tracks repository readiness, not unresolved manuscript revisions.
 - [ ] All five chapters reviewed in the new documentation layout.
 - [ ] Every input matched to its generating workflow, checksum and access status.
 - [x] Five input packages prepared with per-file and per-archive checksums (136 RDS plus supporting inputs).
-- [x] Packages uploaded to unpublished restricted Zenodo draft; reserved DOI 10.5281/zenodo.23266285 linked.
+- [x] Packages last confirmed in unpublished restricted Zenodo draft on 9 October 2026; reserved DOI 10.5281/zenodo.23266285 linked.
+- [x] Newly generated RNA-seq and DNA-methylation data deposited in GEO; accessions withheld from this repository until release.
+- [ ] Zenodo publication status and reviewer access rechecked before submission.
 - [ ] Source-specific attribution and release licences finalized; DOI activated only after publication approval.
 - [ ] Figure 3 reconstruction labels reconciled with the approved global q-value map.
 - [ ] Environment versions recovered and clean-environment chapter tests run.

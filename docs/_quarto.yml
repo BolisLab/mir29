@@ -12,7 +12,7 @@ project:
     - analyses/**
 website:
   title: "miR-29 · Bolis Lab"
-  description: "The analysis companion to miR-29 trades youthful plasticity for epigenetic fidelity."
+  description: "The analysis companion to Age-driven miR-29 trades youthful plasticity for epigenetic fidelity."
   favicon: assets/mark.svg
   search:
     location: navbar

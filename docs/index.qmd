@@ -1,5 +1,5 @@
 ---
-title: "miR-29 trades youthful plasticity for epigenetic fidelity"
+title: "Age-driven miR-29 trades youthful plasticity for epigenetic fidelity"
 description: "The Bolis Lab research companion: methods, code and figure-by-figure analyses of miR-29, ageing, rejuvenation and cancer."
 page-layout: full
 toc: false
@@ -14,7 +14,7 @@ title-block-style: none
 
 ::: {.research-hero}
 ::: {.hero-copy}
-# miR-29 trades youthful plasticity for epigenetic fidelity {.hero-title .unnumbered}
+# Age-driven miR-29 trades youthful plasticity for epigenetic fidelity {.hero-title .unnumbered}
 
 ::: {.hero-deck}
 A figure-by-figure journey through ageing, rejuvenation and evolution—and the distinction between molecular age, the capacity for change and the state reached by that change.
@@ -160,6 +160,12 @@ Dataset provenance, analysis inputs and access requirements belong alongside the
 [Browse datasets and access information →](datasets.qmd){.panel-link}
 
 [About the study and citation →](about.qmd){.panel-link .secondary-panel-link}
+
+[Explore results in Tabula Ages →](https://tabula-ages.pages.dev){.panel-link .secondary-panel-link}
+
+::: {.small-note}
+Tabula Ages is a separate, currently password-protected resource. Reviewer access details are provided separately.
+:::
 :::
 :::
 

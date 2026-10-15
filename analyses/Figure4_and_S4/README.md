@@ -12,7 +12,7 @@ This private-review snapshot includes the analytical source, the existing render
 
 Starts from methylation and predictor checkpoints and the 123-CpG reference extract. The reference-distance and pooled/matched statistics are recalculated by the source modules; raw IDAT preprocessing and genome-wide discovery are separate upstream steps.
 
-**Inputs: `MIR29_Figure4_S4_inputs_v1.zip`**, uploaded to the unpublished, restricted Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
+**Inputs: `MIR29_Figure4_S4_inputs_v1.zip`**, last confirmed in the unpublished, restricted Zenodo draft on 9 October 2026 with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
 
 **Current execution boundary:** Full unmodified execution still reads withheld data/primary/gtex_sample_metrics.rds. Existing aggregate windows are included but do not automatically bypass this read.
 
@@ -39,4 +39,3 @@ Pandoc, rmarkdown and knitr are required for notebook rendering. Where present, 
 See [CURRENT_STATISTICAL_LABELS.tsv](CURRENT_STATISTICAL_LABELS.tsv) for the approved panel-to-test mapping.
 
 The active somatic reference contains **123 CpGs**, selected with lineage-comparison q ≤ 0.20. The HGF whole-series test is an arithmetic mean-displacement test, **not a treatment-by-time slope test**. The hTERT final-cycle and whole-series tests remain distinct. Figure 4l is unchanged.
-

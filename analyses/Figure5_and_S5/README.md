@@ -12,7 +12,7 @@ This private-review snapshot includes the analytical source, the existing render
 
 Starts from tumour and cell-line analytical checkpoints and cohort summaries; it does not repeat the complete upstream acquisition and processing of TCGA/CCLE data.
 
-**Inputs: `MIR29_Figure5_S5_inputs_v1.zip`**, uploaded to the unpublished, restricted Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
+**Inputs: `MIR29_Figure5_S5_inputs_v1.zip`**, last confirmed in the unpublished, restricted Zenodo draft on 9 October 2026 with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
 
 **Current execution boundary:** Core processed-input replay passed 139 assertions. Full plotting/rendering and upstream raw-data calculations are separate verification levels.
 
@@ -33,4 +33,3 @@ This regenerates the chapter from its analytical checkpoints; it does not repeat
 Directly detected R dependencies (not a validated lockfile): `cowplot`, `ggplot2`, `ggrastr`, `ggrepel`, `grDevices`, `grid`, `gtable`, `jsonlite`, `knitr`, `matrixStats`, `metafor`, `rmarkdown`, `scales`, `splines`, `stats`, `tools`.
 
 Pandoc, rmarkdown and knitr are required for notebook rendering. Where present, `RECORDED_R_SESSION.txt` records the original analytical environment, not a newly tested installation. Optional Python predictor replay may require its separate recorded environment.
-

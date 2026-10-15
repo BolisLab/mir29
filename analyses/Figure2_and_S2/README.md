@@ -12,7 +12,7 @@ This private-review snapshot includes the analytical source, the existing render
 
 Starts from analysis-ready miRNA and methylation correlation objects, sequence catalogs and cached phylogeny; it does not rerun the nf-core small-RNA workflows or whole-genome alignments.
 
-**Inputs: `MIR29_Figure2_S2_inputs_v1.zip`**, uploaded to the unpublished, restricted Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
+**Inputs: `MIR29_Figure2_S2_inputs_v1.zip`**, last confirmed in the unpublished, restricted Zenodo draft on 9 October 2026 with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
 
 **Current execution boundary:** Processed inputs and required reference PNGs are included. Raw small-RNA processing and genome alignment are separate upstream workflows.
 
@@ -33,4 +33,3 @@ This regenerates the chapter from its analytical checkpoints; it does not repeat
 Directly detected R dependencies (not a validated lockfile): `ape`, `cowplot`, `dplyr`, `gghalves`, `ggplot2`, `ggrastr`, `ggtext`, `ggtree`, `grDevices`, `grid`, `knitr`, `purrr`, `readr`, `rmarkdown`, `rstudioapi`, `scales`, `stats`, `stringr`, `svglite`, `tibble`, `tidyr`, `tools`.
 
 Pandoc, rmarkdown and knitr are required for notebook rendering. Where present, `RECORDED_R_SESSION.txt` records the original analytical environment, not a newly tested installation. Optional Python predictor replay may require its separate recorded environment.
-

@@ -1,6 +1,6 @@
 ---
 title: "The study and its authors"
-subtitle: "miR-29 trades youthful plasticity for epigenetic fidelity"
+subtitle: "Age-driven miR-29 trades youthful plasticity for epigenetic fidelity"
 ---
 
 ## Authors

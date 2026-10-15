@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Please cite the associated study when reusing these analyses. Publication and archived software identifiers will be added when available."
 type: software
-title: "miR-29 trades youthful plasticity for epigenetic fidelity — analysis companion"
+title: "Age-driven miR-29 trades youthful plasticity for epigenetic fidelity — analysis companion"
 version: "0.1.0-draft"
 repository-code: "https://github.com/BolisLab/mir29"
 authors:

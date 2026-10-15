@@ -1,7 +1,13 @@
 {
   "schema_version": "1.0",
-  "updated": "2026-10-09",
-  "status": "input packages uploaded to an unpublished restricted Zenodo draft; no public release",
+  "updated": "2026-10-15",
+  "status": "input packages last confirmed in an unpublished restricted Zenodo draft on 2026-10-09; current publication status not rechecked",
+  "generated_data_deposit": {
+    "archive": "GEO",
+    "data_types": ["RNA-seq", "DNA methylation"],
+    "status": "deposited; accessions withheld from this public-facing repository until release",
+    "reviewer_access": "provided separately to the journal; no reviewer links stored here"
+  },
   "path_convention": "module-relative input paths; module identity follows the figure-specific R Markdown filename",
   "source_sha256_scope": "Checksums identify the authoritative pre-staging R Markdown sources, not the repository copies after portability and distribution-boundary notices were added.",
   "status_definitions": {
@@ -334,6 +340,8 @@
     "doi_status": "reserved; not yet registered or publicly resolving",
     "record_id": "23266285",
     "status": "unpublished_restricted_draft",
+    "status_last_confirmed": "2026-10-09",
+    "current_status_rechecked": false,
     "data_version": "v1",
     "contents": "Five figure-specific data packages and three accompanying documentation files; no source-code archive",
     "access": "Draft preview access is granted separately; private access links are not stored in this repository.",

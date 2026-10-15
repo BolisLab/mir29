@@ -16,23 +16,36 @@ tracks the analytical starting points and access boundaries.
 |:--|:--|:--|
 | Source code | Analysis, plotting and upstream-processing recipes | This repository |
 | Public annotations | Reference sequences, assembly identifiers and aggregate metadata | Chapter data files, after review |
-| Analytical checkpoints | Processed matrices and model inputs required to rerun panels | Zenodo data package v1; unpublished, restricted draft |
-| Newly generated raw data | Sequencing and methylation measurements | Appropriate primary archives; accessions pending |
+| Analytical checkpoints | Processed matrices and model inputs required to rerun panels | Zenodo data package v1; last confirmed as an unpublished, restricted draft on 9 October 2026 |
+| Newly generated data | RNA-seq and DNA-methylation measurements and processed data | Deposited in GEO; accessions withheld from this repository until release |
 | External raw datasets | Previously published measurements | Original study accessions listed in the analyses |
 | Controlled metadata | Restricted participant-level phenotypes | Original access-controlled resource, not this repository |
 
 Public source accessions are retained in the figure chapters, including the
 small-RNA dataset inventory.
 
+## Newly generated data and result exploration
+
+The RNA-seq and DNA-methylation data generated in this study have been deposited
+in GEO. Their accessions are withheld from this public-facing repository until
+release. Reviewer links are provided separately to the journal and are not
+stored here.
+
+[Tabula Ages](https://tabula-ages.pages.dev) is a separate interactive resource
+for exploring study results. It is currently password-protected, with reviewer
+access details supplied separately. This Quarto companion documents the
+analyses and their reproducibility requirements; it remains a local preview.
+
 ## Zenodo input package v1
 
-**Status: UNPUBLISHED / RESTRICTED DRAFT.** The five input archives and the three
+**Last confirmed status (9 October 2026): UNPUBLISHED / RESTRICTED DRAFT.** The five input archives and the three
 accompanying files (`README.txt`, `MANIFEST.json` and `SHA256SUMS.txt`) have been
 uploaded and the draft saved. The reserved DOI is
 [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285); it is **not active
-until publication** and does not currently provide a public download. Private
+until publication**; no public download was available at that check. Private
 reviewer access is issued separately. Private preview links are not stored in
 this repository, and access to the GitHub code must also be granted separately.
+The deposit's current publication status has not been rechecked for this update.
 
 | Chapter | Input archive | Compressed size |
 |:--|:--|--:|

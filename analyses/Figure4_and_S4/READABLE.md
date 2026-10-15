@@ -1,5 +1,5 @@
 ---
-title: "MIR29 trades youthful plasticity for epigenetic fidelity"
+title: "Age-driven miR-29 trades youthful plasticity for epigenetic fidelity"
 subtitle: "Figure 4 and Supplementary Figure S4 — methods, data and executable reconstruction"
 date: "9 October 2026"
 output:
@@ -16,7 +16,7 @@ output:
     keep_md: true
 ---
 
-> **External inputs — restricted Zenodo draft.** The five input packages have been uploaded to an unpublished Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI becomes active on publication; draft access is granted separately. Extract the matching ZIP into the repository root. Individual GTEx donor ages are withheld, and full-notebook execution boundaries remain documented in the [module instructions](README.md). Scientific code and recorded results below are unchanged.
+> **External inputs — restricted Zenodo draft.** The five input packages were last confirmed in an unpublished, restricted Zenodo draft on 9 October 2026, with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI becomes active on publication; draft access is granted separately. Extract the matching ZIP into the repository root. Individual GTEx donor ages are withheld, and full-notebook execution boundaries remain documented in the [module instructions](README.md). Scientific code and recorded results below are unchanged.
 
 # Current statistical annotations — 9 October 2026
 

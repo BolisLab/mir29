@@ -1,6 +1,6 @@
 <p align="center"><img src="docs/assets/banner.svg" alt="miR-29 — epigenetic fidelity and plasticity" width="100%"></p>
 
-# miR-29 trades youthful plasticity for epigenetic fidelity
+# Age-driven miR-29 trades youthful plasticity for epigenetic fidelity
 
 **The analysis companion · Bolis Lab**
 
@@ -11,11 +11,11 @@ the analysis code, and trace each result to its inputs and statistical compariso
 [Explore the five chapters](#explore-the-study) · [Reproduction guide](docs/reproduce.qmd) · [Data catalogue](data/README.md) · [Authors & citation](docs/about.qmd)
 
 > **Private working version.** This repository is being prepared for release.
-> Code and reading materials are here; the five input packages have been uploaded
-> to an **unpublished, restricted Zenodo draft**. The reserved DOI is
+> Code and reading materials are here; the five input packages were last confirmed
+> in an **unpublished, restricted Zenodo draft on 9 October 2026**. The reserved DOI is
 > [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285) and will become
 > active when the deposit is published. Reviewer access is provided separately.
-> A documentation build does not certify a raw-data-to-figure run. No website is currently published.
+> A documentation build does not certify a raw-data-to-figure run. This Quarto companion remains a local preview.
 
 ## Analysis inputs on Zenodo
 
@@ -31,6 +31,19 @@ Extract the ZIPs into the **repository root**, preserving their
 [file manifest](data/zenodo-manifest.json) and [checksums](data/zenodo-SHA256SUMS.txt).
 Individual GTEx donor ages are excluded; the guide explains the remaining
 controlled-access execution boundaries. No code archive is part of this data deposit.
+
+## Study resources
+
+- **GEO:** the RNA-seq and DNA-methylation data generated in this study have been
+  deposited in GEO. Accessions are withheld from this public-facing repository
+  until release; reviewer access is supplied separately to the journal.
+- **Code and reproducibility documentation:** this repository and its Quarto
+  companion explain the figure-level analyses, inputs and execution boundaries.
+  The companion remains a local preview; GitHub Pages is not deployed.
+- **Interactive result exploration:** [Tabula Ages](https://tabula-ages.pages.dev)
+  is a separate web resource for exploring study results. It is currently
+  password-protected; reviewer access details are supplied separately and are
+  not stored in this repository.
 
 ## Explore the study
 
@@ -79,7 +92,8 @@ CITATION.cff    Study authors and software citation metadata
 
 Large raw data, binary checkpoints, controlled-access phenotypes and internal
 editorial files are not committed here. Processed inputs are kept in the Zenodo
-data deposit above; new raw-data accessions will be added when assigned.
+data deposit above; GEO accessions for the newly generated data will be added
+to this repository at release.
 
 ## Statistical reading guide
 

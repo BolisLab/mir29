@@ -12,7 +12,7 @@ This private-review snapshot includes the analytical source, the existing render
 
 Starts from growth counts, RNA-count/VST matrices, gene sets, activity and clock predictions, network coordinates and compact single-cell summaries; it does not rerun read alignment, single-cell integration or external clock training.
 
-**Inputs: `MIR29_Figure3_S3_inputs_v1.zip`**, uploaded to the unpublished, restricted Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
+**Inputs: `MIR29_Figure3_S3_inputs_v1.zip`**, last confirmed in the unpublished, restricted Zenodo draft on 9 October 2026 with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
 
 **Current execution boundary:** Processed numerical inputs are included. When `digest` is installed, the standard renderer automatically runs a post-render hash check requiring two original reference PDFs not in the package. Without those PDFs, the command will fail at this check even if HTML rendering has completed.
 

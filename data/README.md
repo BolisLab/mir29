@@ -5,12 +5,17 @@ code and documentation from large numerical checkpoints and from data subject
 to access restrictions. A readable notebook is not, by itself, evidence that a
 fresh checkout can execute every analysis.
 
-The five packages have been uploaded to an **unpublished, restricted Zenodo
-draft**, with reserved DOI
+The five packages were last confirmed in an **unpublished, restricted Zenodo
+draft on 9 October 2026**, with reserved DOI
 [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285).
-The DOI will become active on publication; it is not yet a public download link.
+The DOI becomes active on publication; no public download was available at that
+check. The deposit's current publication status has not been rechecked for this update.
 Editors and reviewers require separately granted draft-preview access. A secret
 preview link must never be committed here. This deposit contains data, not code.
+
+The RNA-seq and DNA-methylation data generated in this study have also been
+deposited in GEO. Accessions are withheld from this public-facing repository
+until release; reviewer links are provided separately to the journal.
 
 The [input catalogue](input-catalogue.json) records module-level access and
 reproduction boundaries. The [file manifest](zenodo-manifest.json) lists every

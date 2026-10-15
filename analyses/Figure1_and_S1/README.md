@@ -12,7 +12,7 @@ This private-review snapshot includes the analytical source, the existing render
 
 Starts from compact iPSC/development count matrices and analysis-ready ageing and mature-miRNA checkpoints. Reconstruction of those matrices from STAR gene-count files is documented but not executed by the routine notebook; raw-read alignment and clock training are separate.
 
-**Inputs: `MIR29_Figure1_S1_inputs_v1.zip`**, uploaded to the unpublished, restricted Zenodo draft with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
+**Inputs: `MIR29_Figure1_S1_inputs_v1.zip`**, last confirmed in the unpublished, restricted Zenodo draft on 9 October 2026 with reserved DOI [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285). The DOI is not an active public download until publication; reviewer access is granted separately. See the [data/installation guide](../../data/README.md) and [file manifest](../../data/zenodo-manifest.json). Extract the archive into the repository root. No individual GTEx donor ages are distributed.
 
 **Current execution boundary:** Full notebook initialization still reads withheld data/epiclock_preds_GTEX.RDS. Authorised local input is required; the aggregate S1 helper can run without it.
 

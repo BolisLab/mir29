@@ -17,12 +17,13 @@ numerical inputs are supplied separately as five figure-specific ZIP archives
 in Zenodo data package v1. The [data catalogue](datasets.qmd) lists their exact
 filenames and sizes.
 
-**Status: UNPUBLISHED / RESTRICTED DRAFT.** The eight files have been uploaded
+**Last confirmed status (9 October 2026): UNPUBLISHED / RESTRICTED DRAFT.** The eight files have been uploaded
 and the draft saved. DOI
 [10.5281/zenodo.23266285](https://doi.org/10.5281/zenodo.23266285) is reserved and
 **not active until publication**. Private reviewer access to the files is issued
 separately from access to the GitHub code; no private preview link belongs in
-this repository.
+this repository. The deposit's current publication status has not been rechecked
+for this update.
 
 The package records compatible code commit
 [`ada517267dce6d2665710d79f3d73b54f0cba50b`](https://github.com/BolisLab/mir29/commit/ada517267dce6d2665710d79f3d73b54f0cba50b).
@@ -113,8 +114,8 @@ library for the documentation preparation script.
 
 ## Release status
 
-The input package has been uploaded to an unpublished Zenodo draft; the website
-remains a local preview. Before public release, we will reconcile the remaining
+The input package was last confirmed in an unpublished Zenodo draft on
+9 October 2026; this Quarto website remains a local preview. Before public release, we will reconcile the remaining
 reconstruction labels, complete access and licensing checks, record software
 environments and test chapter execution. See the
 [release checklist](https://github.com/BolisLab/mir29/blob/main/RELEASE_CHECKLIST.md).
